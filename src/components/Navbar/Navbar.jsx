@@ -1,0 +1,63 @@
+import { useEffect, useState } from "react";
+import { NAV_LINKS } from "./navLinks";
+import "./Navbar.css";
+
+const iconProps = { width: 22, height: 22, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.4, strokeLinecap: "round", strokeLinejoin: "round", "aria-hidden": true };
+const SearchIcon = () => <svg {...iconProps}><circle cx="11" cy="11" r="6.5" /><path d="M20 20l-4.2-4.2" /></svg>;
+const AccountIcon = () => <svg {...iconProps}><circle cx="12" cy="8.5" r="4" /><path d="M4.5 20c.9-3.6 3.9-5.5 7.5-5.5s6.6 1.9 7.5 5.5" /></svg>;
+const CartIcon = () => <svg {...iconProps}><path d="M3 4h2.4l2.1 11h9.6l2-8H6.3" /><circle cx="9.5" cy="19.2" r="1.2" /><circle cx="16.5" cy="19.2" r="1.2" /></svg>;
+
+export default function Navbar({ activeId = "shop", cartCount = 0, logoHref = "#home", onSearchClick, onAccountClick, onCartClick, onNavClick }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e) => e.key === "Escape" && setMenuOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => { document.body.style.overflow = previous; window.removeEventListener("keydown", onKey); };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1025px)");
+    const onChange = (e) => e.matches && setMenuOpen(false);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
+  const handleNav = (e, link) => {
+    if (onNavClick) {
+      e.preventDefault();
+      onNavClick(link.id);
+    }
+    setMenuOpen(false);
+  };
+
+  return (
+    <header className={`ozb-nav ${scrolled ? "is-scrolled" : ""}`}>
+      <div className="ozb-nav__inner">
+        <a className="ozb-nav__logo" href={logoHref} aria-label="OzaBay home">OzaBay</a>
+        <nav id="ozb-primary-nav" className={`ozb-nav__menu ${menuOpen ? "is-open" : ""}`} aria-label="Primary">
+          <ul className="ozb-nav__links">
+            {NAV_LINKS.map((link) => <li key={link.id}><a href={`#${link.id}`} className={`ozb-nav__link ${activeId === link.id ? "is-active" : ""}`} aria-current={activeId === link.id ? "page" : undefined} onClick={(e) => handleNav(e, link)}>{link.label}</a></li>)}
+          </ul>
+        </nav>
+        <div className="ozb-nav__actions">
+          <button type="button" className="ozb-nav__icon-btn" aria-label="Search" onClick={onSearchClick}><SearchIcon /></button>
+          <button type="button" className="ozb-nav__icon-btn" aria-label="Account" onClick={onAccountClick}><AccountIcon /></button>
+          <button type="button" className="ozb-nav__icon-btn ozb-nav__cart" aria-label={`Cart, ${cartCount} items`} onClick={onCartClick}><CartIcon /><span className="ozb-nav__badge">{cartCount}</span></button>
+          <button type="button" className={`ozb-nav__toggle ${menuOpen ? "is-open" : ""}`} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} aria-controls="ozb-primary-nav" onClick={() => setMenuOpen((v) => !v)}><span /><span /></button>
+        </div>
+      </div>
+    </header>
+  );
+}
