@@ -13,7 +13,7 @@ const IMG = {
 };
 
 const VIDEOS = {
-  craft: "/videos/ozabay-craft-film.mp4",
+  craft: "/videos/ozabay-craft-film.mp4",pwd
   detail: "/videos/ozabay-detail-film.mp4",
   artisanA: "https://videos.pexels.com/video-files/37306917/15802972_1920_1080_25fps.mp4",
   artisanB: "https://videos.pexels.com/video-files/9363486/9363486-hd_1920_1080_25fps.mp4",
@@ -90,6 +90,13 @@ const ARTISANS = [
   {id:"farida",name:"Farida Ansari",craft:"Stoneware & Loom · Khurja",city:"Khurja, Uttar Pradesh",story:"A maker combining tactile stoneware with textile traditions for quiet, contemporary homes.",image:"https://images.pexels.com/photos/31019536/pexels-photo-31019536.jpeg?auto=compress&cs=tinysrgb&w=1200",products:"Ceramics",portraitNote:"Representative artisan workshop portrait"},
 ];
 
+const MAKER_STORIES = [
+  {id:"meera-film",maker:"Meera Kumari",craft:"Pottery / Ceramics",place:"Jaipur · Rajasthan",chapter:"01 · EARTH → FORM",story:"A quiet study of clay becoming form — pressure, water, wheel and the patience behind a finished vessel.",video:"https://videos.pexels.com/video-files/37185415/15752935_1920_1080_60fps.mp4",fallback:VIDEOS.artisanA,source:"Representative pottery workshop footage"},
+  {id:"raghav-film",maker:"Raghav Sharma",craft:"Metalcraft",place:"Moradabad · Uttar Pradesh",chapter:"02 · HEAT → HAMMER",story:"Metal changes character through rhythm: heat, hand tools and hundreds of small decisions shape the final surface.",video:"https://videos.pexels.com/video-files/35755402/15157536_1440_3364_24fps.mp4",fallback:VIDEOS.detail,source:"Representative Indian jewelry / metalcraft footage"},
+  {id:"sana-film",maker:"Sana Sheikh",craft:"Textiles",place:"Jaipur · Rajasthan",chapter:"03 · PATTERN → CLOTH",story:"From workshop table to finished textile, the craft is built from repetition, touch and carefully placed pattern.",video:"https://videos.pexels.com/video-files/18883016/18883016-uhd_3840_2160_30fps.mp4",fallback:VIDEOS.detail,source:"Representative Indian tailoring workshop footage"},
+  {id:"imran-film",maker:"Imran Qureshi",craft:"Woodcraft",place:"Saharanpur · Uttar Pradesh",chapter:"04 · GRAIN → OBJECT",story:"The grain decides the first move. The maker follows it, cuts slowly and lets the surface keep evidence of the hand.",video:"https://videos.pexels.com/video-files/35323776/14966671_1920_1080_50fps.mp4",fallback:VIDEOS.detail,source:"Representative woodcraft workshop footage"},
+];
+
 const REVIEWS=[
   ["Aarohi S.","The blue pottery piece feels genuinely handmade and the finish is even better in person.",5],
   ["Kabir M.","The 3D view made it much easier to understand the scale before adding it to my bag.",5],
@@ -100,7 +107,29 @@ const CUSTOM_PRICES={form:{Vessel:3200,Bowl:2400,Lamp:4800,Planter:2800},materia
 
 function money(v){return `₹${v.toLocaleString("en-IN")}`;}
 function Reveal({children,className="",id}){const ref=useRef(null);useEffect(()=>{const el=ref.current;if(!el)return;const obs=new IntersectionObserver(([e])=>{if(e.isIntersecting){el.classList.add("is-visible");obs.disconnect();}}, {threshold:.06});obs.observe(el);return()=>obs.disconnect();},[]);return <div ref={ref} id={id} className={`reveal ${className}`}>{children}</div>}
-function TiltCard({children,className=""}){const [tilt,setTilt]=useState({x:0,y:0});return <div className={`tilt-card ${className}`} onMouseMove={e=>{const r=e.currentTarget.getBoundingClientRect();setTilt({x:((e.clientX-r.left)/r.width-.5)*5,y:((e.clientY-r.top)/r.height-.5)*-5})}} onMouseLeave={()=>setTilt({x:0,y:0})} style={{transform:`perspective(1200px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg)`}}>{children}</div>}
+function TiltCard({children,className=""}){
+  const ref=useRef(null);
+  const target=useRef({x:0,y:0,lift:0,mx:50,my:50});
+  const current=useRef({x:0,y:0,lift:0});
+  useEffect(()=>{
+    let frame;
+    const tick=()=>{
+      const el=ref.current;
+      if(el){
+        current.current.x+=(target.current.x-current.current.x)*.075;
+        current.current.y+=(target.current.y-current.current.y)*.075;
+        current.current.lift+=(target.current.lift-current.current.lift)*.08;
+        el.style.transform=`perspective(1400px) translate3d(0,${-current.current.lift}px,0) rotateX(${current.current.y}deg) rotateY(${current.current.x}deg)`;
+      }
+      frame=requestAnimationFrame(tick);
+    };
+    frame=requestAnimationFrame(tick);
+    return()=>cancelAnimationFrame(frame);
+  },[]);
+  const move=e=>{const el=ref.current;if(!el)return;const r=el.getBoundingClientRect();const px=(e.clientX-r.left)/r.width;const py=(e.clientY-r.top)/r.height;target.current={x:(px-.5)*2.6,y:(py-.5)*-2.6,lift:2,mx:px*100,my:py*100};el.style.setProperty("--pointer-x",`${px*100}%`);el.style.setProperty("--pointer-y",`${py*100}%`)};
+  const leave=()=>{const el=ref.current;target.current={x:0,y:0,lift:0,mx:50,my:50};if(el){el.style.setProperty("--pointer-x","50%");el.style.setProperty("--pointer-y","50%")}};
+  return <div ref={ref} className={`tilt-card ${className}`} onMouseMove={move} onMouseLeave={leave}>{children}</div>
+}
 function BuilderGroup({label,value,options,onChange}){return <div className="builder-group"><span>{label}</span><div>{options.map(o=><button key={o} type="button" className={value===o?"is-selected":""} onClick={()=>onChange(o)}>{o}</button>)}</div></div>}
 
 function CustomLivePreview({custom,price,image,onPrice}){
@@ -244,6 +273,25 @@ function CraftFilm(){
   </section>
 }
 
+function MakerStories(){
+  return <section className="maker-stories oz-section">
+    <div className="oz-container">
+      <Reveal><div className="section-head maker-stories__head"><div><p className="eyebrow">The making / moving image</p><h2>Stories that <em>start with the hands.</em></h2></div><p>Meet the craft through motion — wheel, hammer, thread and grain. These films are representative workshop footage used to bring the craft story to life until OzaBay has its own commissioned maker films.</p></div></Reveal>
+      <div className="maker-stories__rail">
+        {MAKER_STORIES.map((story,i)=><article className="maker-story-card" key={story.id}>
+          <div className="maker-story-card__media">
+            <video src={story.video} autoPlay muted loop playsInline preload="metadata" poster={i===0?IMG.terracotta:i===1?IMG.blue:i===2?IMG.indigo:IMG.sculptural} onError={e=>{if(e.currentTarget.src!==story.fallback)e.currentTarget.src=story.fallback}} aria-label={`${story.craft} workshop footage`}/>
+            <div className="maker-story-card__wash"/>
+            <span className="maker-story-card__index">{story.chapter}</span>
+            <span className="maker-story-card__sound"><i/> SOUND OFF · CINEMATIC LOOP</span>
+          </div>
+          <div className="maker-story-card__copy"><p>{story.craft} · {story.place}</p><h3>{story.maker}</h3><span>{story.story}</span><small>{story.source}</small></div>
+        </article>)}
+      </div>
+    </div>
+  </section>
+}
+
 function Product3DViewer({product,onClose,onAdd,onSpace}){
   const [rotation,setRotation]=useState(-18);
   const [pitch,setPitch]=useState(3);
@@ -328,6 +376,7 @@ export default function App(){
       <Reveal className="oz-section oz-intro" id="story"><div className="oz-container oz-intro__grid"><p className="eyebrow">The digital atelier</p><div><h2>Objects that carry the <em>human touch.</em></h2><p>OzaBay brings together small-batch objects made by independent Indian artisans. Every curve, weave and tool mark is part of the story.</p><button className="text-link" onClick={()=>setModal("about")}>Discover the OzaBay story ↗</button></div></div></Reveal>
 
       <CraftFilm/>
+      <MakerStories/>
 
       <section id="collections" className="oz-section oz-collections"><div className="oz-container"><Reveal><div className="section-head"><div><p className="eyebrow">Curated by craft</p><h2>Find your <em>collection.</em></h2></div><p>Seven craft worlds, each with a considered edit of handmade pieces.</p></div></Reveal><div className="collection-grid">{COLLECTIONS.map((c,i)=><Reveal key={c.id} className={`collection-card collection-card--${i+1}`}><button onClick={()=>{setFilter(c.filter);go("products")}}><div className="collection-card__image"><img src={c.image} alt={c.name}/><span>{String(PRODUCTS.filter(p=>p.category===c.filter).length).padStart(2,"0")} pieces</span></div><div className="collection-card__copy"><div><h3>{c.name}</h3><p>{c.copy}</p></div><strong>Explore ↗</strong></div></button></Reveal>)}</div></div></section>
 
@@ -385,7 +434,8 @@ export default function App(){
       {modal?.type==="3d"&&<Product3DViewer product={modal.product} onClose={()=>setModal(null)} onAdd={p=>{add(p);setModal("cart")}} onSpace={p=>setModal({type:"space",product:p})}/>} 
       {modal?.type==="product"&&<ProductDetail product={modal.product} onClose={()=>setModal(null)} onAdd={p=>{add(p);setModal("cart")}} onView3D={p=>setModal({type:"3d",product:p})} onSpace={p=>setModal({type:"space",product:p})} onReview={p=>setReviewProduct(p)}/>} 
       {modal?.type==="space"&&<><button className="modal-close" onClick={()=>setModal(null)}>×</button><p className="eyebrow">View in your space</p><h2>Preview <em>{modal.product.name}</em> at home.</h2><div className="space-room"><div className="space-floor"/><div className="space-wall"><span>OzaBay room preview</span><div className="space-object"><img src={modal.product.image} alt=""/></div></div></div><p className="space-note">This is a frontend room-scale preview concept. A production AR layer can replace it later without changing the product flow.</p><button className="hero-action" onClick={()=>{add(modal.product);setModal("cart")}}>Add to bag ↗</button></>}
-      {modal?.type==="artisan"&&<><button className="modal-close" onClick={()=>setModal(null)}>×</button><div className="artisan-modal"><img src={modal.artisan.image} alt={modal.artisan.name}/><div><p className="eyebrow">{modal.artisan.craft}</p><h2>{modal.artisan.name}<br/><em>by hand.</em></h2><p>{modal.artisan.story}</p><div className="artisan-facts"><span>Studio <b>{modal.artisan.city}</b></span><span>Craft <b>{modal.artisan.products}</b></span><span>Marketplace status <b>Verified maker UI</b></span></div><button className="hero-action" onClick={()=>{setFilter(modal.artisan.products);setQuery("");setModal(null);go("products")}}>Shop this maker ↗</button></div></div></>}
+      {modal?.type==="artisan"&&<><button className="modal-close" onClick={()=>setModal(null)}>×</button><div className="artisan-modal artisan-modal--premium"><div className="artisan-modal__media"><img src={modal.artisan.image} alt={modal.artisan.name}/><div className="artisan-modal__media-note">PORTRAIT · REPRESENTATIVE WORKSHOP PROFILE</div></div><div><p className="eyebrow">{modal.artisan.craft}</p><h2>{modal.artisan.name}<br/><em>by hand.</em></h2><p>{modal.artisan.story}</p><div className="artisan-facts"><span>Studio <b>{modal.artisan.city}</b></span><span>Craft <b>{modal.artisan.products}</b></span><span>Marketplace status <b>Maker profile UI</b></span></div><div className="artisan-modal__film"><div><span>WATCH THE MAKING</span><strong>Representative workshop film</strong><small>Commissioned OzaBay maker footage can replace this later.</small></div><button onClick={()=>{const story=MAKER_STORIES.find(s=>s.maker===modal.artisan.name)||MAKER_STORIES[0];setModal({type:"maker-video",story})}}>Play film ↗</button></div><button className="hero-action" onClick={()=>{setFilter(modal.artisan.products);setQuery("");setModal(null);go("products")}}>Shop this maker ↗</button></div></div></>}
+      {modal?.type==="maker-video"&&<><button className="modal-close" onClick={()=>setModal(null)}>×</button><div className="maker-video-modal"><div className="maker-video-modal__media"><video src={modal.story.video} autoPlay muted loop playsInline controls poster={modal.story.id.includes("meera")?IMG.terracotta:modal.story.id.includes("raghav")?IMG.blue:modal.story.id.includes("sana")?IMG.indigo:IMG.sculptural} onError={e=>{if(e.currentTarget.src!==modal.story.fallback)e.currentTarget.src=modal.story.fallback}}/></div><div className="maker-video-modal__copy"><p className="eyebrow">{modal.story.chapter}</p><h2>{modal.story.maker}<br/><em>{modal.story.craft}</em></h2><p>{modal.story.story}</p><span>{modal.story.source}</span><button className="hero-action" onClick={()=>{const a=ARTISANS.find(x=>x.name===modal.story.maker);if(a){setModal({type:"artisan",artisan:a})}}}>Back to maker story ↗</button></div></div></>}
       {modal?.type==="passport"&&<><button className="modal-close" onClick={()=>setModal(null)}>×</button><p className="eyebrow">Digital craft passport</p><h2>One object.<br/><em>One traceable story.</em></h2><div className="passport-detail"><img src={modal.product.image} alt=""/><div><span>PRODUCT</span><strong>{modal.product.name}</strong><span>MAKER</span><strong>{modal.product.artisan}</strong><span>PLACE</span><strong>{modal.product.city}</strong><span>MATERIAL</span><strong>{modal.product.material}</strong><span>CARE</span><strong>{modal.product.care}</strong></div></div></>}
       {modal?.type==="gift-result"&&<>
         <button className="modal-close" onClick={()=>setModal(null)}>×</button>
