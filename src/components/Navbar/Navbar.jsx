@@ -6,6 +6,10 @@ const iconProps = { width: 22, height: 22, viewBox: "0 0 24 24", fill: "none", s
 const SearchIcon = () => <svg {...iconProps}><circle cx="11" cy="11" r="6.5" /><path d="M20 20l-4.2-4.2" /></svg>;
 const AccountIcon = () => <svg {...iconProps}><circle cx="12" cy="8.5" r="4" /><path d="M4.5 20c.9-3.6 3.9-5.5 7.5-5.5s6.6 1.9 7.5 5.5" /></svg>;
 const CartIcon = () => <svg {...iconProps}><path d="M3 4h2.4l2.1 11h9.6l2-8H6.3" /><circle cx="9.5" cy="19.2" r="1.2" /><circle cx="16.5" cy="19.2" r="1.2" /></svg>;
+const COLLECTION_MENU = [
+  ["Ceramics","Quiet forms & stoneware"],["Blue Pottery","Jaipur colour"],["Terracotta","Fired earth"],["Textiles","Loom-made texture"],
+  ["Woodcraft","Carved grain"],["Metalcraft","Brass & Kansa"],["Home Décor","Objects for the room"]
+];
 
 export default function Navbar({ activeId = "shop", cartCount = 0, logoHref = "#home", onSearchClick, onAccountClick, onCartClick, onNavClick }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -48,7 +52,7 @@ export default function Navbar({ activeId = "shop", cartCount = 0, logoHref = "#
         <a className="ozb-nav__logo" href={logoHref} aria-label="OzaBay home">OzaBay</a>
         <nav id="ozb-primary-nav" className={`ozb-nav__menu ${menuOpen ? "is-open" : ""}`} aria-label="Primary">
           <ul className="ozb-nav__links">
-            {NAV_LINKS.map((link) => <li key={link.id}><a href={`#${link.id}`} className={`ozb-nav__link ${activeId === link.id ? "is-active" : ""}`} aria-current={activeId === link.id ? "page" : undefined} onClick={(e) => handleNav(e, link)}>{link.label}</a></li>)}
+            {NAV_LINKS.map((link) => <li key={link.id} className={link.id==="collections"?"ozb-nav__has-mega":""}><a href={`#${link.id}`} className={`ozb-nav__link ${activeId === link.id ? "is-active" : ""}`} aria-current={activeId === link.id ? "page" : undefined} onClick={(e) => handleNav(e, link)}>{link.label}</a>{link.id==="collections"&&<div className="ozb-mega" aria-label="Collection shortcuts"><div className="ozb-mega__intro"><span>OZABAY / COLLECTIONS</span><strong>Find your craft.</strong><small>Explore the image-backed collections already in your catalogue.</small></div><div className="ozb-mega__grid">{COLLECTION_MENU.map(([name,copy])=><button key={name} onClick={(e)=>{e.preventDefault();onNavClick?.("collections");setMenuOpen(false);}}><b>{name}</b><small>{copy}</small><i>↗</i></button>)}</div></div>}</li>)}
           </ul>
         </nav>
         <div className="ozb-nav__actions">

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "./Hero.css";
 
 const SLIDES = [
-  { id: 1, image: "/images/hero-vase.jpg", label: "Blue pottery · Jaipur", kicker: "The OzaBay Edit", title: <>Timeless Crafts,<em>Modern Homes.</em></>, text: <>Discover authentic handcrafted pieces<br />from India's finest artisans.</> },
+  { id: 1, image: "/images/hero-vase.jpg", video: "/videos/ozabay-3d-hero.mp4", label: "Blue pottery · Jaipur", kicker: "The OzaBay Edit", title: <>Timeless Crafts,<em>Modern Homes.</em></>, text: <>Discover authentic handcrafted pieces<br />from India's finest artisans.</> },
   { id: 2, image: "/images/handmade-sculptural-vase.jpg", label: "Sculptural terracotta", kicker: "Made by Hand", title: <>Objects with a <em>Story.</em></>, text: <>Slow-made forms shaped by hand,<br />made to live with you for years.</> },
   { id: 3, image: "/images/handmade-indigo-bowls.jpg", label: "Indigo stoneware", kicker: "Indian Craft, Reimagined", title: <>Keep the craft.<em>Change the space.</em></>, text: <>Heritage techniques, contemporary silhouettes,<br />and pieces worth keeping.</> },
 ];
@@ -43,7 +43,9 @@ export default function Hero({ onExploreClick, onCreateClick }) {
     <section id="home" ref={frame} className="ozb-hero" onMouseMove={move} onMouseLeave={reset} style={{ "--mx": `${pointer.x}%`, "--my": `${pointer.y}%` }} aria-label="Featured OzaBay handmade pieces">
       <div className="ozb-hero__media" aria-hidden="true">
         {SLIDES.map((s, i) => (
-          <div key={s.id} className={`ozb-hero__slide ${i === index ? "is-active" : ""}`} style={{ backgroundImage: `url(${s.image})`, transform: `scale(1.045) perspective(1500px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg) translate3d(${tilt.x * -1.1}px, ${tilt.y * 1.1}px, 0)` }} />
+          <div key={s.id} className={`ozb-hero__slide ${i === index ? "is-active" : ""}`} style={{ backgroundImage: `url(${s.image})`, transform: `scale(1.045) perspective(1500px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg) translate3d(${tilt.x * -1.1}px, ${tilt.y * 1.1}px, 0)` }}>
+            {s.video && <video className="ozb-hero__video" src={s.video} autoPlay muted loop playsInline preload="auto" poster={s.image} aria-hidden="true" />}
+          </div>
         ))}
         <div className="ozb-hero__media-glow" />
         <div className="ozb-hero__shine" />
@@ -51,6 +53,10 @@ export default function Hero({ onExploreClick, onCreateClick }) {
       </div>
 
       <div className="ozb-hero__visual-depth" aria-hidden="true">
+        <span className="ozb-hero__orbit ozb-hero__orbit--one" />
+        <span className="ozb-hero__orbit ozb-hero__orbit--two" />
+        <span className="ozb-hero__glass-orb ozb-hero__glass-orb--one" />
+        <span className="ozb-hero__glass-orb ozb-hero__glass-orb--two" />
         <div className="ozb-hero__halo" />
         <div className="ozb-hero__halo ozb-hero__halo--small" />
         <div className="ozb-hero__light-orb" />

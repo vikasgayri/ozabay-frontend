@@ -79,7 +79,7 @@ const VIDEOS = {
   artisanB: "https://videos.pexels.com/video-files/9363486/9363486-hd_1920_1080_25fps.mp4",
 };
 
-const PRODUCTS = [
+const BASE_PRODUCTS = [
   ["Mitti Sculptural Vase", "Ceramics", 3800, PRODUCT_IMAGES.ceramics[0], "Jaipur", "Meera Kumari"],
   ["Jaipur Blue Pottery Vase", "Blue Pottery", 6900, PRODUCT_IMAGES.bluePottery[0], "Jaipur", "Aarav Khan"],
   ["Neel Indigo Bowl Set", "Ceramics", 4200, PRODUCT_IMAGES.ceramics[1], "Khurja", "Farida Ansari"],
@@ -159,6 +159,127 @@ const COLLECTIONS = [
   {id:"textiles",name:"Textiles",filter:"Textiles",image:IMG.indigo,copy:"Loom-made textures for slower rooms."},
   {id:"woodcraft",name:"Woodcraft",filter:"Woodcraft",image:IMG.sculptural,copy:"Carved grain and useful forms."},
   {id:"home-decor",name:"Home Décor",filter:"Home Décor",image:IMG.terracotta,copy:"Small objects that change the atmosphere."},
+];
+
+
+const POPULAR_THEMES = [
+  { id:"earthy", name:"Earthy", copy:"Terracotta, raw clay and carved grain.", query:"earth" },
+  { id:"indigo", name:"Indigo", copy:"Deep blue pottery and loom-made texture.", query:"indigo" },
+  { id:"quiet-home", name:"Quiet Home", copy:"Objects with a softer, slower presence.", query:"home" },
+  { id:"tabletop", name:"Tabletop", copy:"Bowls, trays, runners and everyday rituals.", query:"bowl" },
+  { id:"statement", name:"Statement Pieces", copy:"Sculptural forms made to anchor a room.", query:"vase" },
+  { id:"gifting", name:"Thoughtful Gifting", copy:"Handmade pieces chosen to be remembered.", query:"" },
+];
+
+const INDIA_CRAFTS = [
+  {name:"Andhra Pradesh", code:"IN-AP", capital:"Amaravati", crafts:["Kalamkari", "Kondapalli Toys", "Uppada Jamdani"], image:IMG.indigo, cities:"Srikalahasti · Kondapalli · Uppada"},
+  {name:"Arunachal Pradesh", code:"IN-AR", capital:"Itanagar", crafts:["Cane & Bamboo", "Monpa Carpets", "Handwoven Textiles"], image:IMG.sculptural, cities:"Tawang · Bomdila · Itanagar"},
+  {name:"Assam", code:"IN-AS", capital:"Dispur", crafts:["Muga Silk", "Cane & Bamboo", "Traditional Weaving"], image:"/images/hd6.jpg", cities:"Sualkuchi · Guwahati · Majuli"},
+  {name:"Bihar", code:"IN-BR", capital:"Patna", crafts:["Madhubani Painting", "Sikki Grass Craft", "Sujuni Embroidery"], image:IMG.indigo, cities:"Madhubani · Darbhanga · Patna"},
+  {name:"Chhattisgarh", code:"IN-CT", capital:"Raipur", crafts:["Dhokra", "Bell Metal", "Terracotta"], image:IMG.terracotta, cities:"Bastar · Kondagaon · Raipur"},
+  {name:"Goa", code:"IN-GA", capital:"Panaji", crafts:["Coconut Shell Craft", "Bamboo Craft", "Pottery"], image:IMG.bowls, cities:"Panaji · Bicholim · Margao"},
+  {name:"Gujarat", code:"IN-GJ", capital:"Gandhinagar", crafts:["Kutch Embroidery", "Bandhani", "Rogan Art"], image:"/images/textile4.jpg", cities:"Kutch · Patan · Ahmedabad"},
+  {name:"Haryana", code:"IN-HR", capital:"Chandigarh", crafts:["Durrie Weaving", "Hand Embroidery", "Terracotta"], image:"/images/textile5.jpg", cities:"Panipat · Ambala · Panchkula"},
+  {name:"Himachal Pradesh", code:"IN-HP", capital:"Shimla", crafts:["Chamba Rumal", "Kullu Shawls", "Wood Carving"], image:"/images/wc4.jpg", cities:"Chamba · Kullu · Shimla"},
+  {name:"Jharkhand", code:"IN-JH", capital:"Ranchi", crafts:["Sohrai Painting", "Dhokra", "Bamboo Craft"], image:IMG.terracotta, cities:"Hazaribagh · Ranchi · Khunti"},
+  {name:"Karnataka", code:"IN-KA", capital:"Bengaluru", crafts:["Mysore Painting", "Sandalwood Carving", "Kasuti Embroidery"], image:"/images/wc5.jpg", cities:"Mysuru · Channapatna · Bengaluru"},
+  {name:"Kerala", code:"IN-KL", capital:"Thiruvananthapuram", crafts:["Coir Craft", "Aranmula Metal Mirror", "Wood Carving"], image:"/images/wc4.jpg", cities:"Alappuzha · Aranmula · Thrissur"},
+  {name:"Madhya Pradesh", code:"IN-MP", capital:"Bhopal", crafts:["Gond Painting", "Chanderi Weaving", "Bagh Print"], image:"/images/textile3.jpg", cities:"Bhopal · Chanderi · Dhar"},
+  {name:"Maharashtra", code:"IN-MH", capital:"Mumbai", crafts:["Warli Painting", "Paithani", "Sawantwadi Craft"], image:"/images/textile6.jpg", cities:"Palghar · Paithan · Sawantwadi"},
+  {name:"Manipur", code:"IN-MN", capital:"Imphal", crafts:["Wangkhei Phee", "Cane & Bamboo", "Handloom Weaving"], image:"/images/textile2.jpg", cities:"Imphal · Andro · Bishnupur"},
+  {name:"Meghalaya", code:"IN-ML", capital:"Shillong", crafts:["Cane & Bamboo", "Eri Silk", "Khasi Weaving"], image:"/images/hd6.jpg", cities:"Shillong · Jaintia Hills · Tura"},
+  {name:"Mizoram", code:"IN-MZ", capital:"Aizawl", crafts:["Bamboo Craft", "Puan Textiles", "Cane Weaving"], image:"/images/textile4.jpg", cities:"Aizawl · Lunglei · Serchhip"},
+  {name:"Nagaland", code:"IN-NL", capital:"Kohima", crafts:["Naga Shawls", "Cane & Bamboo", "Wood Carving"], image:"/images/textile5.jpg", cities:"Kohima · Dimapur · Mon"},
+  {name:"Odisha", code:"IN-OR", capital:"Bhubaneswar", crafts:["Pattachitra", "Appliqué", "Silver Filigree"], image:IMG.bowls, cities:"Raghurajpur · Pipili · Cuttack"},
+  {name:"Punjab", code:"IN-PB", capital:"Chandigarh", crafts:["Phulkari", "Punjabi Jutti", "Durrie Weaving"], image:"/images/textile1.jpg", cities:"Patiala · Amritsar · Ludhiana"},
+  {name:"Rajasthan", code:"IN-RJ", capital:"Jaipur", crafts:["Blue Pottery", "Hand Block Printing", "Lac Craft", "Miniature Painting"], image:IMG.blue, cities:"Jaipur · Jodhpur · Udaipur"},
+  {name:"Sikkim", code:"IN-SK", capital:"Gangtok", crafts:["Carpet Weaving", "Thangka Painting", "Cane & Bamboo"], image:"/images/textile6.jpg", cities:"Gangtok · Namchi · Pelling"},
+  {name:"Tamil Nadu", code:"IN-TN", capital:"Chennai", crafts:["Tanjore Painting", "Bronze Icons", "Kanchipuram Silk"], image:"/images/metalcraft1.jpg", cities:"Thanjavur · Kanchipuram · Swamimalai"},
+  {name:"Telangana", code:"IN-TG", capital:"Hyderabad", crafts:["Pochampally Ikat", "Cheriyal Painting", "Bidri Craft"], image:"/images/textile3.jpg", cities:"Pochampally · Hyderabad · Nirmal"},
+  {name:"Tripura", code:"IN-TR", capital:"Agartala", crafts:["Bamboo Craft", "Cane Weaving", "Handloom Textiles"], image:"/images/hd6.jpg", cities:"Agartala · Kailashahar · Udaipur"},
+  {name:"Uttar Pradesh", code:"IN-UP", capital:"Lucknow", crafts:["Chikankari", "Moradabad Metalcraft", "Saharanpur Woodcraft", "Khurja Pottery"], image:"/images/wc1.jpg", cities:"Lucknow · Moradabad · Saharanpur · Khurja"},
+  {name:"Uttarakhand", code:"IN-UT", capital:"Dehradun", crafts:["Ringaal Bamboo Craft", "Aipan Art", "Wool Weaving"], image:"/images/wc2.jpg", cities:"Almora · Nainital · Dehradun"},
+  {name:"West Bengal", code:"IN-WB", capital:"Kolkata", crafts:["Kantha", "Bankura Terracotta", "Dokra", "Patachitra"], image:IMG.terracotta, cities:"Bishnupur · Bankura · Kolkata"},
+];
+
+const INDIA_UTS = [
+  {name:"Andaman & Nicobar Islands", code:"IN-AN", crafts:["Cane & Bamboo", "Shell Craft"]},
+  {name:"Chandigarh", code:"IN-CH", crafts:["Phulkari", "Durrie Weaving"]},
+  {name:"Dadra & Nagar Haveli and Daman & Diu", code:"IN-DN", crafts:["Warli-inspired Art", "Bamboo Craft"]},
+  {name:"Delhi", code:"IN-DL", crafts:["Zari Zardozi", "Hand Embroidery"]},
+  {name:"Jammu & Kashmir", code:"IN-JK", crafts:["Kashmiri Embroidery", "Sozni", "Papier-mâché"]},
+  {name:"Ladakh", code:"IN-LA", crafts:["Wool Weaving", "Thangka", "Carpet Weaving"]},
+  {name:"Lakshadweep", code:"IN-LD", crafts:["Coir Craft", "Coconut Craft"]},
+  {name:"Puducherry", code:"IN-PY", crafts:["Papier-mâché", "Terracotta", "Handmade Textiles"]},
+];
+
+const INDIA_MAP_POSITIONS = {
+  "Jammu & Kashmir":[31,12], "Himachal Pradesh":[36,20], "Punjab":[30,24], "Uttarakhand":[42,28], "Haryana":[30,29], "Rajasthan":[23,36], "Uttar Pradesh":[43,35], "Sikkim":[69,32], "Arunachal Pradesh":[87,32], "Assam":[84,38], "Nagaland":[91,38], "Meghalaya":[80,42], "Bihar":[62,40], "West Bengal":[67,47], "Gujarat":[17,48], "Madhya Pradesh":[41,46], "Jharkhand":[60,47], "Tripura":[77,49], "Mizoram":[87,49], "Chhattisgarh":[49,52], "Maharashtra":[27,58], "Odisha":[50,55], "Telangana":[46,66], "Goa":[19,70], "Karnataka":[26,75], "Andhra Pradesh":[38,70], "Tamil Nadu":[34,83], "Kerala":[23,87]
+};
+
+
+
+const REGIONAL_CRAFT_IMAGE_RULES = [
+  { keys:["pottery","ceramic","terracotta","clay","toy"], category:"Ceramics", images:PRODUCT_IMAGES.ceramics },
+  { keys:["metal","brass","bronze","bidri","dhokra","filigree","mirror"], category:"Metalcraft", images:PRODUCT_IMAGES.metalcraft },
+  { keys:["wood","carving","sandalwood","lacquer","furniture","toy"], category:"Woodcraft", images:PRODUCT_IMAGES.woodcraft },
+  { keys:["textile","silk","weaving","weave","embroidery","ikat","kantha","phulkari","shawl","rumal","jamdani","bandhani","print","jutti","leather"], category:"Textiles", images:PRODUCT_IMAGES.textiles },
+  { keys:["painting","art","pattachitra","kalamkari","thangka","madhubani","warli","gond","sohrai","aipan","rogan"], category:"Home Décor", images:PRODUCT_IMAGES.homeDecor },
+  { keys:["bamboo","cane","coir","grass","basket","shell","fiber","fibre"], category:"Home Décor", images:PRODUCT_IMAGES.homeDecor },
+];
+
+const regionalImageFor = (craft, index) => {
+  const normalized = craft.toLowerCase();
+  const rule = REGIONAL_CRAFT_IMAGE_RULES.find(r=>r.keys.some(k=>normalized.includes(k))) || REGIONAL_CRAFT_IMAGE_RULES[4];
+  return { category:rule.category, image:rule.images[index % rule.images.length] };
+};
+
+const REGIONAL_CRAFT_PRODUCTS = INDIA_CRAFTS.flatMap((state, stateIndex) => state.crafts.map((craft, craftIndex) => {
+  const {category,image}=regionalImageFor(craft, stateIndex + craftIndex);
+  const price = 1650 + ((stateIndex * 577 + craftIndex * 911) % 5600);
+  return {
+    id:1000 + stateIndex * 10 + craftIndex,
+    name:`${craft} · ${state.name}`,
+    category,
+    priceValue:price,
+    price:`₹${price.toLocaleString("en-IN")}`,
+    image,
+    city:state.cities.split(" · ")[craftIndex % state.cities.split(" · ").length],
+    artisan:`OzaBay ${state.name} Craft Edit`,
+    material: category === "Textiles" ? "Handcrafted textile" : category === "Metalcraft" ? "Hand-finished metal" : category === "Woodcraft" ? "Carved Indian wood" : category === "Ceramics" ? "Hand-shaped clay" : "Natural craft materials",
+    description:`A regional OzaBay craft edit inspired by ${craft} from ${state.name}. Each piece celebrates the material, technique and visual language of the region.`,
+    rating:(4.7 + ((stateIndex + craftIndex) % 3) * 0.1).toFixed(1),
+    dimensions:["12 × 8 in","10 × 10 in","16 × 16 in"][craftIndex % 3],
+    care: category === "Textiles" ? "Gentle dry clean" : "Wipe with a soft dry cloth",
+    story:`Regional craft edit · ${craft} · ${state.name}. This listing is part of OzaBay's state-wise craft discovery catalogue.`,
+    regional:true,
+    state:state.name,
+    craft,
+  };
+}));
+
+const PRODUCTS = [...BASE_PRODUCTS, ...REGIONAL_CRAFT_PRODUCTS];
+
+const PRICE_BANDS = [
+  { label:"Under ₹2,000", max:2000 },
+  { label:"₹2,000 – ₹3,500", min:2000, max:3500 },
+  { label:"₹3,500 – ₹5,000", min:3500, max:5000 },
+  { label:"₹5,000+", min:5000 },
+];
+
+const CRAFT_REGIONS = [
+  { name:"Jaipur", state:"Rajasthan", image:IMG.blue, filters:["Blue Pottery","Ceramics","Home Décor","Textiles"] },
+  { name:"Molela", state:"Rajasthan", image:IMG.terracotta, filters:["Terracotta"] },
+  { name:"Saharanpur", state:"Uttar Pradesh", image:IMG.sculptural, filters:["Woodcraft"] },
+  { name:"Moradabad", state:"Uttar Pradesh", image:IMG.terracotta, filters:["Metalcraft"] },
+  { name:"Khurja", state:"Uttar Pradesh", image:IMG.bowls, filters:["Ceramics","Home Décor"] },
+  { name:"Kutch", state:"Gujarat", image:IMG.indigo, filters:["Textiles"] },
+];
+
+const CURATED_EDITS = [
+  { title:"The Indigo Table", copy:"Blue pottery, indigo cloth and tactile forms for an evening table.", image:IMG.indigo, filters:["Blue Pottery","Textiles","Ceramics"] },
+  { title:"A Quiet Home", copy:"Small handmade objects that bring texture without visual noise.", image:IMG.sculptural, filters:["Home Décor","Ceramics","Woodcraft"] },
+  { title:"Made for Gifting", copy:"Considered pieces for housewarmings, celebrations and thank-yous.", image:IMG.terracotta, filters:["Terracotta","Home Décor","Textiles"] },
 ];
 
 const ARTISANS = [
@@ -273,33 +394,79 @@ function GiftBuilder({gift,setGift,onCreate}){
   const displayTotal=display.reduce((n,p)=>n+p.priceValue,0);
   const remaining=Math.max(0,budgetMax-displayTotal);
   const setGiftValue=(key,value)=>setGift(g=>({...g,[key]:value}));
-  return <section className="oz-section gift-section" id="gifting">
+  return 
+}
+
+
+function StateCraftMarketplace({state, products, onBack, onProduct, onAdd, onToggleWish, wish}){
+  const [craftFilter,setCraftFilter]=useState(new URLSearchParams(window.location.search).get("craft")||"All");
+  const [sort,setSort]=useState("featured");
+  const available=products.filter(p=>craftFilter==="All"||p.craft===craftFilter);
+  const shown=[...available].sort((a,b)=>sort==="low"?a.priceValue-b.priceValue:sort==="high"?b.priceValue-a.priceValue:0);
+  return <section className="state-market-page"><div className="state-market-orbit" aria-hidden="true"/><div className="oz-container">
+    <button className="state-market-back" onClick={onBack}>← Back to India Craft Atlas</button>
+    <div className="state-market-hero"><div><p className="eyebrow">OZABAY · REGIONAL CRAFT EDIT</p><span className="state-market-kicker">CRAFTED IN INDIA · {state.code}</span><h1>{state.name}<em> craft.</em></h1><p>Explore handmade traditions from {state.name}, brought together in one dedicated edit.</p><div className="state-market-meta"><span>CRAFT CENTRES</span><strong>{state.cities}</strong></div></div><div className="state-market-hero-art"><img src={state.image} alt={`${state.name} craft inspiration`}/><span>THE REGIONAL EDIT · 01</span></div></div>
+    <div className="state-market-toolbar"><div><p className="eyebrow">SHOP BY TRADITION</p><div className="state-market-filters"><button className={craftFilter==="All"?"active":""} onClick={()=>setCraftFilter("All")}>All crafts</button>{state.crafts.map(c=><button key={c} className={craftFilter===c?"active":""} onClick={()=>setCraftFilter(c)}>{c}</button>)}</div></div><label>Sort by <select value={sort} onChange={e=>setSort(e.target.value)}><option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option></select></label></div>
+    <div className="state-market-count"><span>{state.name.toUpperCase()} · {shown.length} PIECES</span><span>HANDMADE · SMALL BATCH · MAKER FIRST</span></div>
+    {shown.length?<div className="state-market-grid">{shown.map((p,i)=><article className="state-market-card" key={p.id} style={{"--card-index":i}}><button className="state-market-image" onClick={()=>onProduct(p)}><img src={p.image} alt={p.name}/><span>VIEW PIECE ↗</span></button><div className="state-market-card-copy"><small>{p.craft} · {p.city}</small><button className="state-market-name" onClick={()=>onProduct(p)}>{p.name}</button><div><strong>{p.price}</strong><button className={`state-market-wish ${wish.includes(p.id)?"liked":""}`} onClick={()=>onToggleWish(p)} aria-label="Toggle wishlist">♡</button></div><button className="state-market-add" onClick={()=>onAdd(p)}>Add to bag <span>↗</span></button></div></article>)}</div>:<div className="state-market-empty">No products in this craft edit yet. Choose another tradition.</div>}
+    <div className="state-market-footnote">A considered collection inspired by {state.name}. Dedicated regional pieces can be expanded as authentic products and photography are added.</div>
+  </div></section>
+}
+
+function RegionalCrafts({onRegion,onProduct}){
+  const [selected,setSelected]=useState(INDIA_CRAFTS.find(s=>s.name==="Rajasthan")||INDIA_CRAFTS[0]);
+  const [hovered,setHovered]=useState(null);
+  const choose=state=>setSelected(state);
+  const selectedProducts=REGIONAL_CRAFT_PRODUCTS.filter(p=>p.state===selected.name);
+  return <section className="oz-section regional-crafts" id="crafts-india">
     <div className="oz-container">
-      <div className="gift-builder-head">
-        <div><p className="eyebrow">OzaBay Gift Builder</p><h2>Give something <em>with a story.</em></h2><p>Build a thoughtful handmade edit in a few choices. OzaBay recommends pieces that fit your occasion, recipient, style and budget.</p></div>
-        <div className="gift-builder-flow"><span><b>01</b> Occasion</span><i>→</i><span><b>02</b> Recipient</span><i>→</i><span><b>03</b> Style & budget</span><i>→</i><span><b>04</b> Gift edit</span></div>
-      </div>
-      <div className="gift-builder-grid">
-        <div className="gift-builder-controls">
-          <div className="gift-builder-step"><span>01 · THE MOMENT</span><strong>What are you celebrating?</strong><BuilderGroup label="Occasion" value={gift.occasion} options={["Housewarming","Wedding","Festive","Thank you","Anniversary"]} onChange={v=>setGiftValue("occasion",v)}/></div>
-          <div className="gift-builder-step"><span>02 · THE PERSON</span><strong>Who is it for?</strong><BuilderGroup label="Recipient" value={gift.recipient} options={["Partner","Parents","Friend","Couple","Client","Myself"]} onChange={v=>setGiftValue("recipient",v)}/></div>
-          <div className="gift-builder-step"><span>03 · THE FEELING</span><strong>Choose the visual language.</strong><BuilderGroup label="Style" value={gift.style} options={["Earthy","Indigo","Warm metal","Textured"]} onChange={v=>setGiftValue("style",v)}/><BuilderGroup label="Budget" value={gift.budget} options={["₹5,000","₹10,000","₹20,000+"]} onChange={v=>setGiftValue("budget",v)}/></div>
-          <div className="gift-builder-step"><span>04 · THE FINISH</span><strong>Add the thoughtful details.</strong><div className="gift-option-row"><label><span>Gift wrap</span><button type="button" className={gift.wrapping?"is-on":""} onClick={()=>setGiftValue("wrapping",!gift.wrapping)}>{gift.wrapping?"Included":"Add wrapping"}</button></label><label><span>Gift message</span><input value={gift.message} maxLength="90" onChange={e=>setGiftValue("message",e.target.value)} placeholder="A short note for them…"/></label></div></div>
-          <div className="gift-builder-actions"><div><small>Estimated edit</small><strong>{money(displayTotal)}</strong><span>{display.length} handmade {display.length===1?"piece":"pieces"} · {remaining?`${money(remaining)} under budget`:"at budget"}</span></div><button className="hero-action" onClick={()=>onCreate(display,displayTotal)}>Create my gift edit ↗</button></div>
-        </div>
-        <div className="gift-builder-preview">
-          <div className="gift-preview-stage">
-            <div className="gift-preview-glow"/>
-            <div className="gift-preview-products">{display.map((p,i)=><div className={`gift-preview-product gift-preview-product--${i+1}`} key={p.id}><img src={p.image} alt={p.name}/><span>{i+1}</span></div>)}</div>
-            <div className="gift-preview-copy"><span>OZABAY GIFT EDIT</span><strong>{gift.occasion}</strong><p>{gift.style} · {gift.recipient}</p></div>
-            <div className="gift-preview-badge"><span>LIVE EDIT</span><strong>{money(displayTotal)}</strong></div>
+      <Reveal><div className="section-head"><div><p className="eyebrow">Craft across India</p><h2>Every state. <em>Its craft.</em></h2></div><p>Hover or click a state to reveal its signature crafts. Every craft is connected to an OzaBay product edit so the map becomes a simple way to discover and shop India, state by state.</p></div></Reveal>
+      <div className="india-craft-explorer">
+        <div className="india-map-panel">
+          <div className="india-map-top"><span>INDIA · CRAFT ATLAS</span><small>{INDIA_CRAFTS.length} states · {INDIA_UTS.length} union territories</small></div>
+          <div className="india-map-stage">
+            <div className="india-map-aura"/>
+            <div className="india-map-sheen"/>
+            <img className="india-map-image" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/India_states_and_union_territories_map.svg" alt="Map of India showing states and union territories" loading="lazy"/>
+            <div className="india-map-overlay">
+              {INDIA_CRAFTS.map(state=>{
+                const [left,top]=INDIA_MAP_POSITIONS[state.name]||[50,50];
+                const active=selected.code===state.code;
+                const visible=hovered===state.code||active;
+                return <button key={state.code} className={`india-state-pin ${active?"is-active":""} ${hovered===state.code?"is-hovered":""}`} style={{left:`${left}%`,top:`${top}%`}} onMouseEnter={()=>setHovered(state.code)} onMouseLeave={()=>setHovered(null)} onFocus={()=>setHovered(state.code)} onBlur={()=>setHovered(null)} onClick={()=>choose(state)} aria-label={`Explore crafts of ${state.name}`}>
+                  <i/>{visible&&<span>{state.name}<small>{state.crafts.length} craft edits</small></span>}
+                </button>;
+              })}
+            </div>
+            <div className="india-map-legend"><span><i/>Craft state</span><span><b>01</b> Hover</span><span><b>02</b> Click</span></div>
           </div>
-          <div className="gift-preview-meta"><div><span>Curated for</span><strong>{gift.recipient}</strong></div><div><span>Style</span><strong>{gift.style}</strong></div><div><span>Budget</span><strong>{gift.budget}</strong></div></div>
-          <div className="gift-preview-note"><span>What happens next</span><p>Review the edit, change any item, then add the set to your bag or send the brief to OzaBay for a curated gifting request.</p></div>
+          <div className="india-map-help"><span>● Hover a state</span><span>↗ Click to explore</span><span>⌁ Product edits open on the right</span></div>
         </div>
+        <aside className="india-craft-detail">
+          <div className="india-craft-detail__image"><img src={selected.image} alt=""/><div className="india-craft-detail__image-wash"/><span>{selected.name.toUpperCase()}</span></div>
+          <div className="india-craft-detail__body">
+            <div className="india-craft-detail__meta"><span>{selected.code}</span><small>{selected.capital}</small></div>
+            <p className="eyebrow">Selected state</p>
+            <h3>{selected.name}</h3>
+            <p className="india-craft-cities">Craft centres · {selected.cities}</p>
+            <div className="india-craft-list">{selected.crafts.map((craft,i)=><button key={craft} onClick={()=>onRegion?.({name:selected.name,filters:[],query:craft})}><span>0{i+1}</span><strong>{craft}</strong><i>↗</i></button>)}</div>
+            <div className="india-product-rail-head"><span>AVAILABLE ON OZABAY</span><small>{selectedProducts.length} regional edits</small></div>
+            <div className="india-product-rail">{selectedProducts.map(product=><button key={product.id} onClick={()=>onProduct?.(product)}><img src={product.image} alt=""/><span>{product.craft}</span><strong>{product.price}</strong></button>)}</div>
+            <button className="hero-action india-shop-state" onClick={()=>onRegion?.({name:selected.name,filters:[],query:null})}>Shop {selected.name} craft ↗</button>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
+}
+
+function CuratedEdits({onExplore}){
+  return 
+}
+
+function TrustStrip(){
+  const items=[["AUTHENTIC","Handmade pieces"],["MAKER FIRST","Stories behind every object"],["SECURE BAG","Frontend checkout flow"],["INDIA","Crafted across regions"]];
+  return <section className="trust-strip"><div className="oz-container trust-strip__grid">{items.map(([a,b])=><div key={a}><span>{a}</span><strong>{b}</strong></div>)}</div></section>
 }
 
 function CraftFilm(){
@@ -419,22 +586,30 @@ function ProductDetail({product,onClose,onAdd,onView3D,onSpace,onReview}){
 export default function App(){
   const [cart,setCart]=useState(()=>{try{return JSON.parse(localStorage.getItem("ozabay-cart")||"[]")}catch{return []}});
   const [wish,setWish]=useState(()=>{try{return JSON.parse(localStorage.getItem("ozabay-wishlist")||"[]")}catch{return []}});
-  const [filter,setFilter]=useState("All");const [sort,setSort]=useState("featured");const [query,setQuery]=useState("");const [modal,setModal]=useState(null);const [page,setPage]=useState(1);
+  const [recentlyViewed,setRecentlyViewed]=useState(()=>{try{return JSON.parse(localStorage.getItem("ozabay-recently-viewed")||"[]")}catch{return []}});
+  const [filter,setFilter]=useState("All");const [sort,setSort]=useState("featured");const [query,setQuery]=useState("");const [priceBand,setPriceBand]=useState(null);const [modal,setModal]=useState(null);const [page,setPage]=useState(1);
   const [custom,setCustom]=useState({form:"Vessel",material:"Clay",finish:"Natural",size:"Medium",tone:"Earth",engraving:"",notes:""});
   const [orderForm,setOrderForm]=useState({name:"",email:"",phone:"",city:"",address:"",quantity:"1",budget:"",neededBy:"",purpose:"",referenceName:"",approval:"Yes"});const [orderSent,setOrderSent]=useState(false);const [requestId,setRequestId]=useState("");const [customStep,setCustomStep]=useState(1);
   const [account,setAccount]=useState(()=>{try{return JSON.parse(localStorage.getItem("ozabay-account")||"null")}catch{return null}});
   const [checkout,setCheckout]=useState({name:"",phone:"",email:"",address:"",city:"",pincode:"",payment:"Cash on delivery"});const [placedOrder,setPlacedOrder]=useState(null);
   const [tracking,setTracking]=useState("");const [reviewProduct,setReviewProduct]=useState(null);
   const [scrollProgress,setScrollProgress]=useState(0);
+  const [craftRoute,setCraftRoute]=useState(()=>{const m=window.location.pathname.match(/^\/crafts\/([^/]+)/);return m?m[1]:null});
   const [gift,setGift]=useState({occasion:"Housewarming",recipient:"Parents",budget:"₹5,000",style:"Earthy",wrapping:true,message:"Wishing you a beautiful new beginning."});
   const perPage=12;
   const categories=["All",...COLLECTIONS.map(c=>c.filter)];
-  const shown=useMemo(()=>{let list=PRODUCTS.filter(p=>(filter==="All"||p.category===filter)&&`${p.name} ${p.category} ${p.artisan} ${p.city} ${p.material}`.toLowerCase().includes(query.toLowerCase()));if(sort==="price-low")list.sort((a,b)=>a.priceValue-b.priceValue);if(sort==="price-high")list.sort((a,b)=>b.priceValue-a.priceValue);if(sort==="name")list.sort((a,b)=>a.name.localeCompare(b.name));return list},[filter,query,sort]);
+  const shown=useMemo(()=>{let list=PRODUCTS.filter(p=>(filter==="All"||p.category===filter)&&(!priceBand||(priceBand.min==null||p.priceValue>=priceBand.min)&&(priceBand.max==null||p.priceValue<priceBand.max))&&`${p.name} ${p.category} ${p.artisan} ${p.city} ${p.material}`.toLowerCase().includes(query.toLowerCase()));if(sort==="price-low")list.sort((a,b)=>a.priceValue-b.priceValue);if(sort==="price-high")list.sort((a,b)=>b.priceValue-a.priceValue);if(sort==="name")list.sort((a,b)=>a.name.localeCompare(b.name));return list},[filter,query,sort,priceBand]);
   const visible=shown.slice(0,page*perPage);const totalPages=Math.max(1,Math.ceil(shown.length/perPage));const cartCount=cart.reduce((n,p)=>n+p.qty,0);const cartTotal=cart.reduce((n,p)=>n+p.priceValue*p.qty,0);
   const customPrice=CUSTOM_PRICES.form[custom.form]+CUSTOM_PRICES.material[custom.material]+CUSTOM_PRICES.finish[custom.finish]+CUSTOM_PRICES.size[custom.size]+CUSTOM_PRICES.tone[custom.tone]+(custom.engraving.trim()?450:0);
   const customImage=custom.material==="Brass"?IMG.blue:(custom.finish==="Indigo"||custom.tone==="Indigo"?IMG.indigo:IMG.sculptural);
-  const go=id=>document.getElementById(id)?.scrollIntoView({behavior:"smooth",block:"start"});
-  useEffect(()=>{setPage(1)},[filter,query,sort]);useEffect(()=>{localStorage.setItem("ozabay-cart",JSON.stringify(cart))},[cart]);useEffect(()=>{localStorage.setItem("ozabay-wishlist",JSON.stringify(wish))},[wish]);
+  const go=id=>{if(craftRoute){window.history.pushState({},"",`/#${id}`);setCraftRoute(null);setTimeout(()=>document.getElementById(id)?.scrollIntoView({behavior:"smooth",block:"start"}),60);return;}document.getElementById(id)?.scrollIntoView({behavior:"smooth",block:"start"})};
+  const stateSlug=state=>state.name.toLowerCase().replace(/&/g,"and").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+  const openStateCraft=(state,craft=null)=>{const slug=stateSlug(state);const path=`/crafts/${slug}${craft?`?craft=${encodeURIComponent(craft)}`:""}`;window.history.pushState({craftRoute:slug},"",path);setCraftRoute(slug);setModal(null);window.scrollTo({top:0,behavior:"smooth"});};
+  const backToAtlas=()=>{window.history.pushState({},"","/#crafts-india");setCraftRoute(null);setTimeout(()=>document.getElementById("crafts-india")?.scrollIntoView({behavior:"smooth",block:"start"}),40);};
+  useEffect(()=>{const onPop=()=>{const m=window.location.pathname.match(/^\/crafts\/([^/]+)/);setCraftRoute(m?m[1]:null)};window.addEventListener("popstate",onPop);return()=>window.removeEventListener("popstate",onPop)},[]);
+  useEffect(()=>{setPage(1)},[filter,query,sort,priceBand]);useEffect(()=>{localStorage.setItem("ozabay-cart",JSON.stringify(cart))},[cart]);useEffect(()=>{localStorage.setItem("ozabay-wishlist",JSON.stringify(wish))},[wish]);
+  useEffect(()=>{localStorage.setItem("ozabay-recently-viewed",JSON.stringify(recentlyViewed))},[recentlyViewed]);
+  useEffect(()=>{if(modal?.type!=="product")return;const id=modal.product?.id;if(!id)return;setRecentlyViewed(prev=>[id,...prev.filter(x=>x!==id)].slice(0,6));},[modal]);
   useEffect(()=>{const update=()=>{const max=document.documentElement.scrollHeight-window.innerHeight;setScrollProgress(max>0?(window.scrollY/max)*100:0)};update();window.addEventListener("scroll",update,{passive:true});window.addEventListener("resize",update);return()=>{window.removeEventListener("scroll",update);window.removeEventListener("resize",update)}},[]);
   const add=p=>setCart(c=>c.some(x=>x.id===p.id)?c.map(x=>x.id===p.id?{...x,qty:x.qty+1}:x):[...c,{...p,qty:1}]);
   const remove=id=>setCart(c=>c.filter(x=>x.id!==id));const qty=(id,d)=>setCart(c=>c.map(x=>x.id===id?{...x,qty:Math.max(1,x.qty+d)}:x));const toggleWish=p=>setWish(w=>w.includes(p.id)?w.filter(id=>id!==p.id):[...w,p.id]);
@@ -444,6 +619,10 @@ export default function App(){
   const signIn=e=>{e.preventDefault();const data={name:e.target.name.value,email:e.target.email.value};localStorage.setItem("ozabay-account",JSON.stringify(data));setAccount(data);setModal("account")};
   const openNav=id=>{const map={shop:"products",collections:"collections",artisans:"artisans","create-your-own":"create",journal:"journal",about:"story"};if(["corporate","sell","support"].includes(id)){setModal(id);return}go(map[id]||"home")};
   const resetCustom=()=>setCustom({form:"Vessel",material:"Clay",finish:"Natural",size:"Medium",tone:"Earth",engraving:"",notes:""});
+  const openCollection=category=>{setFilter(category);setPriceBand(null);setQuery("");go("products")};
+  const openTheme=theme=>{setFilter("All");setQuery(theme.query||"");go("products")};
+  const openPrice=band=>{setFilter("All");setQuery("");go("products");setTimeout(()=>setSort(band.min?"price-low":"price-low"),0)};
+  const openRegion=region=>{const state=INDIA_CRAFTS.find(s=>s.name===region.name);if(state)openStateCraft(state,region.query||null);};
   const customOptions={form:Object.keys(CUSTOM_PRICES.form),material:Object.keys(CUSTOM_PRICES.material),finish:Object.keys(CUSTOM_PRICES.finish),size:Object.keys(CUSTOM_PRICES.size),tone:Object.keys(CUSTOM_PRICES.tone)};
 
   return <>
@@ -451,22 +630,26 @@ export default function App(){
     <div className="page-vignette" aria-hidden="true"/>
     <Navbar activeId="shop" cartCount={cartCount} onSearchClick={()=>setModal("search")} onAccountClick={()=>setModal("account")} onCartClick={()=>setModal("cart")} onNavClick={openNav}/>
     <main id="home">
+      {craftRoute ? (()=>{const state=INDIA_CRAFTS.find(s=>stateSlug(s)===craftRoute);return state?<StateCraftMarketplace state={state} products={REGIONAL_CRAFT_PRODUCTS.filter(p=>p.state===state.name)} onBack={backToAtlas} onProduct={p=>setModal({type:"product",product:p})} onAdd={p=>{add(p);setModal("cart")}} onToggleWish={toggleWish} wish={wish}/>:<div className="oz-container state-market-empty-page"><h1>Craft edit not found.</h1><button className="hero-action" onClick={backToAtlas}>Back to India Craft Atlas ↗</button></div>})() : <>
       <Hero onExploreClick={()=>go("collections")} onCreateClick={()=>go("create")}/>
 
       <Reveal className="oz-section oz-intro" id="story"><div className="oz-container oz-intro__grid"><p className="eyebrow">The digital atelier</p><div><h2>Objects that carry the <em>human touch.</em></h2><p>OzaBay brings together small-batch objects made by independent Indian artisans. Every curve, weave and tool mark is part of the story.</p><button className="text-link" onClick={()=>setModal("about")}>Discover the OzaBay story ↗</button></div></div></Reveal>
 
+      {recentlyViewed.length>0&&<section className="oz-section recently-viewed"><div className="oz-container"><Reveal><div className="section-head"><div><p className="eyebrow">Continue your journey</p><h2>Recently <em>viewed.</em></h2></div><p>Pick up where you left off.</p></div></Reveal><div className="recent-rail">{PRODUCTS.filter(p=>recentlyViewed.includes(p.id)).map(p=><button key={p.id} onClick={()=>setModal({type:"product",product:p})}><img src={p.image} alt={p.name}/><span>{p.category}</span><strong>{p.name}</strong><small>{p.price}</small></button>)}</div></div></section>}
       <CraftFilm/>
       <MakerStories/>
 
-      <section id="collections" className="oz-section oz-collections"><div className="oz-container"><Reveal><div className="section-head"><div><p className="eyebrow">Curated by craft</p><h2>Find your <em>collection.</em></h2></div><p>Seven craft worlds, each with a considered edit of handmade pieces.</p></div></Reveal><div className="collection-grid">{COLLECTIONS.map((c,i)=><Reveal key={c.id} className={`collection-card collection-card--${i+1}`}><button onClick={()=>{setFilter(c.filter);go("products")}}><div className="collection-card__image"><img src={c.image} alt={c.name}/><span>{String(PRODUCTS.filter(p=>p.category===c.filter).length).padStart(2,"0")} pieces</span></div><div className="collection-card__copy"><div><h3>{c.name}</h3><p>{c.copy}</p></div><strong>Explore ↗</strong></div></button></Reveal>)}</div></div></section>
+      
 
-      <section id="products" className="oz-section oz-products"><div className="oz-container"><Reveal><div className="section-head"><div><p className="eyebrow">The marketplace</p><h2>Made for <em>slow living.</em></h2></div><p>{PRODUCTS.length} pieces across seven collections. Every listing opens into a richer product story, 3D studio, craft passport and bag flow.</p></div></Reveal><div className="catalog-toolbar"><div className="filter-row">{categories.map(c=><button key={c} className={filter===c?"is-active":""} onClick={()=>setFilter(c)}>{c}</button>)}</div><div className="catalog-tools"><span>{shown.length} pieces</span><select value={sort} onChange={e=>setSort(e.target.value)}><option value="featured">Featured</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option><option value="name">Name</option></select></div></div>{visible.length?<div className="product-grid">{visible.map((p,i)=><Reveal key={p.id}><TiltCard className="product-card"><div className="product-image" onClick={()=>setModal({type:"product",product:p})} role="button" tabIndex="0" onKeyDown={e=>{if(e.key==="Enter"||e.key===" ")setModal({type:"product",product:p})}}><img src={p.image} alt={p.name}/><span className="product-badge">{i<3&&page===1?"OzaBay Edit":p.category}</span><button className={`wishlist-btn ${wish.includes(p.id)?"is-liked":""}`} onClick={e=>{e.stopPropagation();toggleWish(p)}} aria-label="Toggle wishlist">♡</button><div className="product-card__tools" onClick={e=>e.stopPropagation()}><button onClick={()=>setModal({type:"product",product:p})}>Quick view</button><button onClick={()=>setModal({type:"3d",product:p})}>3D view</button></div><span className="product-image__hint">Tap to explore</span></div><div className="product-card__meta"><div><span>{p.artisan} · {p.city}</span><h3>{p.name}</h3><p>{p.material} · ★ {p.rating}</p></div><strong>{p.price}</strong></div><button className="product-add" onClick={()=>{add(p);setModal("cart")}}>Add to bag <span>↗</span></button></TiltCard></Reveal>)}</div>:<div className="empty-state"><h3>No pieces found.</h3><p>Try another search or collection.</p><button className="hero-action" onClick={()=>{setFilter("All");setQuery("")}}>Reset edit ↗</button></div>}{visible.length<shown.length&&<div className="load-more"><span>Showing {visible.length} of {shown.length}</span><button className="hero-action" onClick={()=>setPage(p=>Math.min(totalPages,p+1))}>Load more pieces ↗</button></div>}</div></section>
+      <section id="products" className="oz-section oz-products"><div className="oz-container"><Reveal><div className="section-head"><div><p className="eyebrow">The marketplace</p><h2>Made for <em>slow living.</em></h2></div><p>{PRODUCTS.length} pieces across seven collections. Every listing opens into a richer product story, 3D studio and bag flow — including state-wise regional craft edits.</p></div></Reveal><div className="catalog-toolbar"><div className="filter-row">{categories.map(c=><button key={c} className={filter===c&&priceBand===null?"is-active":""} onClick={()=>{setFilter(c);setPriceBand(null)}}>{c}</button>)}{priceBand&&<button className="is-active" onClick={()=>setPriceBand(null)}>{priceBand.label} ×</button>}</div><div className="catalog-tools"><span>{shown.length} pieces</span><select value={sort} onChange={e=>setSort(e.target.value)}><option value="featured">Featured</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option><option value="name">Name</option></select></div></div>{visible.length?<div className="product-grid">{visible.map((p,i)=><Reveal key={p.id}><TiltCard className="product-card"><div className="product-image" onClick={()=>setModal({type:"product",product:p})} role="button" tabIndex="0" onKeyDown={e=>{if(e.key==="Enter"||e.key===" ")setModal({type:"product",product:p})}}><img src={p.image} alt={p.name}/><span className="product-badge">{i<3&&page===1?"OzaBay Edit":p.category}</span><button className={`wishlist-btn ${wish.includes(p.id)?"is-liked":""}`} onClick={e=>{e.stopPropagation();toggleWish(p)}} aria-label="Toggle wishlist">♡</button><div className="product-card__tools" onClick={e=>e.stopPropagation()}><button onClick={()=>setModal({type:"product",product:p})}>Quick view</button><button onClick={()=>setModal({type:"3d",product:p})}>3D view</button></div><span className="product-image__hint">Tap to explore</span></div><div className="product-card__meta"><div><span>{p.artisan} · {p.city}</span><h3>{p.name}</h3><p>{p.material} · ★ {p.rating}</p></div><strong>{p.price}</strong></div><button className="product-add" onClick={()=>{add(p);setModal("cart")}}>Add to bag <span>↗</span></button></TiltCard></Reveal>)}</div>:<div className="empty-state"><h3>No pieces found.</h3><p>Try another search or collection.</p><button className="hero-action" onClick={()=>{setFilter("All");setQuery("");setPriceBand(null)}}>Reset edit ↗</button></div>}{visible.length<shown.length&&<div className="load-more"><span>Showing {visible.length} of {shown.length}</span><button className="hero-action" onClick={()=>setPage(p=>Math.min(totalPages,p+1))}>Load more pieces ↗</button></div>}</div></section>
 
-      <section className="oz-section bundle-section"><div className="oz-container"><Reveal><div className="section-head"><div><p className="eyebrow">Complete the space</p><h2>Curated <em>rituals.</em></h2></div><p>Build a room around one handmade anchor instead of shopping one object at a time.</p></div></Reveal><div className="bundle-grid">{[["The Indigo Table","A bowl, runner and blue pottery accent.",[3,19,8],IMG.indigo],["The Earthy Entry","A vessel, carved tray and small planter.",[1,24,11],IMG.terracotta],["The Quiet Desk","A keepsake box, lamp and hand-finished bowl.",[27,29,4],IMG.sculptural]].map(([title,desc,ids,image])=><article className="bundle-card" key={title}><img src={image} alt=""/><div><p className="eyebrow">Curated set</p><h3>{title}</h3><p>{desc}</p><strong>{money(ids.reduce((s,id)=>s+PRODUCTS.find(p=>p.id===id).priceValue,0))}</strong><button className="text-link" onClick={()=>ids.forEach(id=>add(PRODUCTS.find(p=>p.id===id)))}>Add the set ↗</button></div></article>)}</div></div></section>
+      
 
       <section id="artisans" className="oz-section artisans-section"><div className="oz-container"><Reveal><div className="section-head"><div><p className="eyebrow">Made by people</p><h2>Meet the <em>makers.</em></h2></div><p>Each maker has a place in the marketplace—not just a name beneath a product.</p></div></Reveal><div className="artisan-grid">{ARTISANS.map(a=><article className="artisan-card" key={a.id}><button onClick={()=>setModal({type:"artisan",artisan:a})}><div className="artisan-card__image"><img src={a.image} alt={a.name}/><span>INDIA · {a.city.split(",")[0]}</span></div><div className="artisan-card__copy"><p>{a.craft}</p><h3>{a.name}</h3><span>{a.story}</span><strong>Open maker profile ↗</strong></div></button></article>)}</div></div></section>
 
-      <section className="oz-section passport-section"><div className="oz-container passport-grid"><div><p className="eyebrow">Craft passport</p><h2>Know who made <em>what you keep.</em></h2><p>Every product can carry a digital passport with maker, place, material, care and edition information. The UI is ready now; a production verification service can be connected later.</p><button className="hero-action" onClick={()=>setModal({type:"passport",product:PRODUCTS[1]})}>Preview a passport ↗</button></div><div className="passport-card"><div className="passport-card__top"><span>OZABAY / CRAFT PASSPORT</span><span>01 — 07</span></div><div className="passport-card__seal">OB</div><p>JAIPUR · BLUE POTTERY</p><h3>Hand-painted by<br/><em>Aarav Khan</em></h3><div className="passport-lines"><span>Edition <b>Small batch</b></span><span>Material <b>Ceramic clay</b></span><span>Finish <b>Hand painted</b></span></div><button onClick={()=>setModal({type:"passport",product:PRODUCTS[1]})}>Open record ↗</button></div></div></section>
+      <RegionalCrafts onRegion={openRegion} onProduct={p=>setModal({type:"product",product:p})}/>
+
+      
 
       <section id="reviews" className="oz-section reviews-section">
   <div className="oz-container">
@@ -497,15 +680,16 @@ export default function App(){
 
 <section id="create" className="oz-section oz-create"><div className="oz-container"><Reveal><div className="section-head custom-studio-head"><div><p className="eyebrow">OzaBay Custom Studio</p><h2>Create something <em>that is yours.</em></h2></div><div><p>Build your piece one choice at a time. The preview, estimated price and final design brief update as you customize.</p><div className="custom-studio-flow"><span><b>01</b> Choose</span><i>→</i><span><b>02</b> Customize</span><i>→</i><span><b>03</b> Review</span><i>→</i><span><b>04</b> Request</span></div></div></div></Reveal><div className="create-grid"><div className="create-preview"><CustomLivePreview custom={custom} price={customPrice} image={customImage}/></div><div className="builder"><div className="builder-intro"><span>01 · BUILD YOUR PIECE</span><strong>Every choice changes the preview.</strong><small>Start with the form, then refine material, finish, size and tone.</small></div><BuilderGroup label="Form" value={custom.form} options={customOptions.form} onChange={v=>setCustom(c=>({...c,form:v}))}/><BuilderGroup label="Material" value={custom.material} options={customOptions.material} onChange={v=>setCustom(c=>({...c,material:v}))}/><BuilderGroup label="Finish" value={custom.finish} options={customOptions.finish} onChange={v=>setCustom(c=>({...c,finish:v}))}/><BuilderGroup label="Size" value={custom.size} options={customOptions.size} onChange={v=>setCustom(c=>({...c,size:v}))}/><BuilderGroup label="Tone" value={custom.tone} options={customOptions.tone} onChange={v=>setCustom(c=>({...c,tone:v}))}/><label className="builder-field">Engraving<input value={custom.engraving} onChange={e=>setCustom(c=>({...c,engraving:e.target.value}))} placeholder="Optional name / date"/></label><label className="builder-field">Maker notes<textarea value={custom.notes} onChange={e=>setCustom(c=>({...c,notes:e.target.value}))} placeholder="Tell the maker what matters to you…"/></label><div className="builder-actions"><button className="hero-action" onClick={addCustom}>Add custom piece · {money(customPrice)} ↗</button><button className="text-link" onClick={()=>{setOrderSent(false);setCustomStep(1);setModal("custom-order")}}>Request made-to-order ↗</button><button className="text-link" onClick={resetCustom}>Reset</button></div></div></div></div></section>
 
-      <GiftBuilder gift={gift} setGift={setGift} onCreate={(items,total)=>setModal({type:"gift-result",items,total})}/>
-
       <section className="oz-section order-track-section"><div className="oz-container track-grid"><div><p className="eyebrow">After checkout</p><h2>Track the <em>craft journey.</em></h2><p>Enter any demo OzaBay order ID generated by this frontend to see the UI for order status, maker stage and delivery handoff.</p><form onSubmit={e=>{e.preventDefault();setModal("tracking");}} className="track-form"><input value={tracking} onChange={e=>setTracking(e.target.value)} placeholder="e.g. OZ-1234567"/><button className="hero-action">Track order ↗</button></form></div><div className="timeline"><div className="timeline-step is-done"><span>01</span><div><strong>Order received</strong><small>Payment / request captured</small></div></div><div className="timeline-step is-current"><span>02</span><div><strong>Maker crafting</strong><small>Handmade work in progress</small></div></div><div className="timeline-step"><span>03</span><div><strong>Quality checked</strong><small>Final inspection & passport</small></div></div><div className="timeline-step"><span>04</span><div><strong>On the way</strong><small>Courier handoff</small></div></div></div></div></section>
 
       <section className="oz-section sell-section"><div className="oz-container sell-grid"><div><p className="eyebrow">For independent makers</p><h2>Bring your craft <em>to OzaBay.</em></h2><p>Seller onboarding, maker profiles, product drafts and order stages are designed as a frontend-first marketplace workflow.</p><button className="hero-action" onClick={()=>setModal("sell")}>Open seller studio ↗</button></div><div className="seller-card"><div><span>MAKER STUDIO</span><strong>06</strong></div><p>Profile completeness</p><div className="progress"><i/></div><ul><li>Maker profile</li><li>Product catalogue</li><li>Custom order inbox</li><li>Craft passport</li><li>Order fulfilment</li></ul></div></div></section>
 
-      <section id="journal" className="oz-section journal-section"><div className="oz-container"><Reveal><div className="section-head"><div><p className="eyebrow">The journal</p><h2>Notes on <em>making.</em></h2></div><button className="text-link" onClick={()=>setModal("journal")}>Open all stories ↗</button></div></Reveal><div className="journal-grid"><article><img src={IMG.terracotta} alt="Terracotta"/><span>CRAFT / 06 MIN</span><h3>Why handmade variation is part of the design.</h3><button onClick={()=>setModal("journal")}>Read story ↗</button></article><article><img src={IMG.blue} alt="Blue pottery"/><span>PLACE / 04 MIN</span><h3>Inside the colour language of Jaipur blue pottery.</h3><button onClick={()=>setModal("journal")}>Read story ↗</button></article><article><img src={IMG.indigo} alt="Indigo bowls"/><span>HOME / 05 MIN</span><h3>How to build a slower room around one object.</h3><button onClick={()=>setModal("journal")}>Read story ↗</button></article></div></div></section>
+      
+
+      <TrustStrip/>
 
       <section className="oz-section newsletter"><div className="oz-container newsletter-box"><div><p className="eyebrow">The OzaBay letter</p><h2>New makers, new drops,<br/><em>quietly delivered.</em></h2></div><form onSubmit={e=>{e.preventDefault();setModal("thanks")}}><input type="email" required placeholder="Your email address"/><button>Subscribe ↗</button></form></div></section>
+      </>}
     </main>
 
     <footer className="oz-footer"><div className="oz-container footer-grid"><div><span>OzaBay</span><p>Indian craft, contemporary living.<br/>Frontend marketplace experience.</p></div><div><span>Explore</span><button onClick={()=>go("products")}>Shop</button><button onClick={()=>go("collections")}>Collections</button><button onClick={()=>go("artisans")}>Artisans</button><button onClick={()=>go("create")}>Create Your Own</button></div><div><span>OzaBay</span><button onClick={()=>setModal("about")}>About</button><button onClick={()=>setModal("corporate")}>Corporate</button><button onClick={()=>setModal("sell")}>Sell on OzaBay</button><button onClick={()=>setModal("support")}>Support</button></div><div><span>Your space</span><button onClick={()=>setModal("account")}>Account</button><button onClick={()=>setModal("wishlist")}>Wishlist ({wish.length})</button><button onClick={()=>setModal("cart")}>Bag ({cartCount})</button><button onClick={()=>setModal("tracking")}>Track order</button></div></div></footer>
@@ -516,7 +700,6 @@ export default function App(){
       {modal?.type==="space"&&<><button className="modal-close" onClick={()=>setModal(null)}>×</button><p className="eyebrow">View in your space</p><h2>Preview <em>{modal.product.name}</em> at home.</h2><div className="space-room"><div className="space-floor"/><div className="space-wall"><span>OzaBay room preview</span><div className="space-object"><img src={modal.product.image} alt=""/></div></div></div><p className="space-note">This is a frontend room-scale preview concept. A production AR layer can replace it later without changing the product flow.</p><button className="hero-action" onClick={()=>{add(modal.product);setModal("cart")}}>Add to bag ↗</button></>}
       {modal?.type==="artisan"&&<><button className="modal-close" onClick={()=>setModal(null)}>×</button><div className="artisan-modal artisan-modal--premium"><div className="artisan-modal__media"><img src={modal.artisan.image} alt={modal.artisan.name}/><div className="artisan-modal__media-note">PORTRAIT · REPRESENTATIVE WORKSHOP PROFILE</div></div><div><p className="eyebrow">{modal.artisan.craft}</p><h2>{modal.artisan.name}<br/><em>by hand.</em></h2><p>{modal.artisan.story}</p><div className="artisan-facts"><span>Studio <b>{modal.artisan.city}</b></span><span>Craft <b>{modal.artisan.products}</b></span><span>Marketplace status <b>Maker profile UI</b></span></div><div className="artisan-modal__film"><div><span>WATCH THE MAKING</span><strong>Representative workshop film</strong><small>Commissioned OzaBay maker footage can replace this later.</small></div><button onClick={()=>{const story=MAKER_STORIES.find(s=>s.maker===modal.artisan.name)||MAKER_STORIES[0];setModal({type:"maker-video",story})}}>Play film ↗</button></div><button className="hero-action" onClick={()=>{setFilter(modal.artisan.products);setQuery("");setModal(null);go("products")}}>Shop this maker ↗</button></div></div></>}
       {modal?.type==="maker-video"&&<><button className="modal-close" onClick={()=>setModal(null)}>×</button><div className="maker-video-modal"><div className="maker-video-modal__media"><video src={modal.story.video} autoPlay muted loop playsInline controls poster={modal.story.id.includes("meera")?IMG.terracotta:modal.story.id.includes("raghav")?IMG.blue:modal.story.id.includes("sana")?IMG.indigo:IMG.sculptural} onError={e=>{if(e.currentTarget.src!==modal.story.fallback)e.currentTarget.src=modal.story.fallback}}/></div><div className="maker-video-modal__copy"><p className="eyebrow">{modal.story.chapter}</p><h2>{modal.story.maker}<br/><em>{modal.story.craft}</em></h2><p>{modal.story.story}</p><span>{modal.story.source}</span><button className="hero-action" onClick={()=>{const a=ARTISANS.find(x=>x.name===modal.story.maker);if(a){setModal({type:"artisan",artisan:a})}}}>Back to maker story ↗</button></div></div></>}
-      {modal?.type==="passport"&&<><button className="modal-close" onClick={()=>setModal(null)}>×</button><p className="eyebrow">Digital craft passport</p><h2>One object.<br/><em>One traceable story.</em></h2><div className="passport-detail"><img src={modal.product.image} alt=""/><div><span>PRODUCT</span><strong>{modal.product.name}</strong><span>MAKER</span><strong>{modal.product.artisan}</strong><span>PLACE</span><strong>{modal.product.city}</strong><span>MATERIAL</span><strong>{modal.product.material}</strong><span>CARE</span><strong>{modal.product.care}</strong></div></div></>}
       {modal?.type==="gift-result"&&<>
         <button className="modal-close" onClick={()=>setModal(null)}>×</button>
         <div className="gift-result-modal">
@@ -544,7 +727,6 @@ export default function App(){
       {modal==="corporate-success"&&<><button className="modal-close" onClick={()=>setModal(null)}>×</button><p className="eyebrow">Corporate brief saved</p><h2>We'll turn the brief into a <em>craft edit.</em></h2><p>The frontend is ready for quote requests, gifting sets and hospitality collections.</p><button className="hero-action" onClick={()=>setModal(null)}>Close ↗</button></>}
       {modal==="support"&&<><button className="modal-close" onClick={()=>setModal(null)}>×</button><p className="eyebrow">Support</p><h2>How can we <em>help?</em></h2><div className="faq-list"><button>How does handmade variation work? <span>+</span></button><button>Can I request a custom piece? <span>+</span></button><button>Where can I track an order? <span>+</span></button><button>How do maker profiles work? <span>+</span></button></div></>}
       {modal==="about"&&<><button className="modal-close" onClick={()=>setModal(null)}>×</button><p className="eyebrow">About OzaBay</p><h2>Made by people.<br/><em>Kept by you.</em></h2><p>OzaBay is a digital atelier for Indian craft—bringing contemporary homes closer to the people who make the objects inside them. The current experience is frontend-first and intentionally ready for a future backend.</p><button className="hero-action" onClick={()=>setModal(null)}>Close ↗</button></>}
-      {modal==="journal"&&<><button className="modal-close" onClick={()=>setModal(null)}>×</button><p className="eyebrow">OzaBay Journal</p><h2>Notes on <em>making.</em></h2><p>Stories about place, materials, maker routines and the small decisions behind handmade objects. This journal surface is ready for CMS content later.</p><div className="journal-modal-grid"><img src={IMG.terracotta} alt=""/><img src={IMG.blue} alt=""/><img src={IMG.indigo} alt=""/></div></>}
       {modal==="thanks"&&<><button className="modal-close" onClick={()=>setModal(null)}>×</button><p className="eyebrow">Thank you</p><h2>You're <em>in.</em></h2><p>Your newsletter signup is saved as a demo action in this browser.</p><button className="hero-action" onClick={()=>setModal(null)}>Back to OzaBay ↗</button></>}
     </div></div>}
     {reviewProduct&&<div className="modal-backdrop" onMouseDown={e=>{if(e.target===e.currentTarget)setReviewProduct(null)}}><div className="modal review-modal"><button className="modal-close" onClick={()=>setReviewProduct(null)}>×</button><p className="eyebrow">Write a review</p><h2>Tell us about <em>{reviewProduct.name}.</em></h2><form className="order-form" onSubmit={e=>{e.preventDefault();const entry={productId:reviewProduct.id,createdAt:new Date().toISOString(),name:e.target.elements[0].value,rating:e.target.elements[1].value,note:e.target.elements[2].value};const saved=JSON.parse(localStorage.getItem("ozabay-reviews")||"[]");localStorage.setItem("ozabay-reviews",JSON.stringify([...saved,entry]));setReviewProduct(null);setModal({type:"product",product:reviewProduct})}}><label>Name<input required placeholder="Your name"/></label><label>Rating<select defaultValue="5"><option>5 — Excellent</option><option>4 — Great</option><option>3 — Good</option></select></label><label>Your note<textarea required placeholder="What did you love?"/></label><button className="hero-action">Save demo review ↗</button></form></div></div>}

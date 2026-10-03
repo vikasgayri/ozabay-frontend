@@ -270,3 +270,329 @@ body{overflow-x:hidden}
 @media(max-width:1050px){.maker-stories__rail{grid-template-columns:repeat(2,1fr)}.artisan-modal--premium,.maker-video-modal{grid-template-columns:1fr}.artisan-modal__media{min-height:420px}.maker-video-modal__media{min-height:420px}}
 @media(max-width:680px){.maker-stories__rail{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px}.maker-story-card{flex:0 0 78vw;scroll-snap-align:start}.maker-story-card__media{aspect-ratio:4/5}.maker-story-card__copy h3{font-size:28px}.artisan-modal--premium{gap:22px}.artisan-modal__media{min-height:330px}.artisan-modal__film{align-items:flex-start;flex-direction:column}.maker-video-modal__media{min-height:330px}.maker-video-modal__copy h2{font-size:48px}}
 @media(prefers-reduced-motion:reduce){.tilt-card,.product-card,.product-card .product-image,.product-image img,.product-image:before,.product-image:after,.maker-story-card,.maker-story-card__media video{transition:none!important}.maker-story-card__media video{transform:none}.maker-story-card:hover,.product-card:hover .product-image{transform:none}}
+
+/* Reference-inspired discovery layer: same OzaBay palette, new navigation patterns */
+.discovery-hub{background:var(--paper)}
+.discovery-block{margin-top:46px;padding-top:24px;border-top:1px solid var(--line)}
+.discovery-heading{display:flex;gap:18px;align-items:flex-start;margin-bottom:20px}
+.discovery-heading>span{color:var(--gold);font:500 9px/1 var(--sans);letter-spacing:.16em;padding-top:5px}
+.discovery-heading>div{display:grid;gap:5px}
+.discovery-heading strong{font:400 27px/1.1 var(--serif);color:var(--navy)}
+.discovery-heading small{font:9px/1.5 var(--sans);letter-spacing:.04em;color:#8b929c}
+.discovery-chip-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.discovery-chip{position:relative;min-height:170px;padding:0;border:1px solid var(--line);background:#fff;overflow:hidden;text-align:left;cursor:pointer;transition:transform .45s cubic-bezier(.22,1,.36,1),box-shadow .45s,border-color .35s}
+.discovery-chip:hover{transform:translateY(-6px);border-color:rgba(201,164,92,.55);box-shadow:0 24px 55px rgba(7,26,54,.11)}
+.discovery-chip img{width:100%;height:170px;object-fit:cover;display:block;transition:transform 1s cubic-bezier(.22,1,.36,1)}
+.discovery-chip:hover img{transform:scale(1.06)}
+.discovery-chip:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,18,40,0) 35%,rgba(5,18,40,.78) 100%)}
+.discovery-chip>span{position:absolute;z-index:2;left:13px;right:28px;bottom:13px;display:grid;gap:4px;color:#fff}
+.discovery-chip b{font:400 18px/1 var(--serif)}
+.discovery-chip small{font:8px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.68)}
+.discovery-chip i{position:absolute;z-index:3;right:12px;bottom:14px;color:var(--gold-soft);font-style:normal}
+.theme-rail{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.theme-rail button{min-height:145px;padding:22px;text-align:left;border:1px solid var(--line);background:#faf8f3;color:var(--navy);cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;transition:transform .4s,border-color .3s,background .3s}
+.theme-rail button:hover{transform:translateY(-5px);border-color:var(--gold);background:#fff}
+.theme-rail button span{font:400 30px/1 var(--serif);margin-bottom:9px}
+.theme-rail button small{color:#777f89;line-height:1.55;font-size:10px;max-width:290px}
+.theme-rail button i{margin-top:17px;color:var(--gold);font:8px/1 var(--sans);letter-spacing:.13em;text-transform:uppercase;font-style:normal}
+.discovery-split{display:grid;grid-template-columns:1fr 1fr;gap:45px}
+.discovery-block--compact{margin-top:42px}
+.price-band-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.price-band-grid button{display:flex;justify-content:space-between;align-items:center;padding:17px 15px;background:#fff;border:1px solid var(--line);color:var(--navy);font:400 14px var(--serif);cursor:pointer;transition:border-color .3s,transform .3s}
+.price-band-grid button:hover{border-color:var(--gold);transform:translateY(-3px)}
+.price-band-grid i{font:normal 12px var(--sans);color:var(--gold)}
+.region-mini-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.region-mini-grid button{position:relative;padding:0;border:1px solid var(--line);background:#fff;overflow:hidden;cursor:pointer;min-height:120px}
+.region-mini-grid img{width:100%;height:120px;object-fit:cover;display:block;transition:transform .8s}
+.region-mini-grid button:hover img{transform:scale(1.07)}
+.region-mini-grid button:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(5,18,40,.78))}
+.region-mini-grid span{position:absolute;z-index:2;left:10px;bottom:10px;color:#fff;font:400 17px var(--serif);display:grid}
+.region-mini-grid small{font:7px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-top:3px}
+
+.curated-edits{background:var(--navy);color:#fff}
+.curated-edits .section-head>p,.curated-edits .eyebrow{color:rgba(255,255,255,.55)}
+.curated-edits h2{color:#fff}
+.curated-edit-grid{display:grid;grid-template-columns:1.35fr .825fr .825fr;gap:8px}
+.curated-edit{position:relative;min-height:510px;overflow:hidden;background:#06172f}
+.curated-edit--2,.curated-edit--3{min-height:510px}
+.curated-edit img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s cubic-bezier(.22,1,.36,1)}
+.curated-edit:hover img{transform:scale(1.055)}
+.curated-edit__wash{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,18,40,.02),rgba(5,18,40,.86))}
+.curated-edit__copy{position:absolute;z-index:2;left:24px;right:24px;bottom:24px}
+.curated-edit__copy>span{font:7px var(--sans);letter-spacing:.16em;color:var(--gold-soft)}
+.curated-edit__copy h3{font:400 34px/1 var(--serif);margin:8px 0}
+.curated-edit__copy p{font:10px/1.6 var(--sans);color:rgba(255,255,255,.7);max-width:430px}
+.curated-edit__copy button{margin-top:12px;border:0;background:transparent;color:#fff;padding:0;font:8px var(--sans);letter-spacing:.13em;text-transform:uppercase;cursor:pointer;border-bottom:1px solid var(--gold);padding-bottom:5px}
+
+.recently-viewed{background:#faf8f3}
+.recent-rail{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.recent-rail button{border:0;background:transparent;padding:0;text-align:left;color:var(--navy);cursor:pointer;display:grid;gap:6px}
+.recent-rail img{width:100%;aspect-ratio:1/1.1;object-fit:cover;background:#eee;transition:transform .5s}
+.recent-rail button:hover img{transform:translateY(-4px)}
+.recent-rail span{font:7px var(--sans);letter-spacing:.13em;text-transform:uppercase;color:var(--gold)}
+.recent-rail strong{font:400 18px/1.05 var(--serif)}
+.recent-rail small{font:10px var(--sans);color:#737b86}
+
+.trust-strip{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.trust-strip__grid{display:grid;grid-template-columns:repeat(5,1fr)}
+.trust-strip__grid>div{padding:24px 18px;border-right:1px solid var(--line);display:grid;gap:7px}
+.trust-strip__grid>div:last-child{border-right:0}
+.trust-strip span{font:7px var(--sans);letter-spacing:.16em;color:var(--gold)}
+.trust-strip strong{font:400 16px var(--serif);color:var(--navy)}
+
+@media(max-width:1100px){
+ .discovery-chip-grid{grid-template-columns:repeat(4,1fr)}
+ .recent-rail{grid-template-columns:repeat(3,1fr)}
+ .curated-edit-grid{grid-template-columns:1fr 1fr}
+ .curated-edit--1{grid-column:1/-1;min-height:430px}
+ .discovery-split{gap:25px}
+}
+@media(max-width:700px){
+ .discovery-chip-grid{display:flex;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory}
+ .discovery-chip{flex:0 0 62vw;scroll-snap-align:start}
+ .theme-rail{display:flex;overflow-x:auto}
+ .theme-rail button{flex:0 0 78vw}
+ .discovery-split{grid-template-columns:1fr;gap:0}
+ .region-mini-grid{grid-template-columns:repeat(2,1fr)}
+ .curated-edit-grid{grid-template-columns:1fr}
+ .curated-edit--1,.curated-edit--2,.curated-edit--3{min-height:390px;grid-column:auto}
+ .recent-rail{display:flex;overflow-x:auto;padding-bottom:8px}
+ .recent-rail button{flex:0 0 48vw}
+ .trust-strip__grid{grid-template-columns:repeat(2,1fr)}
+ .trust-strip__grid>div{border-bottom:1px solid var(--line)}
+}
+@media(prefers-reduced-motion:reduce){
+ .discovery-chip,.discovery-chip img,.theme-rail button,.price-band-grid button,.region-mini-grid img,.curated-edit img,.recent-rail img{transition:none!important}
+}
+
+.regional-crafts{background:#faf8f3}
+.regional-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.regional-card{position:relative;min-height:300px;padding:0;border:0;background:#06172f;overflow:hidden;text-align:left;cursor:pointer;color:#fff}
+.regional-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.22,1,.36,1);filter:saturate(.84)}
+.regional-card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,18,40,.04) 25%,rgba(5,18,40,.86) 100%)}
+.regional-card:hover img{transform:scale(1.07)}
+.regional-card>div{position:absolute;z-index:2;left:22px;right:22px;bottom:22px;display:grid;gap:5px}
+.regional-card span{font:7px var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--gold-soft)}
+.regional-card strong{font:400 35px/1 var(--serif)}
+.regional-card small{font:9px var(--sans);color:rgba(255,255,255,.62)}
+.regional-card>i{position:absolute;z-index:2;right:20px;top:20px;font:8px var(--sans);font-style:normal;letter-spacing:.12em;text-transform:uppercase;color:#fff;border-bottom:1px solid var(--gold);padding-bottom:5px}
+@media(max-width:850px){.regional-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.regional-grid{grid-template-columns:1fr}.regional-card{min-height:260px}}
+
+/* India craft atlas */
+.india-craft-explorer{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(340px,.72fr);gap:20px;align-items:stretch}
+.india-map-panel{background:var(--cream);border:1px solid var(--line);padding:18px;min-width:0}
+.india-map-top,.india-map-help,.india-directory-head{display:flex;justify-content:space-between;align-items:center;gap:15px}
+.india-map-top{padding:0 0 14px;border-bottom:1px solid var(--line)}
+.india-map-top span,.india-directory-head span{font-size:8px;letter-spacing:.16em;color:var(--gold);text-transform:uppercase}
+.india-map-top small,.india-map-help span,.india-directory-head small{font-size:8px;color:#7e8792;letter-spacing:.04em}
+.india-map-stage{position:relative;margin:12px auto 0;width:min(100%,620px);aspect-ratio:1639/1852;overflow:hidden;background:rgba(255,255,255,.46)}
+.india-map-image{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;filter:saturate(.62) sepia(.08) contrast(.96);mix-blend-mode:multiply}
+.india-map-stage:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 44%,rgba(201,164,92,.10),transparent 52%)}
+.india-map-overlay{position:absolute;inset:0;z-index:2}
+.india-state-pin{position:absolute;transform:translate(-50%,-50%);width:24px;height:24px;padding:0;border:0;background:transparent;z-index:3}
+.india-state-pin i{position:absolute;left:50%;top:50%;width:8px;height:8px;transform:translate(-50%,-50%);border-radius:50%;background:var(--navy);border:2px solid var(--cream);box-shadow:0 3px 10px rgba(7,26,54,.22);transition:transform .2s,background .2s,box-shadow .2s}
+.india-state-pin:hover i,.india-state-pin:focus i{transform:translate(-50%,-50%) scale(1.45);background:var(--gold);box-shadow:0 0 0 5px rgba(201,164,92,.18)}
+.india-state-pin.is-active i{width:11px;height:11px;background:var(--gold);box-shadow:0 0 0 7px rgba(201,164,92,.17)}
+.india-state-pin span{position:absolute;left:50%;bottom:17px;transform:translateX(-50%);white-space:nowrap;background:var(--navy);color:#fff;padding:7px 9px;font-size:8px;letter-spacing:.05em;text-transform:uppercase;box-shadow:0 8px 20px rgba(7,26,54,.18);pointer-events:none}
+.india-state-pin span:after{content:"";position:absolute;left:50%;bottom:-4px;transform:translateX(-50%) rotate(45deg);width:8px;height:8px;background:var(--navy)}
+.india-map-help{padding:12px 0 2px;border-top:1px solid var(--line);flex-wrap:wrap}
+.india-craft-detail{background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;min-width:0}
+.india-craft-detail__image{height:250px;overflow:hidden;background:#eee}
+.india-craft-detail__image img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.india-craft-detail:hover .india-craft-detail__image img{transform:scale(1.035)}
+.india-craft-detail__body{padding:25px}
+.india-craft-detail__meta{display:flex;justify-content:space-between;gap:12px;margin-bottom:34px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.india-craft-detail__meta span{font-size:8px;letter-spacing:.15em;color:var(--gold)}
+.india-craft-detail__meta small{font-size:9px;color:#7d8590}
+.india-craft-detail h3{margin:0 0 9px;font-family:var(--serif);font-size:42px;font-weight:400;line-height:.95}
+.india-craft-cities{margin:0 0 20px;color:#858d98;font-size:9px;line-height:1.65}
+.india-craft-list{display:grid;border-top:1px solid var(--line)}
+.india-craft-list button{display:grid;grid-template-columns:28px 1fr 20px;align-items:center;gap:10px;border:0;border-bottom:1px solid var(--line);background:transparent;text-align:left;padding:13px 0;color:var(--navy)}
+.india-craft-list button:hover{color:var(--gold)}
+.india-craft-list button span{font-size:8px;color:#a3aab3}
+.india-craft-list button strong{font-family:var(--serif);font-size:19px;font-weight:400}
+.india-craft-list button i{font-style:normal;color:var(--gold);font-size:13px;text-align:right}
+.india-shop-state{margin-top:20px;width:100%}
+.india-state-directory,.india-ut-directory{margin-top:35px}
+.india-directory-head{padding-bottom:12px;border-bottom:1px solid var(--line)}
+.india-state-grid{display:grid;grid-template-columns:repeat(4,1fr);border-left:1px solid var(--line);border-top:1px solid var(--line)}
+.india-state-grid button,.india-ut-grid button{min-height:78px;border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff;text-align:left;padding:14px;transition:.22s}
+.india-state-grid button:hover,.india-state-grid button.is-active,.india-ut-grid button:hover{background:var(--cream)}
+.india-state-grid button span,.india-ut-grid button span{display:block;font-family:var(--serif);font-size:17px;font-weight:400;color:var(--navy)}
+.india-state-grid button small,.india-ut-grid button small{display:block;margin-top:6px;color:#858d98;font-size:8px;line-height:1.45}
+.india-state-grid button.is-active span{color:var(--gold)}
+.india-ut-grid{display:grid;grid-template-columns:repeat(4,1fr);border-left:1px solid var(--line);border-top:1px solid var(--line)}
+@media(max-width:1000px){.india-craft-explorer{grid-template-columns:1fr}.india-craft-detail{display:grid;grid-template-columns:.7fr 1fr}.india-craft-detail__image{height:100%}.india-state-grid,.india-ut-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:680px){.india-map-panel{padding:12px}.india-map-help{align-items:flex-start;display:grid;grid-template-columns:1fr 1fr}.india-craft-detail{display:block}.india-craft-detail__image{height:210px}.india-craft-detail__body{padding:20px}.india-craft-detail h3{font-size:38px}.india-state-grid,.india-ut-grid{grid-template-columns:repeat(2,1fr)}.india-state-grid button,.india-ut-grid button{min-height:92px;padding:12px}.india-state-grid button span,.india-ut-grid button span{font-size:16px}}
+
+/* India Craft Atlas — luxury interactive map */
+.india-map-panel{background:linear-gradient(145deg,#fbf7ef 0%,#f2e7d5 100%);border-color:rgba(24,43,68,.16);box-shadow:0 28px 70px rgba(8,27,51,.08),inset 0 1px 0 rgba(255,255,255,.8)}
+.india-map-stage{isolation:isolate;background:radial-gradient(circle at 48% 35%,rgba(201,164,92,.22),transparent 32%),linear-gradient(145deg,#f7ecdc,#e8d8c1);border:1px solid rgba(201,164,92,.38);box-shadow:inset 0 0 0 1px rgba(255,255,255,.58),inset 0 -30px 80px rgba(7,26,54,.08),0 18px 44px rgba(7,26,54,.10);border-radius:2px;overflow:hidden}
+.india-map-stage:before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(110deg,transparent 0%,rgba(255,255,255,.16) 38%,rgba(201,164,92,.10) 50%,transparent 64%);transform:translateX(-120%);animation:indiaMapSweep 8s ease-in-out infinite}
+.india-map-image{filter:grayscale(.18) sepia(.18) saturate(.72) contrast(1.04) brightness(1.04);opacity:.94;mix-blend-mode:multiply;transform:scale(1.015);transition:filter .8s ease,transform 1.2s cubic-bezier(.22,1,.36,1),opacity .8s ease}
+.india-map-stage:hover .india-map-image{transform:scale(1.025);filter:grayscale(.1) sepia(.14) saturate(.82) contrast(1.05) brightness(1.05)}
+.india-map-aura{position:absolute;z-index:0;left:50%;top:46%;width:58%;height:52%;transform:translate(-50%,-50%);background:radial-gradient(ellipse,rgba(201,164,92,.20),rgba(201,164,92,.06) 42%,transparent 72%);filter:blur(10px);animation:indiaMapAura 5s ease-in-out infinite}
+.india-map-sheen{position:absolute;z-index:1;inset:4%;pointer-events:none;border:1px solid rgba(201,164,92,.18);box-shadow:inset 0 0 35px rgba(201,164,92,.10)}
+.india-map-overlay{z-index:4}
+.india-state-pin{width:38px;height:38px;cursor:pointer}
+.india-state-pin:before{content:"";position:absolute;left:50%;top:50%;width:14px;height:14px;transform:translate(-50%,-50%);border-radius:50%;border:1px solid rgba(201,164,92,.55);background:rgba(255,250,241,.72);box-shadow:0 5px 18px rgba(7,26,54,.16);transition:all .45s cubic-bezier(.22,1,.36,1)}
+.india-state-pin i{width:7px;height:7px;background:var(--navy);border:1px solid rgba(255,255,255,.92);box-shadow:0 0 0 3px rgba(201,164,92,.14),0 4px 12px rgba(7,26,54,.18);transition:all .45s cubic-bezier(.22,1,.36,1)}
+.india-state-pin:hover:before,.india-state-pin.is-hovered:before{width:31px;height:31px;border-color:rgba(201,164,92,.9);background:rgba(201,164,92,.16);box-shadow:0 0 0 7px rgba(201,164,92,.08),0 10px 24px rgba(7,26,54,.16)}
+.india-state-pin:hover i,.india-state-pin.is-hovered i{transform:translate(-50%,-50%) scale(1.55);background:var(--gold);box-shadow:0 0 0 5px rgba(201,164,92,.18),0 0 18px rgba(201,164,92,.48)}
+.india-state-pin.is-active:before{width:38px;height:38px;border:1px solid rgba(201,164,92,.92);background:radial-gradient(circle,rgba(201,164,92,.28),rgba(201,164,92,.06) 56%,transparent 57%);box-shadow:0 0 0 8px rgba(201,164,92,.08),0 0 30px rgba(201,164,92,.24)}
+.india-state-pin.is-active i{width:10px;height:10px;background:var(--gold);box-shadow:0 0 0 5px rgba(201,164,92,.18),0 0 22px rgba(201,164,92,.58);animation:indiaPinPulse 2.4s ease-in-out infinite}
+.india-state-pin span{bottom:27px;background:rgba(6,23,47,.94);padding:9px 11px 8px;border:1px solid rgba(201,164,92,.35);box-shadow:0 12px 28px rgba(7,26,54,.22);backdrop-filter:blur(8px);font-size:8px;letter-spacing:.11em;animation:indiaTagIn .28s ease-out both}
+.india-state-pin span small{display:block;margin-top:4px;color:rgba(255,255,255,.56);font-size:6px;letter-spacing:.12em}
+.india-map-legend{position:absolute;z-index:5;left:16px;bottom:15px;display:flex;gap:12px;align-items:center;padding:7px 10px;background:rgba(250,247,239,.78);border:1px solid rgba(24,43,68,.12);backdrop-filter:blur(10px);box-shadow:0 8px 24px rgba(7,26,54,.08);font:7px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:#68717d}
+.india-map-legend span{display:flex;align-items:center;gap:5px}.india-map-legend i{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px rgba(201,164,92,.14)}.india-map-legend b{font-weight:500;color:var(--navy)}
+.india-craft-detail{box-shadow:0 24px 58px rgba(7,26,54,.08);overflow:hidden}
+.india-craft-detail__image{position:relative;height:250px}.india-craft-detail__image:after{content:"";position:absolute;inset:0;border:1px solid rgba(201,164,92,.28);pointer-events:none}.india-craft-detail__image-wash{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,26,54,.02),rgba(7,26,54,.50));pointer-events:none}.india-craft-detail__image>span{position:absolute;z-index:2;left:20px;bottom:17px;color:#fff;font:7px var(--sans);letter-spacing:.18em}
+.india-product-rail-head{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:24px;padding-bottom:9px;border-bottom:1px solid var(--line)}.india-product-rail-head span{font-size:7px;letter-spacing:.16em;color:var(--gold)}.india-product-rail-head small{font-size:8px;color:#8a929c}
+.india-product-rail{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:9px}.india-product-rail button{min-width:0;border:1px solid var(--line);background:#fbfaf7;text-align:left;padding:0 0 9px;cursor:pointer;transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s,border-color .35s}.india-product-rail button:hover{transform:translateY(-4px);border-color:rgba(201,164,92,.65);box-shadow:0 12px 28px rgba(7,26,54,.10)}.india-product-rail img{width:100%;height:68px;display:block;object-fit:cover}.india-product-rail span{display:block;padding:7px 7px 2px;color:#78818c;font-size:7px;line-height:1.35}.india-product-rail strong{display:block;padding:0 7px;color:var(--navy);font:13px var(--serif);font-weight:400}
+@keyframes indiaMapSweep{0%,55%{transform:translateX(-120%)}75%,100%{transform:translateX(120%)}}
+@keyframes indiaMapAura{0%,100%{opacity:.55;transform:translate(-50%,-50%) scale(.96)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.06)}}
+@keyframes indiaPinPulse{0%,100%{box-shadow:0 0 0 5px rgba(201,164,92,.16),0 0 18px rgba(201,164,92,.40)}50%{box-shadow:0 0 0 10px rgba(201,164,92,.08),0 0 28px rgba(201,164,92,.62)}}
+@keyframes indiaTagIn{from{opacity:0;transform:translateX(-50%) translateY(6px) scale(.96)}to{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}}
+@media(max-width:680px){.india-map-legend{left:9px;bottom:9px;gap:8px;font-size:6px}.india-state-pin{width:34px;height:34px}.india-product-rail{grid-template-columns:repeat(2,1fr)}.india-product-rail button:last-child{display:none}}
+@media(prefers-reduced-motion:reduce){.india-map-stage:before,.india-map-aura,.india-state-pin.is-active i{animation:none}.india-map-image{transition:none}.india-state-pin span{animation:none}}
+
+/* India Craft Atlas — cleaner luxury motion pass */
+.india-craft-explorer{perspective:1600px}
+.india-map-panel,.india-craft-detail{position:relative;animation:atlasLiftIn .9s cubic-bezier(.22,1,.36,1) both}
+.india-craft-detail{animation-delay:.08s}
+.india-map-panel:after{content:"";position:absolute;inset:0;pointer-events:none;border:1px solid rgba(201,164,92,.12);opacity:0;transition:opacity .5s ease;}
+.india-map-panel:hover:after{opacity:1}
+.india-map-stage{position:relative;transition:transform .7s cubic-bezier(.22,1,.36,1),box-shadow .7s ease}
+.india-map-panel:hover .india-map-stage{transform:translateY(-3px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),inset 0 -30px 80px rgba(7,26,54,.08),0 26px 60px rgba(7,26,54,.13)}
+.india-map-stage:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 50%,transparent 42%,rgba(7,26,54,.08) 100%);mix-blend-mode:multiply;opacity:.42}
+.india-map-overlay{animation:atlasPinsIn 1.1s .18s cubic-bezier(.22,1,.36,1) both}
+.india-state-pin{transition:transform .45s cubic-bezier(.22,1,.36,1),filter .45s ease}
+.india-state-pin:hover,.india-state-pin.is-hovered{transform:translate(-50%,-50%) scale(1.08);filter:drop-shadow(0 8px 16px rgba(201,164,92,.18))}
+.india-state-pin.is-active{transform:translate(-50%,-50%) scale(1.12)}
+.india-state-pin:focus-visible{outline:1px solid var(--gold);outline-offset:5px;border-radius:50%}
+.india-map-help{position:relative;overflow:hidden}
+.india-map-help:before{content:"";position:absolute;left:0;top:0;width:34%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:atlasLine 4.5s ease-in-out infinite}
+.india-craft-detail{background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border:1px solid rgba(24,43,68,.10)}
+.india-craft-detail__body{animation:atlasBodyIn .7s .18s cubic-bezier(.22,1,.36,1) both}
+.india-craft-list button{position:relative;overflow:hidden;transition:padding .35s cubic-bezier(.22,1,.36,1),color .35s ease,background .35s ease}
+.india-craft-list button:before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gold);transform:scaleY(0);transform-origin:center;transition:transform .35s cubic-bezier(.22,1,.36,1)}
+.india-craft-list button:hover{padding-left:10px;background:linear-gradient(90deg,rgba(201,164,92,.08),transparent)}
+.india-craft-list button:hover:before{transform:scaleY(1)}
+.india-craft-list button strong{transition:letter-spacing .35s ease}
+.india-craft-list button:hover strong{letter-spacing:.01em}
+.india-product-rail button{position:relative;overflow:hidden}
+.india-product-rail button:after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.6) 50%,transparent 70%);transform:translateX(-120%);transition:transform .8s ease}
+.india-product-rail button:hover:after{transform:translateX(120%)}
+.india-shop-state{position:relative;overflow:hidden;box-shadow:0 12px 30px rgba(7,26,54,.10);transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease}
+.india-shop-state:hover{transform:translateY(-2px);box-shadow:0 18px 38px rgba(7,26,54,.16)}
+.india-shop-state:after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent,rgba(255,255,255,.14),transparent);transform:translateX(-120%);transition:transform .8s ease}
+.india-shop-state:hover:after{transform:translateX(120%)}
+@keyframes atlasLiftIn{from{opacity:0;transform:translateY(22px) rotateX(1.5deg)}to{opacity:1;transform:translateY(0) rotateX(0)}}
+@keyframes atlasPinsIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+@keyframes atlasBodyIn{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:translateX(0)}}
+@keyframes atlasLine{0%,100%{transform:translateX(-110%);opacity:0}20%,75%{opacity:.8}55%{transform:translateX(210%);opacity:.25}}
+@media(prefers-reduced-motion:reduce){.india-map-panel,.india-craft-detail,.india-map-overlay,.india-craft-detail__body{animation:none}.india-map-panel:hover .india-map-stage{transform:none}.india-map-help:before{animation:none}.india-state-pin,.india-craft-list button,.india-product-rail button,.india-shop-state{transition:none}}
+
+
+/* Dedicated state craft marketplace — editorial, tactile motion */
+.state-market-page{position:relative;isolation:isolate;overflow:hidden;min-height:75vh;padding:36px 0 100px;background:radial-gradient(ellipse at 78% 8%,rgba(194,151,83,.13),transparent 34%),linear-gradient(145deg,#f8f5ef,#f1ece3 72%,#faf8f3);}
+.state-market-orbit{position:absolute;z-index:-1;top:30px;right:-150px;width:520px;height:520px;border:1px solid rgba(185,143,73,.16);border-radius:50%;box-shadow:0 0 0 48px rgba(185,143,73,.025),0 0 0 100px rgba(185,143,73,.018);animation:stateOrbit 24s linear infinite;pointer-events:none;}
+.state-market-back{display:inline-flex;align-items:center;gap:10px;border:0;background:transparent;color:#7e6949;font:500 12px/1.4 inherit;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;padding:10px 0;transition:transform .3s ease,color .3s ease;}
+.state-market-back:hover{transform:translateX(-5px);color:#0a1d3a}
+.state-market-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,6vw,90px);align-items:center;padding:42px 0 54px;}
+.state-market-kicker{display:block;margin:0 0 14px;color:#b88a43;font-size:10px;letter-spacing:.2em;font-weight:600;}
+.state-market-hero h1{margin:0;color:#091b37;font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(58px,8vw,112px);line-height:.95;letter-spacing:-.055em;}
+.state-market-hero h1 em{color:#b98b47;font-weight:400;}
+.state-market-hero>div:first-child>p:not(.eyebrow){max-width:470px;color:#7c8795;font-size:15px;line-height:1.8;margin:24px 0 28px;}
+.state-market-meta{border-top:1px solid rgba(11,29,57,.16);padding-top:15px;display:flex;flex-direction:column;gap:8px;max-width:480px;}
+.state-market-meta span,.state-market-count{color:#b98b47;font-size:9px;letter-spacing:.19em;font-weight:600;}
+.state-market-meta strong{color:#697486;font-size:12px;font-weight:400;}
+.state-market-hero-art{height:clamp(250px,34vw,420px);position:relative;overflow:hidden;background:#e4d4bf;box-shadow:0 30px 70px rgba(27,30,35,.13);transform:perspective(1000px) rotateY(-3deg);animation:stateHeroIn .9s cubic-bezier(.2,.75,.25,1) both;}
+.state-market-hero-art:after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(8,25,51,.08),transparent 42%,rgba(197,155,85,.14));pointer-events:none;}
+.state-market-hero-art img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1),filter .8s ease;}
+.state-market-hero-art:hover img{transform:scale(1.07);filter:saturate(1.12);}
+.state-market-hero-art>span{position:absolute;bottom:18px;left:20px;z-index:1;color:#fff;font-size:9px;letter-spacing:.2em;text-shadow:0 2px 10px #111;}
+.state-market-toolbar{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;padding:22px 0;border-top:1px solid rgba(11,29,57,.15);border-bottom:1px solid rgba(11,29,57,.15);}
+.state-market-toolbar .eyebrow{margin:0 0 15px;color:#b98b47;font-size:10px;letter-spacing:.18em;}
+.state-market-filters{display:flex;flex-wrap:wrap;gap:8px;}
+.state-market-filters button{border:1px solid rgba(11,29,57,.15);border-radius:30px;background:rgba(255,255,255,.45);padding:9px 14px;color:#647084;font-size:11px;cursor:pointer;transition:background .25s ease,color .25s ease,border-color .25s ease,transform .25s ease;}
+.state-market-filters button:hover{transform:translateY(-2px);border-color:#c49b5e;color:#0a1d3a;}
+.state-market-filters button.active{background:#0a1d3a;color:#fff;border-color:#0a1d3a;box-shadow:0 6px 18px rgba(10,29,58,.16);}
+.state-market-toolbar label{display:flex;align-items:center;gap:9px;white-space:nowrap;color:#89919d;font-size:11px;}
+.state-market-toolbar select{border:1px solid rgba(11,29,57,.16);background:#faf8f4;color:#102341;padding:10px 12px;font-size:11px;}
+.state-market-count{display:flex;justify-content:space-between;gap:20px;padding:23px 0 16px;}
+.state-market-count span:last-child{color:#89919d;font-weight:400;font-size:9px;}
+.state-market-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;}
+.state-market-card{min-width:0;background:#fff;border:1px solid rgba(11,29,57,.1);box-shadow:0 8px 24px rgba(20,31,48,.045);animation:stateCardIn .65s cubic-bezier(.2,.7,.25,1) both;animation-delay:calc(min(var(--card-index),8)*55ms);transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s ease;transform-style:preserve-3d;}
+.state-market-card:hover{transform:translateY(-8px) rotateX(1.2deg);box-shadow:0 24px 48px rgba(20,31,48,.14);}
+.state-market-image{display:block;position:relative;width:100%;aspect-ratio:1.12;border:0;padding:0;overflow:hidden;background:#eee7dd;cursor:pointer;}
+.state-market-image img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1),filter .6s ease;}
+.state-market-card:hover .state-market-image img{transform:scale(1.075);filter:saturate(1.08);}
+.state-market-image:after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 20%,rgba(255,255,255,.26) 48%,transparent 70%);transform:translateX(-130%);transition:transform .8s ease;}
+.state-market-card:hover .state-market-image:after{transform:translateX(130%);}
+.state-market-image>span{position:absolute;right:12px;bottom:12px;background:rgba(8,25,51,.88);color:#fff;padding:9px 12px;font-size:9px;letter-spacing:.12em;opacity:0;transform:translateY(6px);transition:opacity .3s ease,transform .3s ease;}
+.state-market-card:hover .state-market-image>span{opacity:1;transform:translateY(0);}
+.state-market-card-copy{padding:16px 17px 17px;}
+.state-market-card-copy>small{display:block;color:#89919d;font-size:10px;letter-spacing:.04em;margin-bottom:8px;}
+.state-market-name{display:block;min-height:44px;text-align:left;border:0;background:none;padding:0;color:#0a1d3a;font-family:Georgia,'Times New Roman',serif;font-size:19px;line-height:1.2;cursor:pointer;}
+.state-market-card-copy>div{display:flex;align-items:center;justify-content:space-between;margin:12px 0 14px;}
+.state-market-card-copy>div>strong{font-family:Georgia,'Times New Roman',serif;font-size:20px;font-weight:400;color:#0a1d3a;}
+.state-market-wish{width:32px;height:32px;border:1px solid rgba(11,29,57,.12);border-radius:50%;background:#fff;color:#9aa1aa;font-size:20px;cursor:pointer;transition:all .25s ease;}
+.state-market-wish:hover,.state-market-wish.liked{border-color:#bd914d;color:#bd914d;transform:scale(1.08);}
+.state-market-add{width:100%;display:flex;justify-content:space-between;align-items:center;border:1px solid #0a1d3a;background:#0a1d3a;color:#fff;padding:12px 14px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .25s ease,color .25s ease,transform .25s ease;}
+.state-market-add:hover{background:#c19a5d;border-color:#c19a5d;color:#0a1d3a;transform:translateY(-2px);}
+.state-market-footnote{margin-top:34px;padding-top:16px;border-top:1px solid rgba(11,29,57,.12);color:#9299a3;font-size:11px;line-height:1.7;}
+.state-market-empty,.state-market-empty-page{padding:60px 0;color:#6e7888;text-align:center;}
+@keyframes stateOrbit{to{transform:rotate(360deg)}}
+@keyframes stateHeroIn{from{opacity:0;transform:perspective(1000px) rotateY(-8deg) translateY(22px)}to{opacity:1;transform:perspective(1000px) rotateY(-3deg) translateY(0)}}
+@keyframes stateCardIn{from{opacity:0;transform:translateY(24px) scale(.975)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:800px){.state-market-hero{grid-template-columns:1fr;gap:26px;padding:30px 0 36px}.state-market-hero-art{height:300px;transform:none}.state-market-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.state-market-toolbar{align-items:flex-start;flex-direction:column}.state-market-count span:last-child{display:none}}
+@media(max-width:480px){.state-market-page{padding-top:18px}.state-market-hero h1{font-size:60px}.state-market-hero-art{height:230px}.state-market-grid{gap:10px}.state-market-card-copy{padding:12px}.state-market-name{font-size:16px;min-height:48px}.state-market-card-copy>div>strong{font-size:18px}.state-market-filters button{padding:8px 11px;font-size:10px}}
+@media(prefers-reduced-motion:reduce){.state-market-orbit,.state-market-hero-art,.state-market-card{animation:none!important}.state-market-card,.state-market-image img,.state-market-back,.state-market-add{transition:none!important}}
+
+
+/* =========================================================
+   OzaBay V5 — modern 3D motion system
+   ========================================================= */
+:root{--oz-depth-ease:cubic-bezier(.16,1,.3,1)}
+.oz-section,.trust-strip,.newsletter,.oz-footer{transform-style:preserve-3d}
+.product-card,.artisan-card,.review-card,.bundle-card,.recent-rail>button,.regional-card,.maker-card{
+  transform-style:preserve-3d;
+  will-change:transform;
+  transition:transform .55s var(--oz-depth-ease),box-shadow .55s var(--oz-depth-ease);
+}
+.product-card:hover,.artisan-card:hover,.review-card:hover,.recent-rail>button:hover,.regional-card:hover,.maker-card:hover{
+  transform:translate3d(0,-8px,22px) rotateX(.7deg) rotateY(-1deg);
+  box-shadow:0 24px 55px rgba(5,16,32,.16);
+}
+.product-card::after,.artisan-card::after,.review-card::after,.recent-rail>button::after{
+  content:"";
+  position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:radial-gradient(circle at var(--pointer-x,50%) var(--pointer-y,50%),rgba(255,255,255,.20),transparent 32%);
+  opacity:0;transition:opacity .35s ease;mix-blend-mode:screen;
+}
+.product-card:hover::after,.artisan-card:hover::after,.review-card:hover::after,.recent-rail>button:hover::after{opacity:1}
+.product-image,.artisan-card img,.review-card img,.regional-card img{
+  transform:translateZ(18px);
+  transition:transform .8s var(--oz-depth-ease),filter .8s ease;
+}
+.product-card:hover .product-image img,.artisan-card:hover img,.review-card:hover img,.regional-card:hover img{
+  transform:scale(1.045) translate3d(0,-4px,18px);
+}
+.section-head h2,.oz-collections h2,.oz-products h2{
+  text-wrap:balance;
+  transition:transform .6s var(--oz-depth-ease);
+}
+.section-head:hover h2{transform:translate3d(0,-3px,10px)}
+.oz-section:not(.ozb-hero) .oz-container{transform-style:preserve-3d}
+.reveal.is-visible{animation:ozReveal3d .9s var(--oz-depth-ease) both}
+@keyframes ozReveal3d{
+  from{opacity:0;transform:translate3d(0,28px,-30px) rotateX(2deg)}
+  to{opacity:1;transform:translate3d(0,0,0) rotateX(0)}
+}
+@media (prefers-reduced-motion:reduce){
+  .product-card,.artisan-card,.review-card,.recent-rail>button,.regional-card,.maker-card,
+  .product-image,.artisan-card img,.review-card img,.regional-card img{transition:none!important;transform:none!important}
+  .reveal.is-visible{animation:none}
+}
