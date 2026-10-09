@@ -52,20 +52,6 @@ export default function Hero({ onExploreClick, onCreateClick }) {
         <div className="ozb-hero__grain" />
       </div>
 
-      {/* <div className="ozb-hero__visual-depth" aria-hidden="true">
-        <span className="ozb-hero__orbit ozb-hero__orbit--one" />
-        <span className="ozb-hero__orbit ozb-hero__orbit--two" />
-        <span className="ozb-hero__glass-orb ozb-hero__glass-orb--one" />
-        <span className="ozb-hero__glass-orb ozb-hero__glass-orb--two" />
-        <div className="ozb-hero__halo" />
-        <div className="ozb-hero__halo ozb-hero__halo--small" />
-        <div className="ozb-hero__light-orb" />
-        <div className="ozb-hero__depth-line ozb-hero__depth-line--one" />
-        <div className="ozb-hero__depth-line ozb-hero__depth-line--two" />
-        <div className="ozb-hero__product-shadow" />
-        <div className="ozb-hero__floating-dot ozb-hero__floating-dot--one" />
-        <div className="ozb-hero__floating-dot ozb-hero__floating-dot--two" />
-      </div> */}
 
       <div className="ozb-hero__inner">
         <div className="ozb-hero__content" key={slide.id}>
