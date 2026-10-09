@@ -151,6 +151,379 @@ const BASE_PRODUCTS = [
   story: `Shaped in ${city} and finished by ${artisan}. The piece carries small marks of the hand, making every edition subtly different.`,
 }));
 
+
+// Product data supplied in the Gninee Gems Web Upload workbook.
+const BANGLES_PRODUCTS = [
+  {
+    "id": 2001,
+    "name": "Meenakari Peacock Design 22 Carat Gold Plated Bangles – Set of Two",
+    "sku": "JB-001",
+    "category": "Bangles",
+    "subCategory": "Bangles",
+    "priceValue": 650.0,
+    "price": "₹650",
+    "regularPriceValue": 812.0,
+    "regularPrice": "₹812",
+    "image": "/images/bangles/bangle-01.jpg",
+    "artisan": "Gninee Gems",
+    "city": "",
+    "material": "22 Carat Gold Plated",
+    "description": "Add elegance to your traditional jewellery collection with our Meenakari Peacock Design 22 Carat Gold Plated Bangles – Set of Two. Featuring detailed hand-painted meenakari enamel work, these bangles highlight beautiful peacock and floral designs inspired by Indian heritage craftsmanship.\n\nCrafted with a rich 22 carat gold plated finish, this bangle set offers a luxurious appearance along with excellent durability. The high-quality enamel work helps maintain colour and shine for 5 to 10 years with proper care, making them perfect for long-term festive and occasion wear.\n\nIdeal for weddings, festivals, and ethnic celebrations, these bangles pair effortlessly with sarees, lehengas, and traditional outfits. Their refined design and lasting beauty make them a timeless addition to any jewellery collection.",
+    "shortDescription": "●Premium Gold Finish\n22 carat gold plated for a rich, radiant traditional look\n\n●Hand-Painted Meenakari Art\nIntricate enamel detailing featuring graceful peacock and floral motifs\n\n●Long-Lasting Beauty\nColour and shine maintained for 5–10 years with proper care\n\n●Purchase Options\nAvailable as single bangle or pair",
+    "rating": null,
+    "dimensions": "Set of Two",
+    "care": "Colour and shine maintained for 5–10 years with proper care",
+    "story": "Add elegance to your traditional jewellery collection with our Meenakari Peacock Design 22 Carat Gold Plated Bangles – Set of Two. Featuring detailed hand-painted meenakari enamel work, these bangles highlight beautiful peacock and floral designs inspired by Indian heritage craftsmanship.\n\nCrafted with a rich 22 carat gold plated finish, this bangle set offers a luxurious appearance along with excellent durability. The high-quality enamel work helps maintain colour and shine for 5 to 10 years with proper care, making them perfect for long-term festive and occasion wear.\n\nIdeal for weddings, festivals, and ethnic celebrations, these bangles pair effortlessly with sarees, lehengas, and traditional outfits. Their refined design and lasting beauty make them a timeless addition to any jewellery collection.",
+    "metaDescription": "Premium meenakari peacock design 22 carat gold plated bangles set of two with hand painted enamel work and long lasting shine.",
+    "seoTitle": "Meenakari Peacock Design Gold Plated Bangles (Set of Two)"
+  },
+  {
+    "id": 2002,
+    "name": "Meenakari Peacock Design Purple 22 Carat Gold Plated Bangles – Set of Two",
+    "sku": "JB-002",
+    "category": "Bangles",
+    "subCategory": "Bangles",
+    "priceValue": 650.0,
+    "price": "₹650",
+    "regularPriceValue": 812.0,
+    "regularPrice": "₹812",
+    "image": "/images/bangles/bangle-02.jpg",
+    "artisan": "Gninee Gems",
+    "city": "",
+    "material": "22 Carat Gold Plated",
+    "description": "Add a vibrant touch of tradition to your jewellery collection with our Meenakari Peacock Design Purple 22 Carat Gold Plated Bangles – Set of Two. Crafted with intricate hand-painted meenakari enamel work, these bangles showcase elegant peacock and floral designs on a rich purple base, reflecting timeless Indian artistry.\n\nFinished with a premium 22 carat gold plated layer, this bangle set offers a luxurious traditional appearance along with excellent durability. The high-quality enamel detailing is designed to retain its colour and brilliance for 5 to 10 years with proper care, making it perfect for long-term festive and occasion wear.\n\nIdeal for weddings, festivals, and ethnic celebrations, these bangles beautifully complement sarees, lehengas, and traditional outfits. Their colourful craftsmanship and lasting shine make them a standout addition to any traditional jewellery collection.",
+    "shortDescription": "●Premium Gold Finish\n22 carat gold plated for a rich and elegant traditional appearance\n\n●Hand-Painted Meenakari Art\nDetailed enamel work featuring colourful peacock and floral designs on a vibrant purple base\n\n●Long-Lasting Beauty\nColour and shine maintained for 5–10 years with proper care\n\n●Purchase Options\nAvailable as a single bangle or set of two",
+    "rating": null,
+    "dimensions": "Set of Two",
+    "care": "Colour and shine maintained for 5–10 years with proper care",
+    "story": "Add a vibrant touch of tradition to your jewellery collection with our Meenakari Peacock Design Purple 22 Carat Gold Plated Bangles – Set of Two. Crafted with intricate hand-painted meenakari enamel work, these bangles showcase elegant peacock and floral designs on a rich purple base, reflecting timeless Indian artistry.\n\nFinished with a premium 22 carat gold plated layer, this bangle set offers a luxurious traditional appearance along with excellent durability. The high-quality enamel detailing is designed to retain its colour and brilliance for 5 to 10 years with proper care, making it perfect for long-term festive and occasion wear.\n\nIdeal for weddings, festivals, and ethnic celebrations, these bangles beautifully complement sarees, lehengas, and traditional outfits. Their colourful craftsmanship and lasting shine make them a standout addition to any traditional jewellery collection.",
+    "metaDescription": "Shop meenakari peacock design purple 22 carat gold plated bangles set of two with hand painted enamel work and long lasting shine.",
+    "seoTitle": "Meenakari Peacock Design Purple Gold Plated Bangles (Set of Two)"
+  },
+  {
+    "id": 2003,
+    "name": "Meenakari Floral Design 22 Carat Gold Plated Bangles – White (Set of Two)",
+    "sku": "JB-003",
+    "category": "Bangles",
+    "subCategory": "Bangles",
+    "priceValue": 840.0,
+    "price": "₹840",
+    "regularPriceValue": 1050.0,
+    "regularPrice": "₹1,050",
+    "image": "/images/bangles/bangle-03.jpg",
+    "artisan": "Gninee Gems",
+    "city": "",
+    "material": "22 Carat Gold Plated",
+    "description": "Add timeless elegance to your jewellery collection with our Meenakari Floral Design 22 Carat Gold Plated Bangles – White (Set of Two). Featuring intricate hand-painted meenakari artistry, these bangles showcase beautifully detailed multicolour floral patterns set against a refined white colour base.\n\nFinished with premium 22 carat gold plating, this bangle set offers a luxurious traditional appearance along with excellent durability. The meenakari work is crafted to retain its colour and shine for 5 to 10 years with proper care, making it ideal for festive occasions and everyday ethnic wear.\n\nPerfect for weddings, celebrations, and traditional styling, these bangles pair effortlessly with sarees, lehengas, and ethnic outfits. Their soft white base combined with vibrant floral detailing creates a graceful and heritage-inspired jewellery statement.",
+    "shortDescription": "●Premium Gold Plating\n22 carat gold plated for a rich traditional finish\n\n●Hand-Painted Meenakari Art\nDelicate multicolour floral patterns crafted on an elegant white colour base\n\n●Long-Lasting Beauty\nColour and shine maintained for 5–10 years with proper care\n\n●Purchase Options\nAvailable as a single bangle or set of two",
+    "rating": null,
+    "dimensions": "Set of Two",
+    "care": "Colour and shine maintained for 5–10 years with proper care",
+    "story": "Add timeless elegance to your jewellery collection with our Meenakari Floral Design 22 Carat Gold Plated Bangles – White (Set of Two). Featuring intricate hand-painted meenakari artistry, these bangles showcase beautifully detailed multicolour floral patterns set against a refined white colour base.\n\nFinished with premium 22 carat gold plating, this bangle set offers a luxurious traditional appearance along with excellent durability. The meenakari work is crafted to retain its colour and shine for 5 to 10 years with proper care, making it ideal for festive occasions and everyday ethnic wear.\n\nPerfect for weddings, celebrations, and traditional styling, these bangles pair effortlessly with sarees, lehengas, and ethnic outfits. Their soft white base combined with vibrant floral detailing creates a graceful and heritage-inspired jewellery statement.",
+    "metaDescription": "Shop meenakari floral 22 carat gold plated bangles in white colour set of two with hand painted traditional craftsmanship and lasting shine.",
+    "seoTitle": "Meenakari Floral Gold Plated Bangles – White (Set of Two)"
+  },
+  {
+    "id": 2004,
+    "name": "Meenakari Peacock Design 22 Carat Gold Plated Bangles – White (Set of Two)",
+    "sku": "JB-004",
+    "category": "Bangles",
+    "subCategory": "Bangles",
+    "priceValue": 650.0,
+    "price": "₹650",
+    "regularPriceValue": 812.0,
+    "regularPrice": "₹812",
+    "image": "/images/bangles/bangle-04.jpg",
+    "artisan": "Gninee Gems",
+    "city": "",
+    "material": "22 Carat Gold Plated",
+    "description": "Add timeless elegance to your jewellery collection with our Meenakari Peacock Design 22 Carat Gold Plated Bangles – White (Set of Two). Featuring intricate hand-painted meenakari artistry, these bangles showcase graceful peacock and floral detailing beautifully highlighted on a refined white colour base.\n\nFinished with premium 22 carat gold plating, this bangle set offers a luxurious traditional appearance along with excellent durability. The detailed meenakari work is crafted to retain its colour and shine for 5 to 10 years with proper care, making it ideal for festive occasions and long-term wear.\n\nPerfect for weddings, celebrations, and ethnic styling, these bangles pair effortlessly with sarees, lehengas, and traditional outfits. Their elegant white base combined with vibrant peacock designs creates a sophisticated and heritage-inspired jewellery statement.",
+    "shortDescription": "●Premium Gold Plating\n22 carat gold plated for a rich traditional finish\n\n●Hand-Painted Meenakari Art\nIntricate peacock and floral designs crafted on an elegant white colour base\n\n●Long-Lasting Beauty\nColour and shine maintained for 5–10 years with proper care\n\n●Purchase Options\nAvailable as a single bangle or set of two",
+    "rating": null,
+    "dimensions": "Set of Two",
+    "care": "Colour and shine maintained for 5–10 years with proper care",
+    "story": "Add timeless elegance to your jewellery collection with our Meenakari Peacock Design 22 Carat Gold Plated Bangles – White (Set of Two). Featuring intricate hand-painted meenakari artistry, these bangles showcase graceful peacock and floral detailing beautifully highlighted on a refined white colour base.\n\nFinished with premium 22 carat gold plating, this bangle set offers a luxurious traditional appearance along with excellent durability. The detailed meenakari work is crafted to retain its colour and shine for 5 to 10 years with proper care, making it ideal for festive occasions and long-term wear.\n\nPerfect for weddings, celebrations, and ethnic styling, these bangles pair effortlessly with sarees, lehengas, and traditional outfits. Their elegant white base combined with vibrant peacock designs creates a sophisticated and heritage-inspired jewellery statement.",
+    "metaDescription": "Shop meenakari peacock design 22 carat gold plated bangles in white colour set of two with hand painted traditional craftsmanship and lasting shine.",
+    "seoTitle": "Meenakari Peacock Design Gold Plated Bangles – White (Set of Two)"
+  },
+  {
+    "id": 2005,
+    "name": "Meenakari Elephant Design 22 Carat Gold Plated Openable Bangles – Green (Set of Two)",
+    "sku": "JB-005",
+    "category": "Bangles",
+    "subCategory": "Bangles",
+    "priceValue": 840.0,
+    "price": "₹840",
+    "regularPriceValue": 1050.0,
+    "regularPrice": "₹1,050",
+    "image": "/images/bangles/bangle-05.jpg",
+    "artisan": "Gninee Gems",
+    "city": "",
+    "material": "22 Carat Gold Plated",
+    "description": "Bring heritage charm to your jewellery collection with our Meenakari Elephant Design 22 Carat Gold Plated Openable Bangles in a rich green finish. Featuring intricate hand-painted meenakari work, these bangles showcase beautifully detailed elephant motifs blended with floral accents, reflecting classic Indian artistry.\n\nCrafted with premium 22 carat gold plating, the meenakari elephant design bangles offer both luxurious appeal and everyday comfort through the practical openable clasp style. This construction ensures easy wear while maintaining a secure and elegant traditional look.\n\nDesigned to retain colour and brilliance for 5 to 10 years with proper care, these bangles are perfect for weddings, festive occasions, and cultural celebrations. The vibrant green base paired with heritage-inspired detailing makes them a timeless statement piece in any traditional jewellery collection.",
+    "shortDescription": "●Premium Gold Plating\n22 carat gold plated for a rich traditional finish\n\n●Hand-Painted Meenakari Art\nTraditional elephant and floral patterns crafted on a deep green colour base\n\n●Long-Lasting Beauty\nColour and shine maintained for 5–10 years with proper care\n\n●Purchase Options\nAvailable as a single openable bangle or set of two",
+    "rating": null,
+    "dimensions": "Set of Two",
+    "care": "Colour and shine maintained for 5–10 years with proper care",
+    "story": "Bring heritage charm to your jewellery collection with our Meenakari Elephant Design 22 Carat Gold Plated Openable Bangles in a rich green finish. Featuring intricate hand-painted meenakari work, these bangles showcase beautifully detailed elephant motifs blended with floral accents, reflecting classic Indian artistry.\n\nCrafted with premium 22 carat gold plating, the meenakari elephant design bangles offer both luxurious appeal and everyday comfort through the practical openable clasp style. This construction ensures easy wear while maintaining a secure and elegant traditional look.\n\nDesigned to retain colour and brilliance for 5 to 10 years with proper care, these bangles are perfect for weddings, festive occasions, and cultural celebrations. The vibrant green base paired with heritage-inspired detailing makes them a timeless statement piece in any traditional jewellery collection.",
+    "metaDescription": "Shop meenakari elephant design 22 carat gold plated openable bangles in green colour set of two with hand painted traditional craftsmanship and lasting shine.",
+    "seoTitle": "Meenakari Elephant Design Bangles – Openable 22 Carat Gold Plated Set"
+  },
+  {
+    "id": 2006,
+    "name": "Meenakari Elephant Floral Design 22 Carat Gold Plated Openable Bangles – White (Set of Two)",
+    "sku": "JB-006",
+    "category": "Bangles",
+    "subCategory": "Bangles",
+    "priceValue": 840.0,
+    "price": "₹840",
+    "regularPriceValue": 1050.0,
+    "regularPrice": "₹1,050",
+    "image": "/images/bangles/bangle-06.jpg",
+    "artisan": "Gninee Gems",
+    "city": "",
+    "material": "22 Carat Gold Plated",
+    "description": "Bring timeless charm to your jewellery collection with our Meenakari Elephant Floral Design 22 Carat Gold Plated Openable Bangles in an elegant white finish. Featuring intricate hand-painted meenakari work, these bangles showcase graceful elephant motifs paired with vibrant floral detailing inspired by traditional Indian artistry.\n\nCrafted with premium 22 carat gold plating, the meenakari elephant floral bangles offer a luxurious traditional appearance while ensuring easy wear through the practical openable clasp design. The sturdy construction allows comfortable daily use without compromising on classic elegance.\n\nWith proper care, these meenakari elephant floral bangles maintain their colour and brilliance for 5 to 10 years, making them ideal for weddings, festive occasions, and cultural celebrations. Their striking design and heritage appeal make them a standout addition to any traditional jewellery collection.",
+    "shortDescription": "●Premium Gold Plating\n22 carat gold plated for a rich traditional finish\n\n●Hand-Painted Meenakari Art\nElegant elephant and floral designs crafted on a soft white colour base\n\n●Long-Lasting Beauty\nColour and shine maintained for 5–10 years with proper care\n\n●Purchase Options\nAvailable as a single openable bangle or set of two",
+    "rating": null,
+    "dimensions": "Set of Two",
+    "care": "Colour and shine maintained for 5–10 years with proper care",
+    "story": "Bring timeless charm to your jewellery collection with our Meenakari Elephant Floral Design 22 Carat Gold Plated Openable Bangles in an elegant white finish. Featuring intricate hand-painted meenakari work, these bangles showcase graceful elephant motifs paired with vibrant floral detailing inspired by traditional Indian artistry.\n\nCrafted with premium 22 carat gold plating, the meenakari elephant floral bangles offer a luxurious traditional appearance while ensuring easy wear through the practical openable clasp design. The sturdy construction allows comfortable daily use without compromising on classic elegance.\n\nWith proper care, these meenakari elephant floral bangles maintain their colour and brilliance for 5 to 10 years, making them ideal for weddings, festive occasions, and cultural celebrations. Their striking design and heritage appeal make them a standout addition to any traditional jewellery collection.",
+    "metaDescription": "Shop meenakari elephant floral 22 carat gold plated openable bangles in white colour set of two with hand painted traditional craftsmanship and lasting shine.",
+    "seoTitle": "Meenakari Elephant Floral Bangles – Openable Gold Plated"
+  },
+  {
+    "id": 2007,
+    "name": "Meenakari Peacock Design 22 Carat Gold Plated Openable Bangles – Blue (Set of Two)",
+    "sku": "JB-007",
+    "category": "Bangles",
+    "subCategory": "Bangles",
+    "priceValue": 840.0,
+    "price": "₹840",
+    "regularPriceValue": 1050.0,
+    "regularPrice": "₹1,050",
+    "image": "/images/bangles/bangle-07.jpg",
+    "artisan": "Gninee Gems",
+    "city": "",
+    "material": "22 Carat Gold Plated",
+    "description": "Celebrate classic Indian elegance with our Meenakari Peacock Design 22 Carat Gold Plated Openable Bangles in a striking royal blue finish. Featuring intricate hand-painted meenakari artistry, these bangles showcase graceful peacock design motifs framed with delicate floral accents, creating a refined and heritage-inspired appearance.\n\nCrafted with premium 22 carat gold plating, the meenakari peacock design bangles combine timeless beauty with functional comfort through the secure openable clasp structure. This thoughtful design allows effortless wear while preserving a polished traditional look.\n\nDesigned to retain colour depth and brilliance for 5 to 10 years with proper care, these meenakari peacock design bangles are ideal for weddings, festive celebrations, and statement ethnic styling. The rich blue base paired with gold detailing adds a regal touch to any jewellery collection.",
+    "shortDescription": "●Premium Gold Plating\n22 carat gold plated for a rich traditional finish\n\n●Hand-Painted Meenakari Artistry\nDetailed peacock design panels with floral accents on a royal blue colour base\n\n●Long-Lasting Beauty\nColour and shine maintained for 5–10 years with proper care\n\n●Purchase Options\nAvailable as a single openable bangle or set of two",
+    "rating": null,
+    "dimensions": "Set of Two",
+    "care": "Colour and shine maintained for 5–10 years with proper care",
+    "story": "Celebrate classic Indian elegance with our Meenakari Peacock Design 22 Carat Gold Plated Openable Bangles in a striking royal blue finish. Featuring intricate hand-painted meenakari artistry, these bangles showcase graceful peacock design motifs framed with delicate floral accents, creating a refined and heritage-inspired appearance.\n\nCrafted with premium 22 carat gold plating, the meenakari peacock design bangles combine timeless beauty with functional comfort through the secure openable clasp structure. This thoughtful design allows effortless wear while preserving a polished traditional look.\n\nDesigned to retain colour depth and brilliance for 5 to 10 years with proper care, these meenakari peacock design bangles are ideal for weddings, festive celebrations, and statement ethnic styling. The rich blue base paired with gold detailing adds a regal touch to any jewellery collection.",
+    "metaDescription": "Shop meenakari peacock design 22 carat gold plated openable bangles in blue colour set of two with hand painted traditional artistry and lasting shine.",
+    "seoTitle": "Meenakari Peacock Design Bangles – Openable Gold Plated"
+  },
+  {
+    "id": 2008,
+    "name": "Meenakari Floral Design 22 Carat Gold Plated Openable Bangles – Black (Set of Two)",
+    "sku": "JB-008",
+    "category": "Bangles",
+    "subCategory": "Bangles",
+    "priceValue": 840.0,
+    "price": "₹840",
+    "regularPriceValue": 1050.0,
+    "regularPrice": "₹1,050",
+    "image": "/images/bangles/bangle-08.jpg",
+    "artisan": "Gninee Gems",
+    "city": "",
+    "material": "22 Carat Gold Plated",
+    "description": "Elevate your traditional jewellery collection with our Meenakari Floral Design 22 Carat Gold Plated Openable Bangles in a striking black finish. Showcasing intricate hand-painted meenakari artistry, these bangles feature delicate white floral design motifs enhanced with fine gold detailing for a sophisticated heritage look.\n\nCrafted with premium 22 carat gold plating, the meenakari floral design bangles combine elegance with functionality through their convenient openable clasp structure. This ensures effortless wear while maintaining a secure and comfortable fit for festive and formal occasions.\n\nDesigned to preserve colour richness and shine for 5 to 10 years with proper care, these meenakari floral design bangles are ideal for weddings, evening celebrations, and statement ethnic styling. The bold black base paired with refined floral design accents creates a timeless and graceful jewellery piece.",
+    "shortDescription": "●Premium Gold Plating\n22 carat gold plated for a rich and refined traditional finish\n\n●Hand-Painted Meenakari Artistry\nElegant white floral design patterns detailed on a deep black colour base\n\n●Long-Lasting Beauty\nColour and shine maintained for 5–10 years with proper care\n\n●Purchase Options\nAvailable as a single openable bangle or set of two",
+    "rating": null,
+    "dimensions": "Set of Two",
+    "care": "Colour and shine maintained for 5–10 years with proper care",
+    "story": "Elevate your traditional jewellery collection with our Meenakari Floral Design 22 Carat Gold Plated Openable Bangles in a striking black finish. Showcasing intricate hand-painted meenakari artistry, these bangles feature delicate white floral design motifs enhanced with fine gold detailing for a sophisticated heritage look.\n\nCrafted with premium 22 carat gold plating, the meenakari floral design bangles combine elegance with functionality through their convenient openable clasp structure. This ensures effortless wear while maintaining a secure and comfortable fit for festive and formal occasions.\n\nDesigned to preserve colour richness and shine for 5 to 10 years with proper care, these meenakari floral design bangles are ideal for weddings, evening celebrations, and statement ethnic styling. The bold black base paired with refined floral design accents creates a timeless and graceful jewellery piece.",
+    "metaDescription": "Shop meenakari floral design 22 carat gold plated openable bangles in black colour set of two with hand painted traditional artistry and lasting shine.",
+    "seoTitle": "Meenakari Floral Design Bangles – Openable Gold Plated"
+  },
+  {
+    "id": 2009,
+    "name": "Meenakari Peacock Design 22 Carat Gold Plated Openable Bangles – Green (Set of Two)",
+    "sku": "JB-009",
+    "category": "Bangles",
+    "subCategory": "Bangles",
+    "priceValue": 840.0,
+    "price": "₹840",
+    "regularPriceValue": 1050.0,
+    "regularPrice": "₹1,050",
+    "image": "/images/bangles/bangle-09.jpg",
+    "artisan": "Gninee Gems",
+    "city": "",
+    "material": "22 Carat Gold Plated",
+    "description": "Bring subtle elegance to your jewellery collection with our Meenakari Peacock Design 22 Carat Gold Plated Openable Bangles in a refreshing pastel green finish. Featuring intricate hand-painted meenakari artistry, these bangles showcase refined peacock design panels paired with soft floral detailing, creating a graceful and balanced traditional look.\n\nCrafted with premium 22 carat gold plating, the meenakari peacock design bangles offer a comfortable and secure fit through the openable clasp structure, making them ideal for extended wear during festive and cultural occasions.\n\nDesigned to retain colour richness and shine for 5 to 10 years with proper care, these meenakari peacock design bangles pair beautifully with sarees, lehengas, and classic ethnic outfits. Their gentle green tone and elegant detailing make them a timeless addition to any jewellery collection.",
+    "shortDescription": "●Premium Gold Plating\n22 carat gold plated for a rich traditional finish\n\n●Hand-Painted Meenakari Artistry\nGraceful peacock design motifs with floral accents on a soft green colour base\n\n●Long-Lasting Beauty\nColour and shine maintained for 5–10 years with proper care\n\n●Purchase Options\nAvailable as a single openable bangle or set of two",
+    "rating": null,
+    "dimensions": "Set of Two",
+    "care": "Colour and shine maintained for 5–10 years with proper care",
+    "story": "Bring subtle elegance to your jewellery collection with our Meenakari Peacock Design 22 Carat Gold Plated Openable Bangles in a refreshing pastel green finish. Featuring intricate hand-painted meenakari artistry, these bangles showcase refined peacock design panels paired with soft floral detailing, creating a graceful and balanced traditional look.\n\nCrafted with premium 22 carat gold plating, the meenakari peacock design bangles offer a comfortable and secure fit through the openable clasp structure, making them ideal for extended wear during festive and cultural occasions.\n\nDesigned to retain colour richness and shine for 5 to 10 years with proper care, these meenakari peacock design bangles pair beautifully with sarees, lehengas, and classic ethnic outfits. Their gentle green tone and elegant detailing make them a timeless addition to any jewellery collection.",
+    "metaDescription": "Shop meenakari peacock design 22 carat gold plated openable bangles in green colour set of two with hand painted traditional artistry and lasting shine.",
+    "seoTitle": "Meenakari Peacock Design Bangles – Openable Gold Plated"
+  },
+  {
+    "id": 2010,
+    "name": "Meenakari Peacock Design 22 Carat Gold Plated Openable Bangles – Blue (Set of Two)",
+    "sku": "JB-010",
+    "category": "Bangles",
+    "subCategory": "Bangles",
+    "priceValue": 840.0,
+    "price": "₹840",
+    "regularPriceValue": 1050.0,
+    "regularPrice": "₹1,050",
+    "image": "/images/bangles/bangle-10.jpg",
+    "artisan": "Gninee Gems",
+    "city": "",
+    "material": "22 Carat Gold Plated",
+    "description": "Bring vibrant elegance to your jewellery collection with our Meenakari Peacock Design 22 Carat Gold Plated Openable Bangles in a striking blue finish. Featuring intricate hand-painted meenakari artistry, these bangles showcase graceful peacock design panels enriched with floral accents and refined gold detailing for a regal traditional look.\n\nCrafted with premium 22 carat gold plating, the blue peacock design bangles offer a secure yet comfortable fit through the convenient openable clasp style, making them ideal for festive wear and special occasions.\n\nDesigned to retain colour brilliance and shine for 5 to 10 years with proper care, these blue peacock design bangles pair beautifully with sarees, lehengas, and ethnic outfits, adding a timeless charm to every celebration.",
+    "shortDescription": "●Premium Gold Plating\n22 carat gold plated for a rich traditional finish\n\n●Hand-Painted Meenakari Artistry\nPeacock design motifs with floral accents detailed on a vibrant blue colour base\n\n●Long-Lasting Beauty\nColour and shine maintained for 5–10 years with proper care\n\n●Purchase Options\nAvailable as a single openable bangle or set of two",
+    "rating": null,
+    "dimensions": "Set of Two",
+    "care": "Colour and shine maintained for 5–10 years with proper care",
+    "story": "Bring vibrant elegance to your jewellery collection with our Meenakari Peacock Design 22 Carat Gold Plated Openable Bangles in a striking blue finish. Featuring intricate hand-painted meenakari artistry, these bangles showcase graceful peacock design panels enriched with floral accents and refined gold detailing for a regal traditional look.\n\nCrafted with premium 22 carat gold plating, the blue peacock design bangles offer a secure yet comfortable fit through the convenient openable clasp style, making them ideal for festive wear and special occasions.\n\nDesigned to retain colour brilliance and shine for 5 to 10 years with proper care, these blue peacock design bangles pair beautifully with sarees, lehengas, and ethnic outfits, adding a timeless charm to every celebration.",
+    "metaDescription": "Shop meenakari blue peacock design 22 carat gold plated openable bangles set of two with hand painted traditional artistry and lasting shine.",
+    "seoTitle": "Meenakari Blue Peacock Design Bangles – Openable Gold Plated"
+  },
+  {
+    "id": 2011,
+    "name": "Meenakari Floral Design 22 Carat Gold Plated Openable Bangles – Red (Set of Two)",
+    "sku": "JB-011",
+    "category": "Bangles",
+    "subCategory": "Bangles",
+    "priceValue": 840.0,
+    "price": "₹840",
+    "regularPriceValue": 1050.0,
+    "regularPrice": "₹1,050",
+    "image": "/images/bangles/bangle-11.jpg",
+    "artisan": "Gninee Gems",
+    "city": "",
+    "material": "22 Carat Gold Plated",
+    "description": "Bring festive elegance to your jewellery collection with our Meenakari Floral Design 22 Carat Gold Plated Openable Bangles in a vibrant red finish. Featuring intricate hand-painted meenakari artistry, these bangles showcase delicate white floral design patterns enhanced with graceful gold vine detailing for a refined traditional look.",
+    "shortDescription": "● Premium Gold Plating\n22 carat gold plated for a rich traditional finish\n\n● Hand-Painted Meenakari Artistry\nWhite floral design patterns beautifully detailed on a deep red colour base\n\n● Long-Lasting Beauty\nColour and shine maintained for 5–10 years with proper care\n\n● Purchase Options\nAvailable as a single openable bangle or set of two",
+    "rating": null,
+    "dimensions": "Set of Two",
+    "care": "Colour and shine maintained for 5–10 years with proper care",
+    "story": "Bring festive elegance to your jewellery collection with our Meenakari Floral Design 22 Carat Gold Plated Openable Bangles in a vibrant red finish. Featuring intricate hand-painted meenakari artistry, these bangles showcase delicate white floral design patterns enhanced with graceful gold vine detailing for a refined traditional look.",
+    "metaDescription": "Shop meenakari red floral design 22 carat gold plated openable bangles set of two with hand painted traditional artistry and long lasting shine.",
+    "seoTitle": "Meenakari Red Floral Bangles – Openable Gold Plated"
+  },
+  {
+    "id": 2012,
+    "name": "Meenakari Floral Design 22 Carat Gold Plated Openable Bangles – Soft White (Set of Two)",
+    "sku": "JB-012",
+    "category": "Bangles",
+    "subCategory": "Bangles",
+    "priceValue": 840.0,
+    "price": "₹840",
+    "regularPriceValue": 1050.0,
+    "regularPrice": "₹1,050",
+    "image": "/images/bangles/bangle-12.jpg",
+    "artisan": "Gninee Gems",
+    "city": "",
+    "material": "22 Carat Gold Plated",
+    "description": "Add graceful elegance to your jewellery collection with our Meenakari Floral Design 22 Carat Gold Plated Openable Bangles in a soft white finish. Featuring intricate hand-painted meenakari artistry, these bangles showcase rich red floral design patterns enhanced with fine gold vine detailing for a refined traditional look.\n\nCrafted with premium 22 carat gold plating, the white floral design bangles offer comfort and durability through the secure openable clasp structure, making them perfect for weddings, festive occasions, and everyday ethnic wear.\n\nDesigned to retain colour richness and shine for 5 to 10 years with proper care, these white floral design bangles pair beautifully with sarees, lehengas, and classic Indian outfits, adding timeless charm to every celebration.",
+    "shortDescription": "● Premium Gold Plating\n22 carat gold plated for a rich traditional finish\n\n● Hand-Painted Meenakari Artistry\nRed floral design patterns delicately detailed on a soft white colour base\n\n● Long-Lasting Beauty\nColour and shine maintained for 5–10 years with proper care\n\n● Purchase Options\nAvailable as a single openable bangle or set of two",
+    "rating": null,
+    "dimensions": "Set of Two",
+    "care": "Colour and shine maintained for 5–10 years with proper care",
+    "story": "Add graceful elegance to your jewellery collection with our Meenakari Floral Design 22 Carat Gold Plated Openable Bangles in a soft white finish. Featuring intricate hand-painted meenakari artistry, these bangles showcase rich red floral design patterns enhanced with fine gold vine detailing for a refined traditional look.\n\nCrafted with premium 22 carat gold plating, the white floral design bangles offer comfort and durability through the secure openable clasp structure, making them perfect for weddings, festive occasions, and everyday ethnic wear.\n\nDesigned to retain colour richness and shine for 5 to 10 years with proper care, these white floral design bangles pair beautifully with sarees, lehengas, and classic Indian outfits, adding timeless charm to every celebration.",
+    "metaDescription": "Shop meenakari white floral design 22 carat gold plated openable bangles set of two with hand painted traditional artistry and lasting shine.",
+    "seoTitle": "Meenakari Floral Design Bangles – Openable Gold Plated"
+  },
+  {
+    "id": 2013,
+    "name": "Meenakari Floral Design 22 Carat Gold Plated Openable Bangles – White (Set of Two)",
+    "sku": "JB-013",
+    "category": "Bangles",
+    "subCategory": "Bangles",
+    "priceValue": 840.0,
+    "price": "₹840",
+    "regularPriceValue": 1050.0,
+    "regularPrice": "₹1,050",
+    "image": "/images/bangles/bangle-13.jpg",
+    "artisan": "Gninee Gems",
+    "city": "",
+    "material": "22 Carat Gold Plated",
+    "description": "Enhance your jewellery collection with these Meenakari Floral Design 22 Carat Gold Plated Openable Bangles in a classic white colour finish. Featuring refined hand-painted meenakari artistry, the bangles display elegant floral design patterns highlighted with fine gold detailing for a graceful traditional appeal.\n\nCrafted with premium 22 carat gold plating, the white floral design bangles offer secure comfort through the openable clasp structure, making them perfect for weddings, festive celebrations, and daily ethnic styling.\n\nDesigned to maintain brilliance and durability for 5 to 10 years with proper care, these white floral design bangles beautifully complement sarees, lehengas, and traditional outfits.",
+    "shortDescription": "● Premium Gold Plating\n22 carat gold plated for a rich traditional finish\n\n● Hand-Painted Meenakari Artistry\nElegant floral design patterns detailed on a white colour base\n\n● Long-Lasting Beauty\nColour and shine maintained for 5–10 years with proper care\n\n● Purchase Options\nAvailable as a single openable bangle or set of two",
+    "rating": null,
+    "dimensions": "Set of Two",
+    "care": "Colour and shine maintained for 5–10 years with proper care",
+    "story": "Enhance your jewellery collection with these Meenakari Floral Design 22 Carat Gold Plated Openable Bangles in a classic white colour finish. Featuring refined hand-painted meenakari artistry, the bangles display elegant floral design patterns highlighted with fine gold detailing for a graceful traditional appeal.\n\nCrafted with premium 22 carat gold plating, the white floral design bangles offer secure comfort through the openable clasp structure, making them perfect for weddings, festive celebrations, and daily ethnic styling.\n\nDesigned to maintain brilliance and durability for 5 to 10 years with proper care, these white floral design bangles beautifully complement sarees, lehengas, and traditional outfits.",
+    "metaDescription": "Shop meenakari white floral design 22 carat gold plated openable bangles set of two with hand painted traditional artistry and long lasting shine.",
+    "seoTitle": "Meenakari White Floral Bangles – Openable Gold Plated"
+  },
+  {
+    "id": 2014,
+    "name": "Meenakari Floral Design 22 Carat Gold Plated Bangles – Pink (Set of Two)",
+    "sku": "JB-014",
+    "category": "Bangles",
+    "subCategory": "Bangles",
+    "priceValue": 840.0,
+    "price": "₹840",
+    "regularPriceValue": 1050.0,
+    "regularPrice": "₹1,050",
+    "image": "/images/bangles/bangle-14.jpg",
+    "artisan": "Gninee Gems",
+    "city": "",
+    "material": "22 Carat Gold Plated",
+    "description": "●Premium Gold Plating\n22 carat gold plated for a rich traditional finish\n\n●Hand-Painted Meenakari Art\nElegant floral patterns crafted on a vibrant pink colour base\n\n●Long-Lasting Beauty\nColour and shine maintained for 5–10 years with proper care\n\n●Purchase Options\nAvailable as a single bangle or set of two",
+    "shortDescription": "●Premium Gold Plating\n22 carat gold plated for a rich traditional finish\n\n●Hand-Painted Meenakari Art\nElegant floral patterns crafted on a vibrant pink colour base\n\n●Long-Lasting Beauty\nColour and shine maintained for 5–10 years with proper care\n\n●Purchase Options\nAvailable as a single bangle or set of two",
+    "rating": null,
+    "dimensions": "Set of Two",
+    "care": "Colour and shine maintained for 5–10 years with proper care",
+    "story": "●Premium Gold Plating\n22 carat gold plated for a rich traditional finish\n\n●Hand-Painted Meenakari Art\nElegant floral patterns crafted on a vibrant pink colour base\n\n●Long-Lasting Beauty\nColour and shine maintained for 5–10 years with proper care\n\n●Purchase Options\nAvailable as a single bangle or set of two",
+    "metaDescription": "Shop meenakari floral 22 carat gold plated bangles in pink colour set of two with hand painted traditional craftsmanship and lasting shine.",
+    "seoTitle": "Meenakari Floral Gold Plated Bangles – Pink (Set of Two)"
+  },
+  {
+    "id": 2015,
+    "name": "Meenakari Floral Design 22 Carat Gold Plated Bangles – Green (Set of Two)",
+    "sku": "JB-015",
+    "category": "Bangles",
+    "subCategory": "Bangles",
+    "priceValue": 840.0,
+    "price": "₹840",
+    "regularPriceValue": 1050.0,
+    "regularPrice": "₹1,050",
+    "image": "/images/bangles/bangle-15.jpg",
+    "artisan": "Gninee Gems",
+    "city": "",
+    "material": "22 Carat Gold Plated",
+    "description": "Designed to retain colour richness and shine for 5 to 10 years with proper care, these red floral design bangles pair beautifully with sarees, lehengas, and classic Indian outfits, adding timeless charm to every occasion.",
+    "shortDescription": "● Premium Gold Plating\n22 carat gold plated for a rich traditional finish\n\n● Hand-Painted Meenakari Art\nElegant floral patterns crafted on a deep green colour base with vibrant accents\n\n● Long-Lasting Beauty\nColour and shine maintained for 5–10 years with proper care\n\n● Purchase Options\nAvailable as a single bangle or set of two",
+    "rating": null,
+    "dimensions": "Set of Two",
+    "care": "Colour and shine maintained for 5–10 years with proper care",
+    "story": "Designed to retain colour richness and shine for 5 to 10 years with proper care, these red floral design bangles pair beautifully with sarees, lehengas, and classic Indian outfits, adding timeless charm to every occasion.",
+    "metaDescription": "Shop meenakari floral 22 carat gold plated bangles in green colour set of two with hand painted traditional craftsmanship and lasting shine.",
+    "seoTitle": "Meenakari Floral Gold Plated Bangles – Green (Set of Two)"
+  },
+  {
+    "id": 2016,
+    "name": "Meenakari Floral Design 22 Carat Gold Plated Openable Bangles – Navy Blue (Set of Two)",
+    "sku": "JB-016",
+    "category": "Bangles",
+    "subCategory": "Bangles",
+    "priceValue": 840.0,
+    "price": "₹840",
+    "regularPriceValue": 1050.0,
+    "regularPrice": "₹1,050",
+    "image": "/images/bangles/bangle-16.png",
+    "artisan": "Gninee Gems",
+    "city": "",
+    "material": "22 Carat Gold Plated",
+    "description": "Enhance your jewellery collection with the timeless elegance of our Meenakari Floral Design 22 Carat Gold Plated Openable Bangles in a luxurious navy blue finish. Featuring intricate hand-painted meenakari artistry, these bangles showcase delicate white floral design patterns highlighted with graceful gold vine accents for a refined traditional look.\n\nCrafted with premium 22 carat gold plating, the navy floral design bangles offer both durability and comfort through the secure openable clasp style, making them ideal for festive occasions and special celebrations.\n\nDesigned to retain colour depth and shine for 5 to 10 years with proper care, these navy floral design bangles pair beautifully with sarees, lehengas, and elegant ethnic outfits, adding sophistication to every ensemble.",
+    "shortDescription": "● Premium Gold Plating\n22 carat gold plated for a rich traditional finish\n\n● Hand-Painted Meenakari Artistry\nWhite floral design patterns detailed beautifully on a deep navy blue colour base\n\n● Long-Lasting Beauty\nColour and shine maintained for 5–10 years with proper care\n\n● Purchase Options\nAvailable as a single openable bangle or set of two",
+    "rating": null,
+    "dimensions": "Set of Two",
+    "care": "Colour and shine maintained for 5–10 years with proper care",
+    "story": "Enhance your jewellery collection with the timeless elegance of our Meenakari Floral Design 22 Carat Gold Plated Openable Bangles in a luxurious navy blue finish. Featuring intricate hand-painted meenakari artistry, these bangles showcase delicate white floral design patterns highlighted with graceful gold vine accents for a refined traditional look.\n\nCrafted with premium 22 carat gold plating, the navy floral design bangles offer both durability and comfort through the secure openable clasp style, making them ideal for festive occasions and special celebrations.\n\nDesigned to retain colour depth and shine for 5 to 10 years with proper care, these navy floral design bangles pair beautifully with sarees, lehengas, and elegant ethnic outfits, adding sophistication to every ensemble.",
+    "metaDescription": "Shop meenakari navy floral design 22 carat gold plated openable bangles set of two with hand painted traditional artistry and long lasting shine.",
+    "seoTitle": "Meenakari Navy Floral Design Bangles – Openable Gold Plated"
+  }
+];
+
 const COLLECTIONS = [
   {id:"ceramics",name:"Ceramics",filter:"Ceramics",image:IMG.bowls,copy:"Quiet forms, hand-finished in small studios."},
   {id:"blue-pottery",name:"Blue Pottery",filter:"Blue Pottery",image:IMG.blue,copy:"Jaipur colour, contemporary silhouettes."},
@@ -258,7 +631,7 @@ const REGIONAL_CRAFT_PRODUCTS = INDIA_CRAFTS.flatMap((state, stateIndex) => stat
   };
 }));
 
-const PRODUCTS = [...BASE_PRODUCTS, ...REGIONAL_CRAFT_PRODUCTS];
+const PRODUCTS = [...BASE_PRODUCTS, ...BANGLES_PRODUCTS, ...REGIONAL_CRAFT_PRODUCTS];
 
 const PRICE_BANDS = [
   { label:"Under ₹2,000", max:2000 },
@@ -334,39 +707,122 @@ function TiltCard({children,className=""}){
 function BuilderGroup({label,value,options,onChange}){return <div className="builder-group"><span>{label}</span><div>{options.map(o=><button key={o} type="button" className={value===o?"is-selected":""} onClick={()=>onChange(o)}>{o}</button>)}</div></div>}
 
 function CustomLivePreview({custom,price,image,onPrice}){
-  const [rotation,setRotation]=useState(0);
-  const [zoom,setZoom]=useState(1);
-  const [drag,setDrag]=useState(null);
-  const formImage={Vessel:IMG.sculptural,Bowl:IMG.bowls,Lamp:IMG.indigo,Planter:IMG.terracotta}[custom.form]||image;
-  const formClass=custom.form.toLowerCase();
-  const materialClass=custom.material.toLowerCase();
-  const finishClass=custom.finish.toLowerCase().replace(/[^a-z0-9]+/g,"-");
-  const toneClass=custom.tone.toLowerCase();
-  const startDrag=e=>{e.currentTarget.setPointerCapture?.(e.pointerId);setDrag({x:e.clientX,start:rotation})};
-  const moveDrag=e=>{if(!drag)return;setRotation(drag.start+(e.clientX-drag.x)*0.22)};
-  const stopDrag=()=>setDrag(null);
   const sizeLabel={Small:"Compact",Medium:"Balanced",Large:"Statement"}[custom.size];
   return <div className="custom-live-preview">
-    <div className="custom-preview-topline"><span><i/> LIVE PREVIEW</span><small>Updates as you customize</small></div>
-    <div className={`custom-preview-stage form-${formClass} material-${materialClass} finish-${finishClass} tone-${toneClass}`} onPointerDown={startDrag} onPointerMove={moveDrag} onPointerUp={stopDrag} onPointerCancel={stopDrag} onWheel={e=>setZoom(z=>Math.max(.82,Math.min(1.22,z+(e.deltaY<0?.04:-.04))))}>
-      <div className="custom-preview-light"/>
-      <div className="custom-preview-product" style={{transform:`translate(-50%,-50%) scale(${zoom*(custom.size==="Small"?.88:custom.size==="Large"?1.1:1)}) rotateY(${rotation}deg)`}}>
-        <div className="custom-preview-backdrop"/>
-        <img src={formImage} alt={`${custom.form} custom preview`} draggable="false"/>
-        <div className="custom-material-overlay"/>
-        <div className="custom-finish-overlay"/>
-        {custom.engraving.trim()&&<div className="custom-engraving-preview">{custom.engraving}</div>}
-      </div>
-      <div className="custom-preview-ground"/>
-      <div className="custom-preview-controls"><button type="button" onClick={()=>setZoom(z=>Math.min(1.22,z+.08))}>+</button><button type="button" onClick={()=>setRotation(0)}>Reset</button><button type="button" onClick={()=>setZoom(z=>Math.max(.82,z-.08))}>−</button></div>
-      <span className="custom-preview-drag">Drag to inspect · scroll to zoom</span>
+    <div className="custom-preview-topline"><span><i/> LIVE CRAFT FILM</span><small>Watch the making, in real time</small></div>
+    <div className="custom-preview-stage custom-preview-stage--video">
+      <video className="custom-preview-video" src="/videos/OZABAY.mp4" autoPlay muted loop playsInline preload="metadata"/>
+      <div className="custom-preview-video-veil"/>
       <div className="custom-preview-spec"><span>{custom.form}</span><b>{custom.material}</b><em>{custom.finish}</em></div>
     </div>
     <div className="custom-preview-summary">
       <div><span>YOUR CONFIGURATION</span><strong>{custom.form} · {sizeLabel}</strong></div>
       <div className="custom-preview-price"><small>Estimated from</small><strong>{money(price)}</strong></div>
     </div>
-    <div className="custom-preview-note"><span>Visual concept preview</span><p>Colours, finish and proportions update here. Handmade texture and small variations may differ slightly in the final piece.</p></div>
+    <div className="custom-preview-note"><span>Visual concept preview</span><p>This film shows our artisans at work. Colours, finish and proportions of your own piece are confirmed with you after design review.</p></div>
+  </div>
+}
+
+function CustomDesignUpload({onConfirm}){
+  const inputRef=useRef(null);
+  const [stage,setStage]=useState("idle");
+  const [fileName,setFileName]=useState("");
+  const [previewUrl,setPreviewUrl]=useState(null);
+  const [note,setNote]=useState("");
+  const [dragOver,setDragOver]=useState(false);
+  const [artisan,setArtisan]=useState(null);
+  const [budget,setBudget]=useState(0);
+
+  const ARTISANS=[
+    {name:"Meera Joshi",craft:"Blue Pottery · Jaipur"},
+    {name:"Raghav Sen",craft:"Metal Repoussé · Moradabad"},
+    {name:"Ila Verma",craft:"Hand-block Textiles · Bhuj"},
+    {name:"Devendra Patil",craft:"Terracotta · Pune"},
+  ];
+
+  const handleFile=file=>{
+    if(!file||!file.type.startsWith("image/"))return;
+    const reader=new FileReader();
+    reader.onload=()=>{setPreviewUrl(reader.result);setFileName(file.name);setStage("preview")};
+    reader.readAsDataURL(file);
+  };
+  const onInputChange=e=>handleFile(e.target.files?.[0]);
+  const onDrop=e=>{e.preventDefault();setDragOver(false);handleFile(e.dataTransfer.files?.[0])};
+
+  const submit=()=>{
+    setStage("verifying");
+    setTimeout(()=>{
+      setStage("assigning");
+      setArtisan(ARTISANS[Math.floor(Math.random()*ARTISANS.length)]);
+      setTimeout(()=>{
+        setStage("budget");
+        setBudget(4200+Math.floor(Math.random()*2600));
+        setTimeout(()=>setStage("done"),1300);
+      },1500);
+    },1600);
+  };
+
+  const reset=()=>{
+    setStage("idle");setPreviewUrl(null);setFileName("");setNote("");setArtisan(null);setBudget(0);
+    if(inputRef.current)inputRef.current.value="";
+  };
+
+  return <div className="design-upload">
+    <div className="custom-preview-topline"><span><i/> UPLOAD YOUR DESIGN</span><small>Turn any reference into a made piece</small></div>
+    <div className="custom-studio-flow custom-studio-flow--inside"><span><b>01</b> Upload</span><i>→</i><span><b>02</b> Verify</span><i>→</i><span><b>03</b> Artisan</span><i>→</i><span><b>04</b> Budget</span></div>
+    {stage==="idle"&&(
+      <div className={`design-upload__drop ${dragOver?"is-drag":""}`}
+        onDragOver={e=>{e.preventDefault();setDragOver(true)}}
+        onDragLeave={()=>setDragOver(false)}
+        onDrop={onDrop}
+        onClick={()=>inputRef.current?.click()}
+        role="button" tabIndex={0}
+        onKeyDown={e=>e.key==="Enter"&&inputRef.current?.click()}>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 16v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>
+        <p>Upload a photo or sketch of your idea</p>
+        <small>Drag & drop, or click to browse — JPG or PNG</small>
+        <input ref={inputRef} type="file" accept="image/*" onChange={onInputChange} hidden/>
+      </div>
+    )}
+
+    {stage==="preview"&&(
+      <div className="design-upload__review">
+        <div className="design-upload__thumb" style={{backgroundImage:`url(${previewUrl})`}}/>
+        <p className="design-upload__filename">{fileName}</p>
+        <textarea className="design-upload__note" rows="2" placeholder="Material, size, colour, occasion…" value={note} onChange={e=>setNote(e.target.value)}/>
+        <div className="design-upload__actions">
+          <button type="button" className="text-link" onClick={reset}>Change Image</button>
+          <button type="button" className="hero-action" onClick={submit}>Submit for Review ↗</button>
+        </div>
+      </div>
+    )}
+
+    {(stage==="verifying"||stage==="assigning"||stage==="budget")&&(
+      <div className="design-upload__status">
+        <span className="design-upload__spinner"/>
+        <p>{stage==="verifying"&&"Verifying your design…"}{stage==="assigning"&&"Matching you with an artisan…"}{stage==="budget"&&"Estimating your budget…"}</p>
+        <div className="design-upload__trail">
+          <i className={stage==="verifying"?"is-active":"is-done"}/>
+          <i className={stage==="assigning"?"is-active":stage==="budget"?"is-done":""}/>
+          <i className={stage==="budget"?"is-active":""}/>
+        </div>
+      </div>
+    )}
+
+    {stage==="done"&&(
+      <div className="design-upload__done">
+        <span className="design-upload__check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+        <p className="design-upload__done-title">Your request is ready for review</p>
+        <div className="design-upload__result">
+          <div><small>Artisan assigned</small><strong>{artisan?.name}</strong><em>{artisan?.craft}</em></div>
+          <div><small>Estimated budget</small><strong>{money(budget)} – {money(budget+1800)}</strong></div>
+        </div>
+        <div className="design-upload__actions">
+          <button type="button" className="text-link" onClick={reset}>Upload Another</button>
+          <button type="button" className="hero-action" onClick={onConfirm}>Confirm & Start ↗</button>
+        </div>
+      </div>
+    )}
   </div>
 }
 
@@ -580,7 +1036,7 @@ function Product3DViewer({product,onClose,onAdd,onSpace}){
 
 function ProductDetail({product,onClose,onAdd,onView3D,onSpace,onReview}){
   const [tab,setTab]=useState("story");
-  return <div><button className="modal-close" onClick={onClose}>×</button><div className="pdp-grid"><div className="pdp-media"><div className="pdp-main-image"><img src={product.image} alt={product.name}/><span className="media-badge">Handmade · {product.rating} ★</span></div><div className="pdp-media-row"><img src={product.image} alt="Product detail"/><video src={VIDEOS.detail} autoPlay muted loop playsInline poster={product.image}/></div><div className="pdp-media-actions"><button onClick={()=>onView3D(product)}>3D view ↗</button><button onClick={()=>onSpace(product)}>View in your space ↗</button></div></div><div className="pdp-copy"><p className="eyebrow">{product.category} · {product.city}</p><h2>{product.name}</h2><div className="pdp-price-row"><strong>{product.price}</strong><span>★ {product.rating}</span></div><p>{product.description}</p><div className="pdp-maker"><span>Made by</span><strong>{product.artisan}</strong><small>{product.story}</small></div><div className="pdp-tabs"><button className={tab==="story"?"is-active":""} onClick={()=>setTab("story")}>Story</button><button className={tab==="details"?"is-active":""} onClick={()=>setTab("details")}>Details</button><button className={tab==="reviews"?"is-active":""} onClick={()=>setTab("reviews")}>Reviews</button></div>{tab==="story"&&<div className="tab-panel"><p>{product.story}</p><div className="craft-note"><span>Craft passport</span><strong>Handmade in {product.city}</strong><small>Small-batch edition · maker verified · natural variation expected</small></div></div>}{tab==="details"&&<div className="tab-panel product-facts"><span>Material <b>{product.material}</b></span><span>Dimensions <b>{product.dimensions}</b></span><span>Care <b>{product.care}</b></span><span>Maker <b>{product.artisan}</b></span></div>}{tab==="reviews"&&<div className="tab-panel review-list">{REVIEWS.map(([n,t,r])=><div key={n}><strong>{n} <span>{"★".repeat(r)}</span></strong><p>{t}</p></div>)}<button className="text-link" onClick={()=>onReview(product)}>Write a review ↗</button></div>}<button className="hero-action" onClick={()=>onAdd(product)}>Add to bag · {product.price} ↗</button></div></div></div>
+  return <div><button className="modal-close" onClick={onClose}>×</button><div className="pdp-grid"><div className="pdp-media"><div className="pdp-main-image"><img src={product.image} alt={product.name}/><span className="media-badge">Handmade{product.rating ? ` · ${product.rating} ★` : ""}</span></div><div className="pdp-media-row"><img src={product.image} alt="Product detail"/><video src={VIDEOS.detail} autoPlay muted loop playsInline poster={product.image}/></div><div className="pdp-media-actions"><button onClick={()=>onView3D(product)}>3D view ↗</button><button onClick={()=>onSpace(product)}>View in your space ↗</button></div></div><div className="pdp-copy"><p className="eyebrow">{product.category}{product.city ? ` · ${product.city}` : ""}</p><h2>{product.name}</h2><div className="pdp-price-row"><strong>{product.price}</strong>{product.rating&&<span>★ {product.rating}</span>}</div><p>{product.description}</p><div className="pdp-maker"><span>Made by</span><strong>{product.artisan}</strong><small>{product.story}</small></div><div className="pdp-tabs"><button className={tab==="story"?"is-active":""} onClick={()=>setTab("story")}>Story</button><button className={tab==="details"?"is-active":""} onClick={()=>setTab("details")}>Details</button><button className={tab==="reviews"?"is-active":""} onClick={()=>setTab("reviews")}>Reviews</button></div>{tab==="story"&&<div className="tab-panel"><p>{product.story}</p><div className="craft-note"><span>Craft passport</span><strong>Handmade in {product.city}</strong><small>Small-batch edition · maker verified · natural variation expected</small></div></div>}{tab==="details"&&<div className="tab-panel product-facts"><span>Material <b>{product.material}</b></span><span>Dimensions <b>{product.dimensions}</b></span><span>Care <b>{product.care}</b></span><span>Maker <b>{product.artisan}</b></span>{product.sku&&<span>SKU <b>{product.sku}</b></span>}{product.regularPrice&&<span>Regular price <b>{product.regularPrice}</b></span>}</div>}{tab==="reviews"&&<div className="tab-panel review-list">{REVIEWS.map(([n,t,r])=><div key={n}><strong>{n} <span>{"★".repeat(r)}</span></strong><p>{t}</p></div>)}<button className="text-link" onClick={()=>onReview(product)}>Write a review ↗</button></div>}<button className="hero-action" onClick={()=>onAdd(product)}>Add to bag · {product.price} ↗</button></div></div></div>
 }
 
 export default function App(){
@@ -597,7 +1053,7 @@ export default function App(){
   const [craftRoute,setCraftRoute]=useState(()=>{const m=window.location.pathname.match(/^\/crafts\/([^/]+)/);return m?m[1]:null});
   const [gift,setGift]=useState({occasion:"Housewarming",recipient:"Parents",budget:"₹5,000",style:"Earthy",wrapping:true,message:"Wishing you a beautiful new beginning."});
   const perPage=12;
-  const categories=["All",...COLLECTIONS.map(c=>c.filter)];
+  const categories=["All",...COLLECTIONS.map(c=>c.filter),"Bangles"];
   const shown=useMemo(()=>{let list=PRODUCTS.filter(p=>(filter==="All"||p.category===filter)&&(!priceBand||(priceBand.min==null||p.priceValue>=priceBand.min)&&(priceBand.max==null||p.priceValue<priceBand.max))&&`${p.name} ${p.category} ${p.artisan} ${p.city} ${p.material}`.toLowerCase().includes(query.toLowerCase()));if(sort==="price-low")list.sort((a,b)=>a.priceValue-b.priceValue);if(sort==="price-high")list.sort((a,b)=>b.priceValue-a.priceValue);if(sort==="name")list.sort((a,b)=>a.name.localeCompare(b.name));return list},[filter,query,sort,priceBand]);
   const visible=shown.slice(0,page*perPage);const totalPages=Math.max(1,Math.ceil(shown.length/perPage));const cartCount=cart.reduce((n,p)=>n+p.qty,0);const cartTotal=cart.reduce((n,p)=>n+p.priceValue*p.qty,0);
   const customPrice=CUSTOM_PRICES.form[custom.form]+CUSTOM_PRICES.material[custom.material]+CUSTOM_PRICES.finish[custom.finish]+CUSTOM_PRICES.size[custom.size]+CUSTOM_PRICES.tone[custom.tone]+(custom.engraving.trim()?450:0);
@@ -641,7 +1097,7 @@ export default function App(){
 
       
 
-      <section id="products" className="oz-section oz-products"><div className="oz-container"><Reveal><div className="section-head"><div><p className="eyebrow">The marketplace</p><h2>Made for <em>slow living.</em></h2></div><p>{PRODUCTS.length} pieces across seven collections. Every listing opens into a richer product story, 3D studio and bag flow — including state-wise regional craft edits.</p></div></Reveal><div className="catalog-toolbar"><div className="filter-row">{categories.map(c=><button key={c} className={filter===c&&priceBand===null?"is-active":""} onClick={()=>{setFilter(c);setPriceBand(null)}}>{c}</button>)}{priceBand&&<button className="is-active" onClick={()=>setPriceBand(null)}>{priceBand.label} ×</button>}</div><div className="catalog-tools"><span>{shown.length} pieces</span><select value={sort} onChange={e=>setSort(e.target.value)}><option value="featured">Featured</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option><option value="name">Name</option></select></div></div>{visible.length?<div className="product-grid">{visible.map((p,i)=><Reveal key={p.id}><TiltCard className="product-card"><div className="product-image" onClick={()=>setModal({type:"product",product:p})} role="button" tabIndex="0" onKeyDown={e=>{if(e.key==="Enter"||e.key===" ")setModal({type:"product",product:p})}}><img src={p.image} alt={p.name}/><span className="product-badge">{i<3&&page===1?"OzaBay Edit":p.category}</span><button className={`wishlist-btn ${wish.includes(p.id)?"is-liked":""}`} onClick={e=>{e.stopPropagation();toggleWish(p)}} aria-label="Toggle wishlist">♡</button><div className="product-card__tools" onClick={e=>e.stopPropagation()}><button onClick={()=>setModal({type:"product",product:p})}>Quick view</button><button onClick={()=>setModal({type:"3d",product:p})}>3D view</button></div><span className="product-image__hint">Tap to explore</span></div><div className="product-card__meta"><div><span>{p.artisan} · {p.city}</span><h3>{p.name}</h3><p>{p.material} · ★ {p.rating}</p></div><strong>{p.price}</strong></div><button className="product-add" onClick={()=>{add(p);setModal("cart")}}>Add to bag <span>↗</span></button></TiltCard></Reveal>)}</div>:<div className="empty-state"><h3>No pieces found.</h3><p>Try another search or collection.</p><button className="hero-action" onClick={()=>{setFilter("All");setQuery("");setPriceBand(null)}}>Reset edit ↗</button></div>}{visible.length<shown.length&&<div className="load-more"><span>Showing {visible.length} of {shown.length}</span><button className="hero-action" onClick={()=>setPage(p=>Math.min(totalPages,p+1))}>Load more pieces ↗</button></div>}</div></section>
+      <section id="products" className="oz-section oz-products"><div className="oz-container"><Reveal><div className="section-head"><div><p className="eyebrow">The marketplace</p><h2>Made for <em>slow living.</em></h2></div><p>{PRODUCTS.length} pieces across seven collections. Every listing opens into a richer product story, 3D studio and bag flow — including state-wise regional craft edits.</p></div></Reveal><div className="catalog-toolbar"><div className="filter-row">{categories.map(c=><button key={c} className={filter===c&&priceBand===null?"is-active":""} onClick={()=>{setFilter(c);setPriceBand(null)}}>{c}</button>)}{priceBand&&<button className="is-active" onClick={()=>setPriceBand(null)}>{priceBand.label} ×</button>}</div><div className="catalog-tools"><span>{shown.length} pieces</span><select value={sort} onChange={e=>setSort(e.target.value)}><option value="featured">Featured</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option><option value="name">Name</option></select></div></div>{visible.length?<div className="product-grid">{visible.map((p,i)=><Reveal key={p.id}><TiltCard className="product-card"><div className="product-image" onClick={()=>setModal({type:"product",product:p})} role="button" tabIndex="0" onKeyDown={e=>{if(e.key==="Enter"||e.key===" ")setModal({type:"product",product:p})}}><img src={p.image} alt={p.name}/><span className="product-badge">{i<3&&page===1?"OzaBay Edit":p.category}</span><button className={`wishlist-btn ${wish.includes(p.id)?"is-liked":""}`} onClick={e=>{e.stopPropagation();toggleWish(p)}} aria-label="Toggle wishlist">♡</button><div className="product-card__tools" onClick={e=>e.stopPropagation()}><button onClick={()=>setModal({type:"product",product:p})}>Quick view</button><button onClick={()=>setModal({type:"3d",product:p})}>3D view</button></div><span className="product-image__hint">Tap to explore</span></div><div className="product-card__meta"><div><span>{p.artisan}{p.city ? ` · ${p.city}` : ""}</span><h3>{p.name}</h3><p>{p.material} · ★ {p.rating}</p></div><strong>{p.price}</strong></div><button className="product-add" onClick={()=>{add(p);setModal("cart")}}>Add to bag <span>↗</span></button></TiltCard></Reveal>)}</div>:<div className="empty-state"><h3>No pieces found.</h3><p>Try another search or collection.</p><button className="hero-action" onClick={()=>{setFilter("All");setQuery("");setPriceBand(null)}}>Reset edit ↗</button></div>}{visible.length<shown.length&&<div className="load-more"><span>Showing {visible.length} of {shown.length}</span><button className="hero-action" onClick={()=>setPage(p=>Math.min(totalPages,p+1))}>Load more pieces ↗</button></div>}</div></section>
 
       
 
@@ -678,7 +1134,7 @@ export default function App(){
   </div>
 </section>
 
-<section id="create" className="oz-section oz-create"><div className="oz-container"><Reveal><div className="section-head custom-studio-head"><div><p className="eyebrow">OzaBay Custom Studio</p><h2>Create something <em>that is yours.</em></h2></div><div><p>Build your piece one choice at a time. The preview, estimated price and final design brief update as you customize.</p><div className="custom-studio-flow"><span><b>01</b> Choose</span><i>→</i><span><b>02</b> Customize</span><i>→</i><span><b>03</b> Review</span><i>→</i><span><b>04</b> Request</span></div></div></div></Reveal><div className="create-grid"><div className="create-preview"><CustomLivePreview custom={custom} price={customPrice} image={customImage}/></div><div className="builder"><div className="builder-intro"><span>01 · BUILD YOUR PIECE</span><strong>Every choice changes the preview.</strong><small>Start with the form, then refine material, finish, size and tone.</small></div><BuilderGroup label="Form" value={custom.form} options={customOptions.form} onChange={v=>setCustom(c=>({...c,form:v}))}/><BuilderGroup label="Material" value={custom.material} options={customOptions.material} onChange={v=>setCustom(c=>({...c,material:v}))}/><BuilderGroup label="Finish" value={custom.finish} options={customOptions.finish} onChange={v=>setCustom(c=>({...c,finish:v}))}/><BuilderGroup label="Size" value={custom.size} options={customOptions.size} onChange={v=>setCustom(c=>({...c,size:v}))}/><BuilderGroup label="Tone" value={custom.tone} options={customOptions.tone} onChange={v=>setCustom(c=>({...c,tone:v}))}/><label className="builder-field">Engraving<input value={custom.engraving} onChange={e=>setCustom(c=>({...c,engraving:e.target.value}))} placeholder="Optional name / date"/></label><label className="builder-field">Maker notes<textarea value={custom.notes} onChange={e=>setCustom(c=>({...c,notes:e.target.value}))} placeholder="Tell the maker what matters to you…"/></label><div className="builder-actions"><button className="hero-action" onClick={addCustom}>Add custom piece · {money(customPrice)} ↗</button><button className="text-link" onClick={()=>{setOrderSent(false);setCustomStep(1);setModal("custom-order")}}>Request made-to-order ↗</button><button className="text-link" onClick={resetCustom}>Reset</button></div></div></div></div></section>
+<section id="create" className="oz-section oz-create"><div className="oz-container"><Reveal><div className="section-head custom-studio-head"><div><p className="eyebrow">OzaBay Custom Studio</p><h2>Create something <em>that is yours.</em></h2></div></div></Reveal><div className="create-grid create-grid--video"><div className="create-video-pane"><video className="create-video" src="/videos/OZABAY.mp4" autoPlay muted loop playsInline preload="metadata"/></div><div className="create-upload-pane"><CustomDesignUpload onConfirm={()=>{setOrderSent(false);setCustomStep(1);setModal("custom-order")}}/></div></div></div></section>
 
       <section className="oz-section order-track-section"><div className="oz-container track-grid"><div><p className="eyebrow">After checkout</p><h2>Track the <em>craft journey.</em></h2><p>Enter any demo OzaBay order ID generated by this frontend to see the UI for order status, maker stage and delivery handoff.</p><form onSubmit={e=>{e.preventDefault();setModal("tracking");}} className="track-form"><input value={tracking} onChange={e=>setTracking(e.target.value)} placeholder="e.g. OZ-1234567"/><button className="hero-action">Track order ↗</button></form></div><div className="timeline"><div className="timeline-step is-done"><span>01</span><div><strong>Order received</strong><small>Payment / request captured</small></div></div><div className="timeline-step is-current"><span>02</span><div><strong>Maker crafting</strong><small>Handmade work in progress</small></div></div><div className="timeline-step"><span>03</span><div><strong>Quality checked</strong><small>Final inspection & passport</small></div></div><div className="timeline-step"><span>04</span><div><strong>On the way</strong><small>Courier handoff</small></div></div></div></div></section>
 

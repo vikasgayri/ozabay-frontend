@@ -596,3 +596,405 @@ body{overflow-x:hidden}
   .product-image,.artisan-card img,.review-card img,.regional-card img{transition:none!important;transform:none!important}
   .reveal.is-visible{animation:none}
 }
+
+/* ============================================================
+   CUSTOM STUDIO — Live craft video + design upload panel
+   ============================================================ */
+.custom-preview-stage--video{background:#071a36;cursor:default}
+.custom-preview-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:ozbVideoKen 22s ease-in-out infinite alternate}
+@keyframes ozbVideoKen{from{transform:scale(1.02)}to{transform:scale(1.09)}}
+.custom-preview-video-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,18,40,.05) 0%,rgba(5,18,40,.1) 55%,rgba(5,18,40,.72) 100%);pointer-events:none}
+
+.create-preview{display:grid;gap:26px}
+
+.design-upload{border:1px solid rgba(7,26,54,.08);box-shadow:20px 28px 70px rgba(7,26,54,.08);background:#fff;padding:26px}
+
+.design-upload__drop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:clamp(34px,5vw,52px) 20px;text-align:center;color:var(--navy);border:1.5px dashed rgba(7,26,54,.22);cursor:pointer;transition:border-color .3s ease,background-color .3s ease}
+.design-upload__drop:hover,.design-upload__drop.is-drag{border-color:var(--gold);background:rgba(201,164,92,.06)}
+.design-upload__drop svg{color:var(--gold)}
+.design-upload__drop p{margin:4px 0 0;font-size:13.5px;font-weight:500}
+.design-upload__drop small{font-size:11px;color:#8b929d}
+
+.design-upload__review{display:grid;gap:12px}
+.design-upload__thumb{width:100%;aspect-ratio:16/9;background-color:var(--navy);background-size:cover;background-position:center}
+.design-upload__filename{margin:0;font-size:11.5px;color:#8b929d;word-break:break-all}
+.design-upload__note{width:100%;padding:11px 13px;font-size:13px;font-family:var(--sans);color:var(--navy);background:#fafafa;border:1px solid rgba(7,26,54,.15);resize:vertical}
+.design-upload__note:focus-visible{outline:1px solid var(--gold)}
+.design-upload__actions{display:flex;align-items:center;justify-content:space-between;gap:14px}
+
+.design-upload__status{display:flex;flex-direction:column;align-items:center;gap:14px;padding:28px 10px;text-align:center}
+.design-upload__status p{margin:0;font-size:13px;color:var(--navy)}
+.design-upload__spinner{width:30px;height:30px;border:2.5px solid rgba(7,26,54,.12);border-top-color:var(--gold);border-radius:50%;animation:ozbSpin .9s linear infinite}
+@keyframes ozbSpin{to{transform:rotate(360deg)}}
+.design-upload__trail{display:flex;gap:8px}
+.design-upload__trail i{width:7px;height:7px;border-radius:50%;background:rgba(7,26,54,.15);transition:background-color .4s ease,transform .4s ease}
+.design-upload__trail i.is-active{background:var(--gold);transform:scale(1.3)}
+.design-upload__trail i.is-done{background:var(--navy)}
+
+.design-upload__done{display:flex;flex-direction:column;align-items:center;gap:14px;padding:14px 4px;text-align:center}
+.design-upload__check{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;color:#fff;background:#3a9e6f;border-radius:50%}
+.design-upload__done-title{margin:0;font-size:14px;font-weight:500;color:var(--navy)}
+.design-upload__result{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.design-upload__result small{display:block;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#8b929d;margin-bottom:6px}
+.design-upload__result strong{display:block;font-family:var(--serif);font-size:16px;color:var(--navy)}
+.design-upload__result em{font-style:normal;font-size:11px;color:#8b929d}
+.design-upload__done .design-upload__actions{width:100%}
+
+@media(max-width:680px){
+  .design-upload{padding:20px}
+  .design-upload__result{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  .custom-preview-video{animation:none}
+  .design-upload__spinner{animation-duration:1.4s}
+}
+
+/* ============================================================
+   CUSTOM STUDIO v3 — full craft video pane + upload pane
+   (video is 1920x1080 / 16:9 — container matches exactly so
+   nothing is cropped)
+   ============================================================ */
+.create-grid--video{
+  display:grid;
+  grid-template-columns:1.35fr 1fr;
+  gap:28px;
+  align-items:stretch;
+}
+
+.create-video-pane{
+  position:relative;
+  overflow:hidden;
+  aspect-ratio:16/9;
+  width:100%;
+  background:#071a36;
+  border:1px solid rgba(7,26,54,.08);
+  box-shadow:20px 28px 70px rgba(7,26,54,.16);
+}
+
+.create-video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  animation:ozbVideoKen 24s ease-in-out infinite alternate;
+}
+@keyframes ozbVideoKen{from{transform:scale(1.02)}to{transform:scale(1.08)}}
+
+.create-video-frame{
+  position:absolute;
+  left:0;right:0;bottom:0;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  padding:26px clamp(18px,3vw,34px) 22px;
+  background:linear-gradient(0deg,rgba(5,18,40,.85) 0%,rgba(5,18,40,.35) 60%,rgba(5,18,40,0) 100%);
+  pointer-events:none;
+}
+.create-video-frame span{
+  font-family:var(--sans);
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+.create-video-frame small{
+  font-family:var(--serif);
+  font-size:19px;
+  color:#fff;
+}
+
+.create-upload-pane{
+  display:flex;
+}
+.create-upload-pane .design-upload{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:18px;
+  padding:clamp(28px,3vw,40px);
+}
+.create-upload-pane .design-upload__drop{
+  padding:clamp(40px,6vw,64px) 20px;
+}
+
+@media(max-width:1020px){
+  .create-grid--video{grid-template-columns:1fr}
+  .create-video-pane{aspect-ratio:16/9}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .create-video{animation:none}
+}
+
+/* ============================================================
+   CUSTOM STUDIO v4 — museum-card upload panel
+   (faint handmade-product backdrop + gold corner frame)
+   ============================================================ */
+.design-upload{
+  position:relative;
+  overflow:hidden;
+  z-index:0;
+  border:0;
+}
+.design-upload::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.8),rgba(255,255,255,.88)),
+    url('/images/textile3.jpg') center/cover no-repeat;
+}
+.du-corner{position:absolute;width:20px;height:20px;z-index:2;pointer-events:none}
+.du-corner--tl{top:16px;left:16px;border-top:2px solid var(--gold);border-left:2px solid var(--gold)}
+.du-corner--tr{top:16px;right:16px;border-top:2px solid var(--gold);border-right:2px solid var(--gold)}
+.du-corner--bl{bottom:16px;left:16px;border-bottom:2px solid var(--gold);border-left:2px solid var(--gold)}
+.du-corner--br{bottom:16px;right:16px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold)}
+
+.create-upload-pane .design-upload > *{position:relative;z-index:1}
+
+.design-upload .custom-preview-topline span{
+  font-size:9.5px;
+  letter-spacing:.18em;
+  font-weight:600;
+}
+
+.design-upload__drop{
+  background:rgba(255,255,255,.5);
+  border:1px solid rgba(7,26,54,.14);
+}
+.design-upload__drop:hover,.design-upload__drop.is-drag{
+  background:rgba(255,255,255,.75);
+}
+
+@media(prefers-reduced-motion:reduce){
+  .design-upload::after{transition:none}
+}
+
+/* ============================================================
+   CUSTOM STUDIO — final upload panel layout
+   ============================================================ */
+.create-upload-pane .design-upload{
+  width:100%;
+  height:100%;
+  box-sizing:border-box;
+  border-radius:0;
+  padding:clamp(24px,2.6vw,36px);
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  gap:14px;
+}
+
+.create-upload-pane .design-upload .custom-preview-topline{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  width:100%;
+  margin:0;
+  padding:0 4px 2px;
+  position:relative;
+  z-index:3;
+}
+
+.create-upload-pane .design-upload .custom-preview-topline span{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  color:var(--gold);
+  font-size:9.5px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  font-weight:600;
+}
+
+.create-upload-pane .design-upload .custom-preview-topline span i{
+  width:5px;
+  height:5px;
+  display:block;
+  border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 0 4px rgba(201,164,92,.12);
+}
+
+.create-upload-pane .design-upload .custom-preview-topline small{
+  color:#8b929d;
+  font-size:9px;
+  letter-spacing:.02em;
+  white-space:nowrap;
+}
+
+.create-upload-pane .custom-studio-flow--inside{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  flex-wrap:nowrap;
+  white-space:nowrap;
+  width:100%;
+  padding:9px 10px;
+  box-sizing:border-box;
+  background:rgba(255,255,255,.58);
+  border:1px solid rgba(7,26,54,.08);
+  border-radius:999px;
+  position:relative;
+  z-index:3;
+}
+
+.create-upload-pane .custom-studio-flow--inside span{
+  font-size:8px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:#68717d;
+  padding:0;
+  border:0;
+  background:transparent;
+}
+
+.create-upload-pane .custom-studio-flow--inside b{
+  color:var(--gold);
+  font-weight:600;
+  margin-right:3px;
+}
+
+.create-upload-pane .custom-studio-flow--inside i{
+  font-style:normal;
+  color:#aeb5bd;
+  font-size:10px;
+}
+
+.create-upload-pane .design-upload__drop{
+  width:100%;
+  box-sizing:border-box;
+  border-radius:16px;
+  padding:clamp(34px,4.2vw,52px) 20px;
+  margin-top:2px;
+}
+
+@media(max-width:680px){
+  .create-upload-pane .design-upload .custom-preview-topline{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:5px;
+  }
+  .create-upload-pane .custom-studio-flow--inside{
+    overflow-x:auto;
+    justify-content:flex-start;
+    border-radius:14px;
+  }
+}
+
+/* Final upload-area refinement */
+.create-upload-pane .custom-studio-flow--inside{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  width:100%;
+  padding:2px 0 4px;
+  margin:0;
+  background:transparent;
+  border:0;
+  border-radius:0;
+  box-sizing:border-box;
+  white-space:nowrap;
+}
+.create-upload-pane .custom-studio-flow--inside span{
+  font-size:9px;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  color:#68717d;
+  padding:0;
+  border:0;
+  background:transparent;
+}
+.create-upload-pane .custom-studio-flow--inside b{
+  color:var(--gold);
+  font-weight:600;
+  margin-right:3px;
+}
+.create-upload-pane .custom-studio-flow--inside i{
+  font-style:normal;
+  color:#b5bbc2;
+  font-size:10px;
+}
+.create-upload-pane .design-upload__drop{
+  width:90%;
+  align-self:center;
+  box-sizing:border-box;
+  min-height:0;
+  padding:42px 22px 38px;
+  margin:2px auto 0;
+  border-radius:16px;
+  border:1px solid rgba(7,26,54,.10);
+  background:rgba(255,255,255,.78);
+  box-shadow:0 12px 30px rgba(7,26,54,.06), inset 0 1px 0 rgba(255,255,255,.9);
+  gap:10px;
+  transition:transform .3s ease, box-shadow .3s ease, background-color .3s ease, border-color .3s ease;
+}
+.create-upload-pane .design-upload__drop:hover,.create-upload-pane .design-upload__drop.is-drag{
+  background:rgba(255,255,255,.9);
+  border-color:rgba(201,164,92,.5);
+  box-shadow:0 16px 36px rgba(7,26,54,.08), inset 0 1px 0 rgba(255,255,255,.95);
+  transform:translateY(-1px);
+}
+.create-upload-pane .design-upload__drop svg{
+  width:26px;
+  height:26px;
+  margin-bottom:2px;
+}
+.create-upload-pane .design-upload__drop p{
+  margin:3px 0 0;
+  font-family:var(--serif);
+  font-size:16px;
+  font-weight:400;
+  letter-spacing:-.01em;
+}
+.create-upload-pane .design-upload__drop small{
+  font-size:10px;
+  letter-spacing:.01em;
+}
+@media(max-width:680px){
+  .create-upload-pane .custom-studio-flow--inside{
+    overflow-x:auto;
+    justify-content:flex-start;
+  }
+  .create-upload-pane .design-upload__drop{width:100%;padding:34px 18px 32px}
+}
+
+/* Final correction: remove the decorative corner marks and tighten the upload-panel spacing. */
+.create-upload-pane .du-corner{
+  display:none !important;
+}
+.create-upload-pane .design-upload{
+  padding:26px clamp(24px,2.8vw,34px) 28px;
+  gap:12px;
+  justify-content:flex-start;
+}
+.create-upload-pane .design-upload .custom-preview-topline{
+  margin:0;
+  padding:0 2px;
+}
+.create-upload-pane .design-upload__drop{
+  width:90%;
+  margin:0 auto;
+  padding:34px 22px 32px;
+}
+
+/* Final proportion adjustment: slightly narrower and a little taller for better spacing. */
+.create-upload-pane .design-upload__drop{
+  width:86%;
+  padding:46px 22px 44px;
+  margin:0 auto;
+}
+@media(max-width:680px){
+  .create-upload-pane .design-upload__drop{
+    width:100%;
+    padding:34px 18px 32px;
+  }
+}
