@@ -166,6 +166,7 @@ const BANGLES_PRODUCTS = [
     "regularPrice": "₹812",
     "image": "/images/bangles/bangle-01.png",
     "galleryImage": "/images/bangles/bangle-01-2.png",
+    "viewerImage": "/images/bangles/bangle-01-3d.png",
     "artisan": "Gninee Gems",
     "city": "",
     "material": "22 Carat Gold Plated",
@@ -1016,6 +1017,7 @@ function Product3DViewer({product,onClose,onAdd,onSpace}){
   const [zoom,setZoom]=useState(1);
   const [autoSpin,setAutoSpin]=useState(true);
   const [light,setLight]=useState({x:50,y:42});
+  const viewerSrc=product.viewerImage||product.image;
   const dragging=useRef(false);
   const last=useRef({x:0,y:0});
   const reset=()=>{setRotation(-18);setPitch(3);setZoom(1);setAutoSpin(true);setLight({x:50,y:42});};
@@ -1037,9 +1039,9 @@ function Product3DViewer({product,onClose,onAdd,onSpace}){
     <div className="viewer-stage" style={{"--viewer-light-x":`${light.x}%`,"--viewer-light-y":`${light.y}%`}} onPointerDown={down} onPointerMove={move} onPointerUp={stop} onPointerCancel={stop} onDoubleClick={reset} onWheel={e=>e.deltaY<0?zoomIn():zoomOut()} tabIndex="0" onKeyDown={e=>{if(e.key==="ArrowLeft")setRotation(v=>v-10);if(e.key==="ArrowRight")setRotation(v=>v+10);if(e.key==="ArrowUp")setPitch(v=>Math.max(-16,v-7));if(e.key==="ArrowDown")setPitch(v=>Math.min(18,v+7));if(e.key==="+")zoomIn();if(e.key==="-")zoomOut();if(e.key==="0")reset();}} aria-label={`Interactive 3D presentation of ${product.name}`}>
       <div className="viewer-halo"/><div className="viewer-floor"/><div className="viewer-grid"/>
       <div className="viewer-object" style={{transform:`translateZ(0) scale(${zoom}) rotateX(${pitch}deg) rotateY(${rotation}deg)`}}>
-        <span className="viewer-layer viewer-layer--back"><img src={product.image} alt="" draggable="false"/></span>
-        <span className="viewer-layer viewer-layer--mid"><img src={product.image} alt="" draggable="false"/></span>
-        <span className="viewer-layer viewer-layer--front"><img src={product.image} alt={product.name} draggable="false"/></span>
+        <span className="viewer-layer viewer-layer--back"><img src={viewerSrc} alt="" draggable="false"/></span>
+        <span className="viewer-layer viewer-layer--mid"><img src={viewerSrc} alt="" draggable="false"/></span>
+        <span className="viewer-layer viewer-layer--front"><img src={viewerSrc} alt={product.name} draggable="false"/></span>
         <span className="viewer-specular"/>
       </div>
       <div className="viewer-controls" onPointerDown={e=>e.stopPropagation()}><button onClick={zoomIn} aria-label="Zoom in">+</button><button onClick={reset} aria-label="Reset 3D view">Reset</button><button onClick={zoomOut} aria-label="Zoom out">−</button></div>
