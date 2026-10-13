@@ -1330,6 +1330,7 @@ const PENDANTS_PRODUCTS = [
     "image": "/images/pendents/pendent-18.jpg",
     "galleryImage": "/images/pendents/pendent-18-2.jpg",
     "images": ["/images/pendents/pendent-18.jpg", "/images/pendents/pendent-18-2.jpg", "/images/pendents/pendent-18-3.jpg"],
+    
     "artisan": "Gninee Gems",
     "city": "",
     "material": "92.5 Sterling Silver · Green Aventurine",
