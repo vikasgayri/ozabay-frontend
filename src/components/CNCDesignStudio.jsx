@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import "./CNCDesignStudio.css";
+import { imageToSketch, fillSketch, PhotoQualityError } from "./sketchTools";
 
 const COLORS = ["#071a36", "#c9a45c", "#f6f1e8", "#8c6b4f", "#7f8f72", "#a94f45", "#d8bca0", "#ffffff"];
 
@@ -216,6 +217,15 @@ export default function CNCDesignStudio() {
   const [quantity, setQuantity] = useState("1");
   const [notes, setNotes] = useState("");
   const [message, setMessage] = useState("");
+  // Image-to-sketch settings
+  const [autoSketch, setAutoSketch] = useState(true);
+  const [sketchDetail, setSketchDetail] = useState(5);
+  const [sketchWeight, setSketchWeight] = useState(2);
+  const [sketchClean, setSketchClean] = useState(5);
+  const [gapClose, setGapClose] = useState(3);
+  const [busy, setBusy] = useState(false);
+  // Photo-quality feedback: { errors, warnings } plus what to do if the customer chooses to continue anyway.
+  const [quality, setQuality] = useState(null);
 
   const commit = (next) => {
     setPast((prev) => [...prev, items].slice(-40));
@@ -294,6 +304,33 @@ export default function CNCDesignStudio() {
     setMessage(`${sketch.name} added to your canvas. Edit the text, colours, dimensions and finish to make it yours.`);
   };
 
+  // Upload flow: check the photo, turn it into a sketch and place it on the canvas.
+  const addPhotoAsSketch = async (dataUrl, skipQualityCheck = false) => {
+    setBusy(true);
+    setQuality(null);
+    setMessage("Checking your photo and creating the sketch…");
+    try {
+      const sketch = await imageToSketch(dataUrl, sketchOptions(), { skipQualityCheck });
+      const id = uid();
+      commit([...items, { id, type: "image", href: sketch.href, lineHref: sketch.lineHref, sourceHref: dataUrl, sketch: true, opacity: 1, ...fitToCanvas(sketch.width, sketch.height) }]);
+      setSelectedId(id);
+      setTool("fill");
+      if (sketch.report.warnings.length) setQuality({ errors: [], warnings: sketch.report.warnings });
+      setMessage("Your image is now a sketch. Pick a colour and click inside any outlined area to fill it.");
+    } catch (error) {
+      if (error instanceof PhotoQualityError) {
+        // Not clear enough: nothing is added to the canvas until the customer uploads a better photo or chooses to continue.
+        setQuality({ ...error.report, retry: () => addPhotoAsSketch(dataUrl, true) });
+        setMessage("");
+      } else {
+        commit([...items, { id: uid(), type: "image", href: dataUrl, x: 250, y: 160, width: 300, height: 240, opacity: 1 }]);
+        setMessage("We couldn't convert this image to a sketch, so it was added as a photo.");
+      }
+    } finally {
+      setBusy(false);
+    }
+  };
+
   const uploadImage = (event) => {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -307,8 +344,13 @@ export default function CNCDesignStudio() {
     }
     const reader = new FileReader();
     reader.onload = () => {
-      commit([...items, { id: uid(), type: "image", href: reader.result, x: 250, y: 160, width: 300, height: 240, opacity: 1 }]);
-      setTool("select");
+      if (!autoSketch) {
+        setQuality(null);
+        commit([...items, { id: uid(), type: "image", href: reader.result, x: 250, y: 160, width: 300, height: 240, opacity: 1 }]);
+        setTool("select");
+        return;
+      }
+      addPhotoAsSketch(reader.result);
     };
     reader.readAsDataURL(file);
     event.target.value = "";
@@ -334,6 +376,18 @@ export default function CNCDesignStudio() {
       const px = Math.floor(((canvasX - left) / drawnWidth) * image.naturalWidth);
       const py = Math.floor(((canvasY - top) / drawnHeight) * image.naturalHeight);
       if (px < 0 || py < 0 || px >= image.naturalWidth || py >= image.naturalHeight) return;
+      if (item.sketch && item.lineHref) {
+        try {
+          const href = await fillSketch(item.href, item.lineHref, px, py, color, Number(gapClose));
+          if (!href) { setMessage("Click inside an area rather than on a line (or this area already has that colour)."); return; }
+          commit(items.map((current) => current.id === item.id ? { ...current, href } : current));
+          setSelectedId(item.id);
+          setMessage("Area filled. If colour spills into a neighbouring area, undo and raise “Close gaps”.");
+        } catch {
+          setMessage("Could not fill this sketch. Please try converting the image again.");
+        }
+        return;
+      }
       try {
         const href = await floodFillImage(item.href, px, py, color);
         commit(items.map((current) => current.id === item.id ? { ...current, href, opacity: 1, filter: undefined } : current));
@@ -351,8 +405,63 @@ export default function CNCDesignStudio() {
     setColor(nextColor);
     if (!selectedId) return;
     commit(items.map((item) => item.id === selectedId
-      ? { ...item, ...(item.type === "image" ? { opacity: 1, filter: `sepia(1) saturate(2.5) hue-rotate(${hueFromHex(nextColor)}deg)` } : { fill: item.type === "text" ? nextColor : item.fill, stroke: item.type === "text" ? item.stroke : nextColor }) }
+      ? item.sketch ? item : { ...item, ...(item.type === "image" ? { opacity: 1, filter: `sepia(1) saturate(2.5) hue-rotate(${hueFromHex(nextColor)}deg)` } : { fill: item.type === "text" ? nextColor : item.fill, stroke: item.type === "text" ? item.stroke : nextColor }) }
       : item));
+  };
+
+  // The image the sketch tools act on: the selected image, otherwise the most recently added one.
+  const sketchTarget = () => {
+    const selected = items.find((item) => item.id === selectedId && item.type === "image");
+    return selected || [...items].reverse().find((item) => item.type === "image") || null;
+  };
+
+  const sketchOptions = () => ({ detail: Number(sketchDetail), weight: Number(sketchWeight), cleanup: Number(sketchClean) });
+
+  // Fit an image of the given pixel size inside the canvas, leaving a small margin.
+  const fitToCanvas = (w, h) => {
+    const scale = Math.min(720 / w, 500 / h);
+    const width = w * scale, height = h * scale;
+    return { x: (800 - width) / 2, y: (560 - height) / 2, width, height };
+  };
+
+  const convertToSketch = async (skipQualityCheck = false) => {
+    const target = sketchTarget();
+    if (!target) { setMessage("Upload an image first, then convert it to a sketch."); return; }
+    setBusy(true);
+    setQuality(null);
+    setMessage("Checking your photo and creating the sketch…");
+    try {
+      const source = target.sourceHref || target.href;
+      const sketch = await imageToSketch(source, sketchOptions(), { skipQualityCheck });
+      if (sketch.report.warnings.length) setQuality({ errors: [], warnings: sketch.report.warnings });
+      commit(items.map((item) => item.id === target.id
+        ? { ...item, href: sketch.href, lineHref: sketch.lineHref, sourceHref: source, sketch: true, filter: undefined, opacity: 1 }
+        : item));
+      setSelectedId(target.id);
+      setTool("fill");
+      setMessage(target.sketch
+        ? "Sketch regenerated with your new settings. Pick a colour and click inside any outlined area to fill it."
+        : "Your image is now a sketch. Pick a colour and click inside any outlined area to fill it.");
+    } catch (error) {
+      if (error instanceof PhotoQualityError) {
+        setQuality({ ...error.report, retry: () => convertToSketch(true) });
+        setMessage("");
+      } else {
+        setMessage("This image can't be converted in the browser (its website blocks access). Download it, upload it here, then convert it.");
+      }
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const restorePhoto = () => {
+    const target = sketchTarget();
+    if (!target?.sketch) return;
+    commit(items.map((item) => item.id === target.id
+      ? { ...item, href: item.sourceHref, sketch: false, lineHref: undefined, sourceHref: undefined }
+      : item));
+    setSelectedId(target.id);
+    setMessage("Original photo restored.");
   };
 
   const deleteSelected = () => {
@@ -422,7 +531,7 @@ export default function CNCDesignStudio() {
         <div>
           <p className="eyebrow">OZABAY / CUSTOM CNC STUDIO</p>
           <h2>Bring your idea <em>to life.</em></h2>
-          <p className="cnc-studio__lead">Upload your own furniture image and customise its colours. You can also draw, add text, and export your design.</p>
+          <p className="cnc-studio__lead">Upload a photo of any design, turn it into a clean sketch, and fill each area with your own colours. You can also draw, add text, and export your design.</p>
         </div>
         <div className="cnc-studio__stamp"><span>DESIGNED BY YOU</span><strong>01—03</strong><small>Custom · Considered · Crafted</small></div>
       </div>
@@ -444,15 +553,37 @@ export default function CNCDesignStudio() {
         {!ALL_SKETCHES.some((sketch) => sketch.category === activeCategory && sketch.materials.includes(galleryMaterial)) && <div className="cnc-gallery-empty">No templates for this material in this category yet. Choose the other material or add compatible designs later.</div>}
       </section>}
 
-      {studioView === "editor" && <div className="cnc-editor-heading"><div><b>Upload & customise your image</b><span>Choose an image, select a colour, then click a connected area to fill it.</span></div></div>}
+      {studioView === "editor" && <div className="cnc-editor-heading"><div><b>Upload, sketch & colour</b><span>Upload an image to turn it into a sketch, choose a colour, then click inside any outlined area to fill it.</span></div></div>}
 
       {studioView === "editor" && <div className="cnc-studio__layout">
         <aside className="cnc-studio__sidebar">
           <div className="cnc-tool-group">
             <span className="cnc-tool-label">START WITH</span>
-            <button className="cnc-tool-button" onClick={() => fileRef.current?.click()}><span>↥</span><b>Upload image</b><small>PNG, JPG, WEBP · up to 8 MB</small></button>
+            <button className="cnc-tool-button" onClick={() => fileRef.current?.click()}><span>↥</span><b>Upload image</b><small>PNG, JPG, WEBP · up to 8 MB · plain white background</small></button>
             <input ref={fileRef} type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" onChange={uploadImage} hidden />
-
+            <div className="cnc-photo-rules" aria-label="Photo requirements">
+              <b>For a clean sketch, your photo needs:</b>
+              <ul>
+                <li><span>✓</span>A plain white or light background (a white sheet or plain wall)</li>
+                <li><span>✓</span>Only the piece in the photo, filling most of the frame</li>
+                <li><span>✓</span>Bright, even light with no strong shadows</li>
+                <li><span>✓</span>Sharp focus, taken straight from the front</li>
+              </ul>
+              <p><span>✕</span>Busy backgrounds, plants, floors, rooms or other objects</p>
+            </div>
+            <label className="cnc-switch"><input type="checkbox" checked={autoSketch} onChange={(e) => setAutoSketch(e.target.checked)} /><span aria-hidden="true" />Turn uploads into a sketch for colouring</label>
+          </div>
+          <div className="cnc-tool-group cnc-sketch-panel">
+            <span className="cnc-tool-label">IMAGE TO SKETCH</span>
+            <label className="cnc-range">Detail<span>{sketchDetail}</span><input type="range" min="1" max="10" value={sketchDetail} onChange={(e) => setSketchDetail(e.target.value)} /><small>Fewer lines · More lines</small></label>
+            <label className="cnc-range">Line weight<span>{sketchWeight}</span><input type="range" min="1" max="4" value={sketchWeight} onChange={(e) => setSketchWeight(e.target.value)} /><small>Fine · Bold</small></label>
+            <label className="cnc-range">Clean-up<span>{sketchClean}</span><input type="range" min="0" max="10" value={sketchClean} onChange={(e) => setSketchClean(e.target.value)} /><small>Keep texture · Remove noise</small></label>
+            <div className="cnc-sketch-actions">
+              <button type="button" className="cnc-sketch-convert" onClick={() => convertToSketch(false)} disabled={busy || !items.some((item) => item.type === "image")}>{busy ? "Working…" : sketchTarget()?.sketch ? "Regenerate sketch" : "Convert to sketch"}</button>
+              <button type="button" className="cnc-sketch-restore" onClick={restorePhoto} disabled={busy || !sketchTarget()?.sketch}>Show photo</button>
+            </div>
+            <label className="cnc-range">Close gaps<span>{gapClose}</span><input type="range" min="0" max="6" value={gapClose} onChange={(e) => setGapClose(e.target.value)} /><small>Stops paint leaking through small breaks in a line</small></label>
+            <p className="cnc-helper">Regenerating replaces the colours you've filled. Undo brings them back.</p>
           </div>
           <div className="cnc-tool-group">
             <span className="cnc-tool-label">DRAWING TOOLS</span>
@@ -479,6 +610,14 @@ export default function CNCDesignStudio() {
             <div><span className="cnc-live-dot" /> DESIGN CANVAS <small>800 × 560</small></div>
             <div className="cnc-workbar__actions"><button onClick={undo} disabled={!past.length} title="Undo">↶</button><button onClick={redo} disabled={!future.length} title="Redo">↷</button><button onClick={deleteSelected} disabled={!selectedId} title="Delete selected">Delete</button><button onClick={() => { commit([]); setActivePath(""); }} title="Clear canvas">Clear</button></div>
           </div>
+          {quality && (quality.errors.length > 0 || quality.warnings.length > 0) && <div className={`cnc-quality ${quality.errors.length ? "cnc-quality--error" : "cnc-quality--warn"}`} role={quality.errors.length ? "alert" : "status"}>
+            <div className="cnc-quality__head"><b>{quality.errors.length ? "This photo isn't clear enough to sketch" : "Tip for a cleaner sketch"}</b><button type="button" aria-label="Dismiss" onClick={() => setQuality(null)}>×</button></div>
+            <ul>{[...quality.errors, ...quality.warnings].map((item) => <li key={item.code}>{item.text}</li>)}</ul>
+            {quality.errors.length > 0 && <div className="cnc-quality__actions">
+              <button type="button" className="cnc-quality__primary" onClick={() => { setQuality(null); fileRef.current?.click(); }}>Upload a clearer photo</button>
+              {quality.retry && <button type="button" onClick={() => { const retry = quality.retry; setQuality(null); retry(); }}>Use this photo anyway</button>}
+            </div>}
+          </div>}
           <div className="cnc-canvas-wrap">
             <svg ref={svgRef} className={`cnc-canvas ${tool === "draw" ? "is-drawing" : ""}`} viewBox="0 0 800 560" role="img" aria-label="Custom design canvas" onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerUp} onClick={(e) => { if (e.target === svgRef.current) setSelectedId(null); }}>
               <rect width="800" height="560" fill="#fffdf9" />
